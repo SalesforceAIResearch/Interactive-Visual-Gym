@@ -1,0 +1,214 @@
+{
+ "generated_by": "tools/tmp/audit_composite_vlm.py",
+ "entries": [
+  {
+   "executable": true,
+   "each_error_observable": true,
+   "attributable": true,
+   "plausible": true,
+   "story_accurate": true,
+   "severity": "clean",
+   "problems": [],
+   "suggestion": "",
+   "name": "cx_routine_skip_obj",
+   "episode": "routine_hard",
+   "errors": [
+    "skipped_step",
+    "wrong_object"
+   ]
+  },
+  {
+   "executable": true,
+   "each_error_observable": true,
+   "attributable": true,
+   "plausible": true,
+   "story_accurate": true,
+   "severity": "clean",
+   "problems": [],
+   "suggestion": "",
+   "name": "cx_routine_skip_obj_stall",
+   "episode": "routine_hard",
+   "errors": [
+    "skipped_step",
+    "wrong_object",
+    "stall"
+   ]
+  },
+  {
+   "executable": true,
+   "each_error_observable": true,
+   "attributable": true,
+   "plausible": true,
+   "story_accurate": true,
+   "severity": "clean",
+   "problems": [],
+   "suggestion": "",
+   "name": "cx_routine_nav_place",
+   "episode": "routine_hard",
+   "errors": [
+    "navigation_inefficiency",
+    "wrong_placement"
+   ]
+  },
+  {
+   "executable": true,
+   "each_error_observable": true,
+   "attributable": true,
+   "plausible": true,
+   "story_accurate": true,
+   "severity": "clean",
+   "problems": [],
+   "suggestion": "",
+   "name": "cx_routine_rep_obj",
+   "episode": "routine_hard",
+   "errors": [
+    "repetition",
+    "wrong_object"
+   ]
+  },
+  {
+   "executable": true,
+   "each_error_observable": true,
+   "attributable": true,
+   "plausible": true,
+   "story_accurate": true,
+   "severity": "clean",
+   "problems": [],
+   "suggestion": "",
+   "name": "cx_tidy_missing_rep",
+   "episode": "tidy_hard",
+   "errors": [
+    "missing_step",
+    "repetition"
+   ]
+  },
+  {
+   "executable": true,
+   "each_error_observable": true,
+   "attributable": true,
+   "plausible": true,
+   "story_accurate": true,
+   "severity": "clean",
+   "problems": [],
+   "suggestion": "",
+   "name": "cx_tidy_missing_stall",
+   "episode": "tidy_hard",
+   "errors": [
+    "missing_step",
+    "stall"
+   ]
+  },
+  {
+   "executable": true,
+   "each_error_observable": true,
+   "attributable": true,
+   "plausible": true,
+   "story_accurate": true,
+   "severity": "clean",
+   "problems": [],
+   "suggestion": "",
+   "name": "cx_settable_stall_place",
+   "episode": "settable_hard",
+   "errors": [
+    "stall",
+    "wrong_placement"
+   ]
+  },
+  {
+   "executable": true,
+   "each_error_observable": true,
+   "attributable": true,
+   "plausible": true,
+   "story_accurate": true,
+   "severity": "clean",
+   "problems": [],
+   "suggestion": "",
+   "name": "cx_settable_nav_place",
+   "episode": "settable_hard",
+   "errors": [
+    "navigation_inefficiency",
+    "wrong_placement"
+   ]
+  },
+  {
+   "executable": true,
+   "each_error_observable": true,
+   "attributable": true,
+   "plausible": true,
+   "story_accurate": true,
+   "severity": "clean",
+   "problems": [],
+   "suggestion": "",
+   "name": "cx_settable_obj_rep",
+   "episode": "settable_easy",
+   "errors": [
+    "wrong_object",
+    "repetition"
+   ]
+  },
+  {
+   "executable": true,
+   "each_error_observable": true,
+   "attributable": true,
+   "plausible": true,
+   "story_accurate": true,
+   "severity": "clean",
+   "problems": [],
+   "suggestion": "",
+   "name": "cx_settable_nav_place_easy",
+   "episode": "settable_easy",
+   "errors": [
+    "navigation_inefficiency",
+    "wrong_placement"
+   ]
+  },
+  {
+   "executable": true,
+   "each_error_observable": true,
+   "attributable": true,
+   "plausible": true,
+   "story_accurate": true,
+   "severity": "clean",
+   "problems": [],
+   "suggestion": "",
+   "name": "cx_appliance_obj_stall",
+   "episode": "appliance_hard",
+   "errors": [
+    "wrong_object",
+    "stall"
+   ]
+  },
+  {
+   "executable": true,
+   "each_error_observable": true,
+   "attributable": true,
+   "plausible": true,
+   "story_accurate": true,
+   "severity": "clean",
+   "problems": [],
+   "suggestion": "",
+   "name": "cx_appliance_nav_place",
+   "episode": "appliance_hard",
+   "errors": [
+    "navigation_inefficiency",
+    "wrong_placement"
+   ]
+  },
+  {
+   "executable": true,
+   "each_error_observable": true,
+   "attributable": true,
+   "plausible": true,
+   "story_accurate": true,
+   "severity": "clean",
+   "problems": [],
+   "suggestion": "",
+   "name": "cx_search_skip_stall",
+   "episode": "search_hard",
+   "errors": [
+    "skipped_step",
+    "stall"
+   ]
+  }
+ ]
+}

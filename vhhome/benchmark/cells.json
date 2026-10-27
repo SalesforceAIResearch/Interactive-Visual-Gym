@@ -1,0 +1,317 @@
+{
+ "seed": 20260920,
+ "draw": "random, balanced 8-9 per persona, 3 distinct per case",
+ "personas": [
+  "credulous_expert",
+  "classic_expert",
+  "quiet_perfectionist",
+  "classic_novice",
+  "defiant_novice",
+  "eager_parallel_novice",
+  "safety_stepper",
+  "speed_demon",
+  "baseline"
+ ],
+ "cells": [
+  {
+   "case": "cx_routine_skip_obj",
+   "persona": "safety_stepper"
+  },
+  {
+   "case": "cx_routine_skip_obj",
+   "persona": "baseline"
+  },
+  {
+   "case": "cx_routine_skip_obj",
+   "persona": "credulous_expert"
+  },
+  {
+   "case": "cx_routine_skip_obj_stall",
+   "persona": "eager_parallel_novice"
+  },
+  {
+   "case": "cx_routine_skip_obj_stall",
+   "persona": "baseline"
+  },
+  {
+   "case": "cx_routine_skip_obj_stall",
+   "persona": "credulous_expert"
+  },
+  {
+   "case": "cx_routine_nav_place",
+   "persona": "quiet_perfectionist"
+  },
+  {
+   "case": "cx_routine_nav_place",
+   "persona": "eager_parallel_novice"
+  },
+  {
+   "case": "cx_routine_nav_place",
+   "persona": "speed_demon"
+  },
+  {
+   "case": "cx_routine_rep_obj",
+   "persona": "defiant_novice"
+  },
+  {
+   "case": "cx_routine_rep_obj",
+   "persona": "safety_stepper"
+  },
+  {
+   "case": "cx_routine_rep_obj",
+   "persona": "classic_expert"
+  },
+  {
+   "case": "cx_tidy_missing_rep",
+   "persona": "quiet_perfectionist"
+  },
+  {
+   "case": "cx_tidy_missing_rep",
+   "persona": "speed_demon"
+  },
+  {
+   "case": "cx_tidy_missing_rep",
+   "persona": "eager_parallel_novice"
+  },
+  {
+   "case": "cx_tidy_missing_stall",
+   "persona": "defiant_novice"
+  },
+  {
+   "case": "cx_tidy_missing_stall",
+   "persona": "credulous_expert"
+  },
+  {
+   "case": "cx_tidy_missing_stall",
+   "persona": "speed_demon"
+  },
+  {
+   "case": "cx_appliance_obj_stall",
+   "persona": "baseline"
+  },
+  {
+   "case": "cx_appliance_obj_stall",
+   "persona": "credulous_expert"
+  },
+  {
+   "case": "cx_appliance_obj_stall",
+   "persona": "classic_expert"
+  },
+  {
+   "case": "cx_appliance_nav_place",
+   "persona": "baseline"
+  },
+  {
+   "case": "cx_appliance_nav_place",
+   "persona": "eager_parallel_novice"
+  },
+  {
+   "case": "cx_appliance_nav_place",
+   "persona": "classic_novice"
+  },
+  {
+   "case": "cx_search_skip_stall",
+   "persona": "safety_stepper"
+  },
+  {
+   "case": "cx_search_skip_stall",
+   "persona": "eager_parallel_novice"
+  },
+  {
+   "case": "cx_search_skip_stall",
+   "persona": "quiet_perfectionist"
+  },
+  {
+   "case": "cx_putback_skip_place",
+   "persona": "safety_stepper"
+  },
+  {
+   "case": "cx_putback_skip_place",
+   "persona": "defiant_novice"
+  },
+  {
+   "case": "cx_putback_skip_place",
+   "persona": "credulous_expert"
+  },
+  {
+   "case": "cx_putback_nav_place",
+   "persona": "credulous_expert"
+  },
+  {
+   "case": "cx_putback_nav_place",
+   "persona": "speed_demon"
+  },
+  {
+   "case": "cx_putback_nav_place",
+   "persona": "quiet_perfectionist"
+  },
+  {
+   "case": "cx_dishes_missing_stall",
+   "persona": "quiet_perfectionist"
+  },
+  {
+   "case": "cx_dishes_missing_stall",
+   "persona": "speed_demon"
+  },
+  {
+   "case": "cx_dishes_missing_stall",
+   "persona": "defiant_novice"
+  },
+  {
+   "case": "cx_dishes_nav_place",
+   "persona": "classic_novice"
+  },
+  {
+   "case": "cx_dishes_nav_place",
+   "persona": "eager_parallel_novice"
+  },
+  {
+   "case": "cx_dishes_nav_place",
+   "persona": "classic_expert"
+  },
+  {
+   "case": "cx_groceries_stall_place",
+   "persona": "baseline"
+  },
+  {
+   "case": "cx_groceries_stall_place",
+   "persona": "classic_expert"
+  },
+  {
+   "case": "cx_groceries_stall_place",
+   "persona": "defiant_novice"
+  },
+  {
+   "case": "cx_groceries_skip_stall",
+   "persona": "classic_novice"
+  },
+  {
+   "case": "cx_groceries_skip_stall",
+   "persona": "speed_demon"
+  },
+  {
+   "case": "cx_groceries_skip_stall",
+   "persona": "quiet_perfectionist"
+  },
+  {
+   "case": "cx_shutdown_missing_rep",
+   "persona": "classic_novice"
+  },
+  {
+   "case": "cx_shutdown_missing_rep",
+   "persona": "safety_stepper"
+  },
+  {
+   "case": "cx_shutdown_missing_rep",
+   "persona": "defiant_novice"
+  },
+  {
+   "case": "cx_shutdown_skip_stall",
+   "persona": "classic_novice"
+  },
+  {
+   "case": "cx_shutdown_skip_stall",
+   "persona": "eager_parallel_novice"
+  },
+  {
+   "case": "cx_shutdown_skip_stall",
+   "persona": "baseline"
+  },
+  {
+   "case": "cx_mugs_missing_stall",
+   "persona": "quiet_perfectionist"
+  },
+  {
+   "case": "cx_mugs_missing_stall",
+   "persona": "classic_expert"
+  },
+  {
+   "case": "cx_mugs_missing_stall",
+   "persona": "defiant_novice"
+  },
+  {
+   "case": "cx_mugs_nav_place",
+   "persona": "defiant_novice"
+  },
+  {
+   "case": "cx_mugs_nav_place",
+   "persona": "classic_novice"
+  },
+  {
+   "case": "cx_mugs_nav_place",
+   "persona": "classic_expert"
+  },
+  {
+   "case": "cx_guest_skip_stall",
+   "persona": "classic_novice"
+  },
+  {
+   "case": "cx_guest_skip_stall",
+   "persona": "safety_stepper"
+  },
+  {
+   "case": "cx_guest_skip_stall",
+   "persona": "baseline"
+  },
+  {
+   "case": "cx_guest_stall_place",
+   "persona": "classic_novice"
+  },
+  {
+   "case": "cx_guest_stall_place",
+   "persona": "classic_expert"
+  },
+  {
+   "case": "cx_guest_stall_place",
+   "persona": "credulous_expert"
+  },
+  {
+   "case": "cx_aftermeal_missing_obj",
+   "persona": "classic_expert"
+  },
+  {
+   "case": "cx_aftermeal_missing_obj",
+   "persona": "safety_stepper"
+  },
+  {
+   "case": "cx_aftermeal_missing_obj",
+   "persona": "speed_demon"
+  },
+  {
+   "case": "cx_aftermeal_stall_place",
+   "persona": "baseline"
+  },
+  {
+   "case": "cx_aftermeal_stall_place",
+   "persona": "defiant_novice"
+  },
+  {
+   "case": "cx_aftermeal_stall_place",
+   "persona": "quiet_perfectionist"
+  },
+  {
+   "case": "cx_tidybedroom_skip_rep",
+   "persona": "credulous_expert"
+  },
+  {
+   "case": "cx_tidybedroom_skip_rep",
+   "persona": "quiet_perfectionist"
+  },
+  {
+   "case": "cx_tidybedroom_skip_rep",
+   "persona": "speed_demon"
+  },
+  {
+   "case": "cx_tidybedroom_stall_place",
+   "persona": "classic_novice"
+  },
+  {
+   "case": "cx_tidybedroom_stall_place",
+   "persona": "eager_parallel_novice"
+  },
+  {
+   "case": "cx_tidybedroom_stall_place",
+   "persona": "safety_stepper"
+  }
+ ]
+}

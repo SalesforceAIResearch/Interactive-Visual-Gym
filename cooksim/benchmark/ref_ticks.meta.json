@@ -1,0 +1,130 @@
+{
+ "schema": "ref-ticks-meta-v1",
+ "engine_rev": "e5a1920821",
+ "grid_sha256": "47fcee7465e5819a",
+ "method": "clean reference plan, real executor, no supervisor/LLM, inject=False, lang=False, seed=11, replayed twice",
+ "cap": 800,
+ "cells": [
+  {
+   "cell": "easy_nops_easy_map",
+   "ticks": 46,
+   "outcome": "won",
+   "plan_len": 13,
+   "rejected": 0,
+   "ok": true
+  },
+  {
+   "cell": "easy_nops_medium_map",
+   "ticks": 43,
+   "outcome": "won",
+   "plan_len": 13,
+   "rejected": 0,
+   "ok": true
+  },
+  {
+   "cell": "easy_nops_hard_map",
+   "ticks": 60,
+   "outcome": "won",
+   "plan_len": 13,
+   "rejected": 0,
+   "ok": true
+  },
+  {
+   "cell": "medium_nops_easy_map",
+   "ticks": 51,
+   "outcome": "won",
+   "plan_len": 15,
+   "rejected": 0,
+   "ok": true
+  },
+  {
+   "cell": "medium_nops_medium_map",
+   "ticks": 51,
+   "outcome": "won",
+   "plan_len": 15,
+   "rejected": 0,
+   "ok": true
+  },
+  {
+   "cell": "medium_nops_hard_map",
+   "ticks": 85,
+   "outcome": "won",
+   "plan_len": 15,
+   "rejected": 0,
+   "ok": true
+  },
+  {
+   "cell": "hard_nops_easy_map",
+   "ticks": 122,
+   "outcome": "won",
+   "plan_len": 32,
+   "rejected": 0,
+   "ok": true
+  },
+  {
+   "cell": "hard_nops_medium_map",
+   "ticks": 151,
+   "outcome": "won",
+   "plan_len": 32,
+   "rejected": 0,
+   "ok": true
+  },
+  {
+   "cell": "hard_nops_hard_map",
+   "ticks": 128,
+   "outcome": "won",
+   "plan_len": 32,
+   "rejected": 0,
+   "ok": true
+  },
+  {
+   "cell": "expert_nops_easy_map",
+   "ticks": 136,
+   "outcome": "won",
+   "plan_len": 36,
+   "rejected": 0,
+   "ok": true
+  },
+  {
+   "cell": "expert_nops_medium_map",
+   "ticks": 166,
+   "outcome": "won",
+   "plan_len": 36,
+   "rejected": 0,
+   "ok": true
+  },
+  {
+   "cell": "expert_nops_hard_map",
+   "ticks": 140,
+   "outcome": "won",
+   "plan_len": 36,
+   "rejected": 0,
+   "ok": true
+  },
+  {
+   "cell": "master_nops_easy_map",
+   "ticks": 151,
+   "outcome": "won",
+   "plan_len": 40,
+   "rejected": 0,
+   "ok": true
+  },
+  {
+   "cell": "master_nops_medium_map",
+   "ticks": 171,
+   "outcome": "won",
+   "plan_len": 40,
+   "rejected": 0,
+   "ok": true
+  },
+  {
+   "cell": "master_nops_hard_map",
+   "ticks": 237,
+   "outcome": "won",
+   "plan_len": 40,
+   "rejected": 0,
+   "ok": true
+  }
+ ],
+ "failed": []
+}

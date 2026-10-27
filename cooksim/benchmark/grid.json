@@ -1,0 +1,2059 @@
+{
+  "grid": [
+    {
+      "cell": "easy-nops / easy-map",
+      "n_ops_level": "easy",
+      "map_level": "easy",
+      "recipe_id": "caprese",
+      "recipe_name": "Caprese",
+      "ordered": true,
+      "contents": [
+        [
+          "tomato",
+          "chopped"
+        ],
+        [
+          "cheese",
+          "raw"
+        ]
+      ],
+      "n_ops": 13,
+      "path_length": 12,
+      "map_complexity": 12.0,
+      "map_features": {
+        "grounding_ambiguity": 0,
+        "path_length": 12,
+        "traversal_size": 16,
+        "w_path": 1.0,
+        "w_ground": 6.0
+      },
+      "plan": [
+        "go to the tomato source",
+        "pick up",
+        "go to the cutting board",
+        "put down",
+        "chop",
+        "go to the plates",
+        "pick up",
+        "go to the cutting board",
+        "scoop",
+        "go to the cheese source",
+        "scoop",
+        "go to the serving pass",
+        "serve"
+      ],
+      "layout": {
+        "name": "procedural_ring_0",
+        "grid": [
+          [
+            "counter",
+            "cheese_source",
+            "counter",
+            "tomato_source",
+            "cutting_board",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "serving",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "plate_source"
+          ],
+          [
+            "counter",
+            "counter",
+            "counter",
+            "counter",
+            "counter",
+            "counter"
+          ]
+        ],
+        "start_positions": [
+          [
+            4,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "cell": "easy-nops / medium-map",
+      "n_ops_level": "easy",
+      "map_level": "medium",
+      "recipe_id": "caprese",
+      "recipe_name": "Caprese",
+      "ordered": true,
+      "contents": [
+        [
+          "tomato",
+          "chopped"
+        ],
+        [
+          "cheese",
+          "raw"
+        ]
+      ],
+      "n_ops": 13,
+      "path_length": 27,
+      "map_complexity": 39.0,
+      "map_features": {
+        "grounding_ambiguity": 2,
+        "path_length": 27,
+        "traversal_size": 11,
+        "w_path": 1.0,
+        "w_ground": 6.0
+      },
+      "plan": [
+        "go to the tomato source",
+        "pick up",
+        "go to the cutting board",
+        "put down",
+        "chop",
+        "go to the plates",
+        "pick up",
+        "go to the cutting board",
+        "scoop",
+        "go to the cheese source",
+        "scoop",
+        "go to the serving pass",
+        "serve"
+      ],
+      "layout": {
+        "name": "procedural_ring_0",
+        "grid": [
+          [
+            "counter",
+            "counter",
+            "counter",
+            "counter",
+            "counter",
+            "counter"
+          ],
+          [
+            "cutting_board",
+            "floor",
+            "floor",
+            "cheese_source",
+            "floor",
+            "cutting_board"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "tomato_source"
+          ],
+          [
+            "counter",
+            "serving",
+            "floor",
+            "floor",
+            "floor",
+            "pan"
+          ],
+          [
+            "counter",
+            "pot",
+            "floor",
+            "cheese_source",
+            "plate_source",
+            "counter"
+          ],
+          [
+            "counter",
+            "counter",
+            "counter",
+            "counter",
+            "counter",
+            "counter"
+          ]
+        ],
+        "start_positions": [
+          [
+            2,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "cell": "easy-nops / hard-map",
+      "n_ops_level": "easy",
+      "map_level": "hard",
+      "recipe_id": "caprese",
+      "recipe_name": "Caprese",
+      "ordered": true,
+      "contents": [
+        [
+          "tomato",
+          "chopped"
+        ],
+        [
+          "cheese",
+          "raw"
+        ]
+      ],
+      "n_ops": 13,
+      "path_length": 56,
+      "map_complexity": 80.0,
+      "map_features": {
+        "grounding_ambiguity": 4,
+        "path_length": 56,
+        "traversal_size": 21,
+        "w_path": 1.0,
+        "w_ground": 6.0
+      },
+      "plan": [
+        "go to the tomato source",
+        "pick up",
+        "go to the cutting board",
+        "put down",
+        "chop",
+        "go to the plates",
+        "pick up",
+        "go to the cutting board",
+        "scoop",
+        "go to the cheese source",
+        "scoop",
+        "go to the serving pass",
+        "serve"
+      ],
+      "layout": {
+        "name": "procedural_ring_3",
+        "grid": [
+          [
+            "counter",
+            "counter",
+            "counter",
+            "tomato_source",
+            "counter",
+            "pan",
+            "counter",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "pan",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "cutting_board",
+            "floor",
+            "floor",
+            "floor",
+            "serving"
+          ],
+          [
+            "counter",
+            "pot",
+            "floor",
+            "floor",
+            "plate_source",
+            "cutting_board",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "cutting_board",
+            "floor",
+            "wall",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "cheese_source",
+            "floor",
+            "floor",
+            "floor",
+            "cheese_source",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "counter",
+            "counter",
+            "counter",
+            "counter",
+            "counter",
+            "counter",
+            "counter"
+          ]
+        ],
+        "start_positions": [
+          [
+            2,
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "cell": "medium-nops / easy-map",
+      "n_ops_level": "medium",
+      "map_level": "easy",
+      "recipe_id": "cheeseburger",
+      "recipe_name": "Cheeseburger",
+      "ordered": true,
+      "contents": [
+        [
+          "bun",
+          "raw"
+        ],
+        [
+          "meat",
+          "cooked"
+        ],
+        [
+          "cheese",
+          "raw"
+        ]
+      ],
+      "n_ops": 15,
+      "path_length": 17,
+      "map_complexity": 17.0,
+      "map_features": {
+        "grounding_ambiguity": 0,
+        "path_length": 17,
+        "traversal_size": 25,
+        "w_path": 1.0,
+        "w_ground": 6.0
+      },
+      "plan": [
+        "go to the meat source",
+        "pick up",
+        "go to the empty pan",
+        "put down",
+        "turn on",
+        "go to the plates",
+        "pick up",
+        "go to the bun source",
+        "scoop",
+        "go to the pan with the meat",
+        "scoop",
+        "go to the cheese source",
+        "scoop",
+        "go to the serving pass",
+        "serve"
+      ],
+      "layout": {
+        "name": "procedural_ring_9",
+        "grid": [
+          [
+            "counter",
+            "counter",
+            "counter",
+            "bun_source",
+            "counter",
+            "pan",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "plate_source"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "meat_source"
+          ],
+          [
+            "serving",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "counter",
+            "counter",
+            "cheese_source",
+            "counter",
+            "counter",
+            "counter"
+          ]
+        ],
+        "start_positions": [
+          [
+            5,
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "cell": "medium-nops / medium-map",
+      "n_ops_level": "medium",
+      "map_level": "medium",
+      "recipe_id": "cheeseburger",
+      "recipe_name": "Cheeseburger",
+      "ordered": true,
+      "contents": [
+        [
+          "bun",
+          "raw"
+        ],
+        [
+          "meat",
+          "cooked"
+        ],
+        [
+          "cheese",
+          "raw"
+        ]
+      ],
+      "n_ops": 15,
+      "path_length": 19,
+      "map_complexity": 43.0,
+      "map_features": {
+        "grounding_ambiguity": 4,
+        "path_length": 19,
+        "traversal_size": 13,
+        "w_path": 1.0,
+        "w_ground": 6.0
+      },
+      "plan": [
+        "go to the meat source",
+        "pick up",
+        "go to the empty pan",
+        "put down",
+        "turn on",
+        "go to the plates",
+        "pick up",
+        "go to the bun source",
+        "scoop",
+        "go to the pan with the meat",
+        "scoop",
+        "go to the cheese source",
+        "scoop",
+        "go to the serving pass",
+        "serve"
+      ],
+      "layout": {
+        "name": "procedural_ring_4",
+        "grid": [
+          [
+            "counter",
+            "cutting_board",
+            "cutting_board",
+            "pan",
+            "counter",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "plate_source"
+          ],
+          [
+            "counter",
+            "floor",
+            "pan",
+            "floor",
+            "floor",
+            "trash"
+          ],
+          [
+            "pan",
+            "floor",
+            "meat_source",
+            "floor",
+            "bun_source",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "serving"
+          ],
+          [
+            "counter",
+            "cheese_source",
+            "pot",
+            "counter",
+            "meat_source",
+            "counter"
+          ]
+        ],
+        "start_positions": [
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "cell": "medium-nops / hard-map",
+      "n_ops_level": "medium",
+      "map_level": "hard",
+      "recipe_id": "cheeseburger",
+      "recipe_name": "Cheeseburger",
+      "ordered": true,
+      "contents": [
+        [
+          "bun",
+          "raw"
+        ],
+        [
+          "meat",
+          "cooked"
+        ],
+        [
+          "cheese",
+          "raw"
+        ]
+      ],
+      "n_ops": 15,
+      "path_length": 50,
+      "map_complexity": 74.0,
+      "map_features": {
+        "grounding_ambiguity": 4,
+        "path_length": 50,
+        "traversal_size": 14,
+        "w_path": 1.0,
+        "w_ground": 6.0
+      },
+      "plan": [
+        "go to the meat source",
+        "pick up",
+        "go to the empty pan",
+        "put down",
+        "turn on",
+        "go to the plates",
+        "pick up",
+        "go to the bun source",
+        "scoop",
+        "go to the pan with the meat",
+        "scoop",
+        "go to the cheese source",
+        "scoop",
+        "go to the serving pass",
+        "serve"
+      ],
+      "layout": {
+        "name": "procedural_ring_0",
+        "grid": [
+          [
+            "counter",
+            "counter",
+            "pot",
+            "meat_source",
+            "meat_source",
+            "counter",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "cheese_source"
+          ],
+          [
+            "counter",
+            "floor",
+            "serving",
+            "cutting_board",
+            "plate_source",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "cutting_board",
+            "floor",
+            "pan",
+            "pan",
+            "counter"
+          ],
+          [
+            "pan",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "counter",
+            "counter",
+            "counter",
+            "counter",
+            "bun_source",
+            "counter"
+          ]
+        ],
+        "start_positions": [
+          [
+            3,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "cell": "hard-nops / easy-map",
+      "n_ops_level": "hard",
+      "map_level": "easy",
+      "recipe_id": "fish_and_chips_platter",
+      "recipe_name": "Fish & Chips Platter",
+      "ordered": true,
+      "contents": [
+        [
+          "fish",
+          "cooked"
+        ],
+        [
+          "potato",
+          "cooked"
+        ],
+        [
+          "potato",
+          "cooked"
+        ]
+      ],
+      "n_ops": 32,
+      "path_length": 20,
+      "map_complexity": 26.0,
+      "map_features": {
+        "grounding_ambiguity": 1,
+        "path_length": 20,
+        "traversal_size": 16,
+        "w_path": 1.0,
+        "w_ground": 6.0
+      },
+      "plan": [
+        "go to the fish source",
+        "pick up",
+        "go to the empty fryer",
+        "put down",
+        "go to the potato source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the empty fryer",
+        "put down",
+        "go to the potato source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the fryer with the potato",
+        "put down",
+        "go to the fryer with the fish",
+        "turn on",
+        "go to the fryer with the potato",
+        "turn on",
+        "go to the plates",
+        "pick up",
+        "go to the fryer with the fish",
+        "scoop",
+        "go to the fryer with the potato",
+        "scoop",
+        "go to the serving pass",
+        "serve"
+      ],
+      "layout": {
+        "name": "procedural_ring_9",
+        "grid": [
+          [
+            "counter",
+            "potato_source",
+            "cutting_board",
+            "fryer",
+            "counter",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "plate_source"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "fish_source"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "serving",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "counter",
+            "counter",
+            "fryer",
+            "counter",
+            "counter"
+          ]
+        ],
+        "start_positions": [
+          [
+            1,
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "cell": "hard-nops / medium-map",
+      "n_ops_level": "hard",
+      "map_level": "medium",
+      "recipe_id": "fish_and_chips_platter",
+      "recipe_name": "Fish & Chips Platter",
+      "ordered": true,
+      "contents": [
+        [
+          "fish",
+          "cooked"
+        ],
+        [
+          "potato",
+          "cooked"
+        ],
+        [
+          "potato",
+          "cooked"
+        ]
+      ],
+      "n_ops": 32,
+      "path_length": 65,
+      "map_complexity": 71.0,
+      "map_features": {
+        "grounding_ambiguity": 1,
+        "path_length": 65,
+        "traversal_size": 15,
+        "w_path": 1.0,
+        "w_ground": 6.0
+      },
+      "plan": [
+        "go to the fish source",
+        "pick up",
+        "go to the empty fryer",
+        "put down",
+        "go to the potato source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the empty fryer",
+        "put down",
+        "go to the potato source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the fryer with the potato",
+        "put down",
+        "go to the fryer with the fish",
+        "turn on",
+        "go to the fryer with the potato",
+        "turn on",
+        "go to the plates",
+        "pick up",
+        "go to the fryer with the fish",
+        "scoop",
+        "go to the fryer with the potato",
+        "scoop",
+        "go to the serving pass",
+        "serve"
+      ],
+      "layout": {
+        "name": "procedural_ring_0",
+        "grid": [
+          [
+            "counter",
+            "counter",
+            "pan",
+            "counter",
+            "counter",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "potato_source"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "serving",
+            "fish_source",
+            "counter"
+          ],
+          [
+            "counter",
+            "plate_source",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "cutting_board",
+            "fryer",
+            "floor",
+            "counter"
+          ],
+          [
+            "fryer",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "counter",
+            "counter",
+            "counter",
+            "counter",
+            "counter"
+          ]
+        ],
+        "start_positions": [
+          [
+            3,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "cell": "hard-nops / hard-map",
+      "n_ops_level": "hard",
+      "map_level": "hard",
+      "recipe_id": "fish_and_chips_platter",
+      "recipe_name": "Fish & Chips Platter",
+      "ordered": true,
+      "contents": [
+        [
+          "fish",
+          "cooked"
+        ],
+        [
+          "potato",
+          "cooked"
+        ],
+        [
+          "potato",
+          "cooked"
+        ]
+      ],
+      "n_ops": 32,
+      "path_length": 94,
+      "map_complexity": 130.0,
+      "map_features": {
+        "grounding_ambiguity": 6,
+        "path_length": 94,
+        "traversal_size": 36,
+        "w_path": 1.0,
+        "w_ground": 6.0
+      },
+      "plan": [
+        "go to the fish source",
+        "pick up",
+        "go to the empty fryer",
+        "put down",
+        "go to the potato source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the empty fryer",
+        "put down",
+        "go to the potato source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the fryer with the potato",
+        "put down",
+        "go to the fryer with the fish",
+        "turn on",
+        "go to the fryer with the potato",
+        "turn on",
+        "go to the plates",
+        "pick up",
+        "go to the fryer with the fish",
+        "scoop",
+        "go to the fryer with the potato",
+        "scoop",
+        "go to the serving pass",
+        "serve"
+      ],
+      "layout": {
+        "name": "maze9_501521",
+        "grid": [
+          [
+            "wall",
+            "meat_source",
+            "trash",
+            "counter",
+            "wall",
+            "counter",
+            "fryer",
+            "counter",
+            "wall"
+          ],
+          [
+            "fish_source",
+            "floor",
+            "floor",
+            "floor",
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "pan"
+          ],
+          [
+            "wall",
+            "floor",
+            "cutting_board",
+            "floor",
+            "counter",
+            "floor",
+            "wall",
+            "floor",
+            "lemon_source"
+          ],
+          [
+            "cutting_board",
+            "floor",
+            "serving",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "bun_source"
+          ],
+          [
+            "counter",
+            "floor",
+            "counter",
+            "counter",
+            "counter",
+            "floor",
+            "fryer",
+            "floor",
+            "counter"
+          ],
+          [
+            "potato_source",
+            "floor",
+            "floor",
+            "floor",
+            "wall",
+            "floor",
+            "floor",
+            "floor",
+            "peas_source"
+          ],
+          [
+            "pot",
+            "floor",
+            "counter",
+            "floor",
+            "wall",
+            "floor",
+            "wall",
+            "floor",
+            "fryer"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "noodles_source"
+          ],
+          [
+            "wall",
+            "shrimp_source",
+            "counter",
+            "counter",
+            "plate_source",
+            "cutting_board",
+            "potato_source",
+            "fish_source",
+            "wall"
+          ]
+        ],
+        "start_positions": [
+          [
+            6,
+            7
+          ]
+        ]
+      }
+    },
+    {
+      "cell": "expert-nops / easy-map",
+      "n_ops_level": "expert",
+      "map_level": "easy",
+      "recipe_id": "steak_frites",
+      "recipe_name": "Steak Frites",
+      "ordered": true,
+      "contents": [
+        [
+          "steak",
+          "cooked"
+        ],
+        [
+          "potato",
+          "cooked"
+        ],
+        [
+          "potato",
+          "cooked"
+        ]
+      ],
+      "n_ops": 36,
+      "path_length": 38,
+      "map_complexity": 38.0,
+      "map_features": {
+        "grounding_ambiguity": 0,
+        "path_length": 38,
+        "traversal_size": 16,
+        "w_path": 1.0,
+        "w_ground": 6.0
+      },
+      "plan": [
+        "go to the steak source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the empty pan",
+        "put down",
+        "go to the potato source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the empty fryer",
+        "put down",
+        "go to the potato source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the fryer with the potato",
+        "put down",
+        "go to the pan with the steak",
+        "turn on",
+        "go to the fryer with the potato",
+        "turn on",
+        "go to the plates",
+        "pick up",
+        "go to the pan with the steak",
+        "scoop",
+        "go to the fryer with the potato",
+        "scoop",
+        "go to the serving pass",
+        "serve"
+      ],
+      "layout": {
+        "name": "procedural_ring_2",
+        "grid": [
+          [
+            "counter",
+            "counter",
+            "cutting_board",
+            "steak_source",
+            "counter",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "potato_source",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "pan",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "plate_source"
+          ],
+          [
+            "counter",
+            "serving",
+            "counter",
+            "fryer",
+            "counter",
+            "counter"
+          ]
+        ],
+        "start_positions": [
+          [
+            4,
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "cell": "expert-nops / medium-map",
+      "n_ops_level": "expert",
+      "map_level": "medium",
+      "recipe_id": "steak_frites",
+      "recipe_name": "Steak Frites",
+      "ordered": true,
+      "contents": [
+        [
+          "steak",
+          "cooked"
+        ],
+        [
+          "potato",
+          "cooked"
+        ],
+        [
+          "potato",
+          "cooked"
+        ]
+      ],
+      "n_ops": 36,
+      "path_length": 63,
+      "map_complexity": 87.0,
+      "map_features": {
+        "grounding_ambiguity": 4,
+        "path_length": 63,
+        "traversal_size": 16,
+        "w_path": 1.0,
+        "w_ground": 6.0
+      },
+      "plan": [
+        "go to the steak source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the empty pan",
+        "put down",
+        "go to the potato source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the empty fryer",
+        "put down",
+        "go to the potato source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the fryer with the potato",
+        "put down",
+        "go to the pan with the steak",
+        "turn on",
+        "go to the fryer with the potato",
+        "turn on",
+        "go to the plates",
+        "pick up",
+        "go to the pan with the steak",
+        "scoop",
+        "go to the fryer with the potato",
+        "scoop",
+        "go to the serving pass",
+        "serve"
+      ],
+      "layout": {
+        "name": "procedural_ring_4",
+        "grid": [
+          [
+            "counter",
+            "cutting_board",
+            "counter",
+            "counter",
+            "pot",
+            "counter",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "plate_source",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "cutting_board",
+            "floor",
+            "steak_source",
+            "pan",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "pan",
+            "floor",
+            "floor",
+            "serving"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "potato_source"
+          ],
+          [
+            "counter",
+            "potato_source",
+            "counter",
+            "fryer",
+            "counter",
+            "pan",
+            "counter"
+          ]
+        ],
+        "start_positions": [
+          [
+            4,
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "cell": "expert-nops / hard-map",
+      "n_ops_level": "expert",
+      "map_level": "hard",
+      "recipe_id": "steak_frites",
+      "recipe_name": "Steak Frites",
+      "ordered": true,
+      "contents": [
+        [
+          "steak",
+          "cooked"
+        ],
+        [
+          "potato",
+          "cooked"
+        ],
+        [
+          "potato",
+          "cooked"
+        ]
+      ],
+      "n_ops": 36,
+      "path_length": 121,
+      "map_complexity": 163.0,
+      "map_features": {
+        "grounding_ambiguity": 7,
+        "path_length": 121,
+        "traversal_size": 36,
+        "w_path": 1.0,
+        "w_ground": 6.0
+      },
+      "plan": [
+        "go to the steak source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the empty pan",
+        "put down",
+        "go to the potato source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the empty fryer",
+        "put down",
+        "go to the potato source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the fryer with the potato",
+        "put down",
+        "go to the pan with the steak",
+        "turn on",
+        "go to the fryer with the potato",
+        "turn on",
+        "go to the plates",
+        "pick up",
+        "go to the pan with the steak",
+        "scoop",
+        "go to the fryer with the potato",
+        "scoop",
+        "go to the serving pass",
+        "serve"
+      ],
+      "layout": {
+        "name": "maze9_504123",
+        "grid": [
+          [
+            "wall",
+            "plate_source",
+            "counter",
+            "meat_source",
+            "steak_source",
+            "counter",
+            "wall",
+            "wall",
+            "wall"
+          ],
+          [
+            "serving",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "cutting_board",
+            "floor",
+            "counter",
+            "floor",
+            "steak_source",
+            "floor",
+            "wall",
+            "floor",
+            "pot"
+          ],
+          [
+            "oven",
+            "floor",
+            "floor",
+            "floor",
+            "trash",
+            "floor",
+            "floor",
+            "floor",
+            "onion_source"
+          ],
+          [
+            "cutting_board",
+            "floor",
+            "pan",
+            "wall",
+            "wall",
+            "pepper_source",
+            "counter",
+            "floor",
+            "potato_source"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "fryer",
+            "floor",
+            "floor",
+            "floor",
+            "wall"
+          ],
+          [
+            "cutting_board",
+            "floor",
+            "potato_source",
+            "floor",
+            "counter",
+            "floor",
+            "counter",
+            "floor",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "pan"
+          ],
+          [
+            "wall",
+            "mushroom_source",
+            "butter_source",
+            "egg_source",
+            "fryer",
+            "counter",
+            "counter",
+            "pan",
+            "wall"
+          ]
+        ],
+        "start_positions": [
+          [
+            5,
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "cell": "master-nops / easy-map",
+      "n_ops_level": "master",
+      "map_level": "easy",
+      "recipe_id": "loaded_burrito",
+      "recipe_name": "Loaded Burrito",
+      "ordered": true,
+      "contents": [
+        [
+          "tortilla",
+          "raw"
+        ],
+        [
+          "rice",
+          "cooked"
+        ],
+        [
+          "steak",
+          "cooked"
+        ],
+        [
+          "tomato",
+          "chopped"
+        ],
+        [
+          "lettuce",
+          "chopped"
+        ]
+      ],
+      "n_ops": 40,
+      "path_length": 40,
+      "map_complexity": 52.0,
+      "map_features": {
+        "grounding_ambiguity": 2,
+        "path_length": 40,
+        "traversal_size": 16,
+        "w_path": 1.0,
+        "w_ground": 6.0
+      },
+      "plan": [
+        "go to the rice source",
+        "pick up",
+        "go to the empty pot",
+        "put down",
+        "go to the steak source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the empty pan",
+        "put down",
+        "go to the tomato source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "go to the lettuce source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "go to the pot with the rice",
+        "turn on",
+        "go to the pan with the steak",
+        "turn on",
+        "go to the plates",
+        "pick up",
+        "go to the tortilla source",
+        "scoop",
+        "go to the pot with the rice",
+        "scoop",
+        "go to the pan with the steak",
+        "scoop",
+        "go to the cutting board with the tomato",
+        "scoop",
+        "go to the cutting board with the lettuce",
+        "scoop",
+        "go to the serving pass",
+        "serve"
+      ],
+      "layout": {
+        "name": "procedural_ring_5",
+        "grid": [
+          [
+            "counter",
+            "lettuce_source",
+            "counter",
+            "counter",
+            "steak_source",
+            "counter"
+          ],
+          [
+            "serving",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "tortilla_source"
+          ],
+          [
+            "cutting_board",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "plate_source"
+          ],
+          [
+            "pan",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "cutting_board",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "cutting_board"
+          ],
+          [
+            "counter",
+            "tomato_source",
+            "counter",
+            "pot",
+            "rice_source",
+            "counter"
+          ]
+        ],
+        "start_positions": [
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "cell": "master-nops / medium-map",
+      "n_ops_level": "master",
+      "map_level": "medium",
+      "recipe_id": "loaded_burrito",
+      "recipe_name": "Loaded Burrito",
+      "ordered": true,
+      "contents": [
+        [
+          "tortilla",
+          "raw"
+        ],
+        [
+          "rice",
+          "cooked"
+        ],
+        [
+          "steak",
+          "cooked"
+        ],
+        [
+          "tomato",
+          "chopped"
+        ],
+        [
+          "lettuce",
+          "chopped"
+        ]
+      ],
+      "n_ops": 40,
+      "path_length": 95,
+      "map_complexity": 125.0,
+      "map_features": {
+        "grounding_ambiguity": 5,
+        "path_length": 95,
+        "traversal_size": 15,
+        "w_path": 1.0,
+        "w_ground": 6.0
+      },
+      "plan": [
+        "go to the rice source",
+        "pick up",
+        "go to the empty pot",
+        "put down",
+        "go to the steak source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the empty pan",
+        "put down",
+        "go to the tomato source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "go to the lettuce source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "go to the pot with the rice",
+        "turn on",
+        "go to the pan with the steak",
+        "turn on",
+        "go to the plates",
+        "pick up",
+        "go to the tortilla source",
+        "scoop",
+        "go to the pot with the rice",
+        "scoop",
+        "go to the pan with the steak",
+        "scoop",
+        "go to the cutting board with the tomato",
+        "scoop",
+        "go to the cutting board with the lettuce",
+        "scoop",
+        "go to the serving pass",
+        "serve"
+      ],
+      "layout": {
+        "name": "procedural_ring_4",
+        "grid": [
+          [
+            "counter",
+            "cutting_board",
+            "counter",
+            "counter",
+            "pot",
+            "counter",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "plate_source",
+            "floor",
+            "floor",
+            "floor",
+            "counter"
+          ],
+          [
+            "cutting_board",
+            "floor",
+            "rice_source",
+            "pan",
+            "floor",
+            "steak_source",
+            "counter"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "pan",
+            "floor",
+            "floor",
+            "serving"
+          ],
+          [
+            "tortilla_source",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "lettuce_source"
+          ],
+          [
+            "counter",
+            "steak_source",
+            "counter",
+            "cutting_board",
+            "tomato_source",
+            "cutting_board",
+            "counter"
+          ]
+        ],
+        "start_positions": [
+          [
+            5,
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "cell": "master-nops / hard-map",
+      "n_ops_level": "master",
+      "map_level": "hard",
+      "recipe_id": "loaded_burrito",
+      "recipe_name": "Loaded Burrito",
+      "ordered": true,
+      "contents": [
+        [
+          "tortilla",
+          "raw"
+        ],
+        [
+          "rice",
+          "cooked"
+        ],
+        [
+          "steak",
+          "cooked"
+        ],
+        [
+          "tomato",
+          "chopped"
+        ],
+        [
+          "lettuce",
+          "chopped"
+        ]
+      ],
+      "n_ops": 40,
+      "path_length": 138,
+      "map_complexity": 180.0,
+      "map_features": {
+        "grounding_ambiguity": 7,
+        "path_length": 138,
+        "traversal_size": 36,
+        "w_path": 1.0,
+        "w_ground": 6.0
+      },
+      "plan": [
+        "go to the rice source",
+        "pick up",
+        "go to the empty pot",
+        "put down",
+        "go to the steak source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "pick up",
+        "go to the empty pan",
+        "put down",
+        "go to the tomato source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "go to the lettuce source",
+        "pick up",
+        "go to the empty cutting board",
+        "put down",
+        "chop",
+        "go to the pot with the rice",
+        "turn on",
+        "go to the pan with the steak",
+        "turn on",
+        "go to the plates",
+        "pick up",
+        "go to the tortilla source",
+        "scoop",
+        "go to the pot with the rice",
+        "scoop",
+        "go to the pan with the steak",
+        "scoop",
+        "go to the cutting board with the tomato",
+        "scoop",
+        "go to the cutting board with the lettuce",
+        "scoop",
+        "go to the serving pass",
+        "serve"
+      ],
+      "layout": {
+        "name": "maze9_503880",
+        "grid": [
+          [
+            "wall",
+            "corn_source",
+            "dough_source",
+            "wall",
+            "wall",
+            "plate_source",
+            "wall",
+            "lettuce_source",
+            "wall"
+          ],
+          [
+            "meat_source",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "oven"
+          ],
+          [
+            "wall",
+            "floor",
+            "pot",
+            "floor",
+            "counter",
+            "floor",
+            "lettuce_source",
+            "floor",
+            "fryer"
+          ],
+          [
+            "cheese_source",
+            "floor",
+            "floor",
+            "floor",
+            "avocado_source",
+            "floor",
+            "shrimp_source",
+            "floor",
+            "bun_source"
+          ],
+          [
+            "pot",
+            "floor",
+            "cutting_board",
+            "floor",
+            "tomato_source",
+            "floor",
+            "counter",
+            "floor",
+            "wall"
+          ],
+          [
+            "counter",
+            "floor",
+            "floor",
+            "floor",
+            "wall",
+            "floor",
+            "floor",
+            "floor",
+            "steak_source"
+          ],
+          [
+            "counter",
+            "floor",
+            "cutting_board",
+            "cutting_board",
+            "onion_source",
+            "floor",
+            "pan",
+            "floor",
+            "rice_source"
+          ],
+          [
+            "tortilla_source",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "floor",
+            "trash"
+          ],
+          [
+            "wall",
+            "steak_source",
+            "counter",
+            "wall",
+            "pan",
+            "counter",
+            "rice_source",
+            "serving",
+            "wall"
+          ]
+        ],
+        "start_positions": [
+          [
+            6,
+            7
+          ]
+        ]
+      }
+    }
+  ],
+  "map_targets": {},
+  "nops_bands": {
+    "easy": [
+      0,
+      13
+    ],
+    "medium": [
+      14,
+      20
+    ],
+    "hard": [
+      21,
+      33
+    ],
+    "expert": [
+      34,
+      37
+    ],
+    "master": [
+      38,
+      99
+    ]
+  },
+  "medium_row_bootstrapped": false
+}

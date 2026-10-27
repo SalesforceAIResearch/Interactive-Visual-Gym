@@ -1,0 +1,37 @@
+# secrets: never
+*.key
+*_key
+keys.env
+.env
+*credentials*.json
+
+# the simulator: downloaded by simulator/install_virtualhome.sh, never committed
+simulator/virtualhome
+simulator/virtualhome/
+simulator/unity_vol
+simulator/unity_vol/
+simulator/linux_exec.zip
+
+# run output
+runs/
+*.mp4
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.wav
+*.mp3
+
+# python
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# serving scratch
+serving/shims/*/logs/
+serving/shims/*/src
+serving/shims/*/__pycache__/
+simulator/gl_stack_env.sh

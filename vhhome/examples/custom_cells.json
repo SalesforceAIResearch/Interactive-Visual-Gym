@@ -1,0 +1,9 @@
+{
+ "note": "cells over the two cases of examples/my_cases.json, each played by a novice and an expert persona; pass with --cells and --cases to vhhome-benchmark",
+ "cells": [
+  {"case": "my_tidy_1", "persona": "classic_novice"},
+  {"case": "my_tidy_1", "persona": "classic_expert"},
+  {"case": "my_bedroom_1", "persona": "classic_novice"},
+  {"case": "my_bedroom_1", "persona": "classic_expert"}
+ ]
+}

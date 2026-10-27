@@ -1,0 +1,81 @@
+CC0 photorealistic asset manifest for the three.js kitchen renderer
+Generated 2026-07-25
+
+LICENSE: All assets below are CC0 1.0 Universal (public domain dedication).
+No attribution required. Sources: Poly Haven (https://polyhaven.com, CC0)
+and ambientCG (https://ambientcg.com, CC0).
+
+Asset sources:
+  artist_workshop        Poly Haven https://polyhaven.com/a/artist_workshop
+                                    Indoor artist workshop HDRI, warm natural light, 1k .hdr
+  Metal049A              ambientCG  https://ambientcg.com/a/Metal049A
+                                    Brushed stainless steel PBR, 1K JPG (Color/NormalGL/Roughness)
+  kitchen_wood           Poly Haven https://polyhaven.com/a/kitchen_wood
+                                    Clean varnished light kitchen wood boards, 1k
+  floor_tiles_08         Poly Haven https://polyhaven.com/a/floor_tiles_08
+                                    Light beige square ceramic floor tiles, 1k
+  terrazzo_tiles         Poly Haven https://polyhaven.com/a/terrazzo_tiles
+                                    Terrazzo tiles (counter tops), 1k
+  beige_wall_001         Poly Haven https://polyhaven.com/a/beige_wall_001
+                                    Smooth beige painted plaster wall, 1k
+  brass_pan_01           Poly Haven https://polyhaven.com/a/brass_pan_01
+                                    Brass pan GLTF model, 1k textures
+  pot_enamel_01          Poly Haven https://polyhaven.com/a/pot_enamel_01
+                                    Enamel cooking pot GLTF model, 1k textures
+  carved_wooden_plate    Poly Haven https://polyhaven.com/a/carved_wooden_plate
+                                    Wooden plate GLTF model, 1k textures
+  fish_knife             Poly Haven https://polyhaven.com/a/fish_knife
+                                    Kitchen fish knife GLTF model, 1k textures
+  hamburger_buns         Poly Haven https://polyhaven.com/a/hamburger_buns
+                                    Photoscanned hamburger buns GLTF model, 1k textures (added 2026-09-09:
+                                    the plated bun heel/crown and the raw bun, web/js/food3d.js)
+
+Normal maps are OpenGL convention (nor_gl / NormalGL), correct for three.js.
+Texture naming: <material>_{diff,nor,rough,ao}.jpg at 1k (1024x1024).
+Model *_arm_1k.jpg = packed AO(R)/Roughness(G)/Metalness(B).
+
+FILE                                                           BYTES  SOURCE ASSET ID (provider)
+env.hdr                                                      1719663  artist_workshop (Poly Haven)
+models/brass_pan_01/brass_pan_01.bin                          109336  brass_pan_01 (Poly Haven)
+models/brass_pan_01/brass_pan_01.gltf                           2676  brass_pan_01 (Poly Haven)
+models/brass_pan_01/textures/brass_pan_01_arm_1k.jpg          549721  brass_pan_01 (Poly Haven)
+models/brass_pan_01/textures/brass_pan_01_diff_1k.jpg         595029  brass_pan_01 (Poly Haven)
+models/brass_pan_01/textures/brass_pan_01_nor_gl_1k.jpg       359170  brass_pan_01 (Poly Haven)
+models/carved_wooden_plate/carved_wooden_plate.bin             52160  carved_wooden_plate (Poly Haven)
+models/carved_wooden_plate/carved_wooden_plate.gltf             2836  carved_wooden_plate (Poly Haven)
+models/carved_wooden_plate/textures/carved_wooden_plate_arm_1k.jpg    450417  carved_wooden_plate (Poly Haven)
+models/carved_wooden_plate/textures/carved_wooden_plate_diff_1k.jpg    476516  carved_wooden_plate (Poly Haven)
+models/carved_wooden_plate/textures/carved_wooden_plate_nor_gl_1k.jpg    582309  carved_wooden_plate (Poly Haven)
+models/fish_knife/fish_knife.bin                               95136  fish_knife (Poly Haven)
+models/fish_knife/fish_knife.gltf                               4611  fish_knife (Poly Haven)
+models/fish_knife/textures/fish_knife_arm_1k.jpg             1023377  fish_knife (Poly Haven)
+models/fish_knife/textures/fish_knife_diff_1k.jpg             749609  fish_knife (Poly Haven)
+models/fish_knife/textures/fish_knife_nor_gl_1k.jpg           692765  fish_knife (Poly Haven)
+models/pot_enamel_01/pot_enamel_01.bin                        270448  pot_enamel_01 (Poly Haven)
+models/pot_enamel_01/pot_enamel_01.gltf                         4018  pot_enamel_01 (Poly Haven)
+models/pot_enamel_01/textures/pot_enamel_01_arm_1k.jpg        497109  pot_enamel_01 (Poly Haven)
+models/pot_enamel_01/textures/pot_enamel_01_diff_1k.jpg       538938  pot_enamel_01 (Poly Haven)
+models/pot_enamel_01/textures/pot_enamel_01_nor_gl_1k.jpg     434214  pot_enamel_01 (Poly Haven)
+plaster_ao.jpg                                                120414  beige_wall_001 (Poly Haven)
+plaster_diff.jpg                                               33074  beige_wall_001 (Poly Haven)
+plaster_nor.jpg                                               153434  beige_wall_001 (Poly Haven)
+plaster_rough.jpg                                             151256  beige_wall_001 (Poly Haven)
+steel_diff.jpg                                                455982  Metal049A (ambientCG)
+steel_nor.jpg                                                 331693  Metal049A (ambientCG)
+steel_rough.jpg                                               295377  Metal049A (ambientCG)
+stone_ao.jpg                                                  327931  terrazzo_tiles (Poly Haven)
+stone_diff.jpg                                               1166107  terrazzo_tiles (Poly Haven)
+stone_nor.jpg                                                  77954  terrazzo_tiles (Poly Haven)
+stone_rough.jpg                                               459022  terrazzo_tiles (Poly Haven)
+tile_ao.jpg                                                   221796  floor_tiles_08 (Poly Haven)
+tile_diff.jpg                                                 414119  floor_tiles_08 (Poly Haven)
+tile_nor.jpg                                                  259727  floor_tiles_08 (Poly Haven)
+tile_rough.jpg                                                160616  floor_tiles_08 (Poly Haven)
+wood_ao.jpg                                                  1005537  kitchen_wood (Poly Haven)
+wood_diff.jpg                                                 879137  kitchen_wood (Poly Haven)
+wood_nor.jpg                                                  666833  kitchen_wood (Poly Haven)
+wood_rough.jpg                                                875985  kitchen_wood (Poly Haven)
+
+TOTAL: 17266052 bytes (16.47 MB) in 40 files
+
+steel_ao.jpg | 64x64 flat white | generated locally (neutral AO placeholder; ambientCG metals ship no AO)

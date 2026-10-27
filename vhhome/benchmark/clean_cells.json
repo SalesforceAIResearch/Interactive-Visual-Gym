@@ -1,0 +1,105 @@
+{
+ "note": "ONE clean episode per case (project decision 2026-09-23: the persona does not change the clean plan). No error injected, silent assistant: this is the reference time T_ref that in-time success is measured against, in REAL engine ticks.",
+ "cells": [
+  {
+   "case": "cx_aftermeal_missing_obj__clean",
+   "persona": "classic_expert"
+  },
+  {
+   "case": "cx_aftermeal_stall_place__clean",
+   "persona": "baseline"
+  },
+  {
+   "case": "cx_appliance_nav_place__clean",
+   "persona": "baseline"
+  },
+  {
+   "case": "cx_appliance_obj_stall__clean",
+   "persona": "baseline"
+  },
+  {
+   "case": "cx_dishes_missing_stall__clean",
+   "persona": "quiet_perfectionist"
+  },
+  {
+   "case": "cx_dishes_nav_place__clean",
+   "persona": "classic_novice"
+  },
+  {
+   "case": "cx_groceries_skip_stall__clean",
+   "persona": "classic_novice"
+  },
+  {
+   "case": "cx_groceries_stall_place__clean",
+   "persona": "baseline"
+  },
+  {
+   "case": "cx_guest_skip_stall__clean",
+   "persona": "classic_novice"
+  },
+  {
+   "case": "cx_guest_stall_place__clean",
+   "persona": "classic_novice"
+  },
+  {
+   "case": "cx_mugs_missing_stall__clean",
+   "persona": "quiet_perfectionist"
+  },
+  {
+   "case": "cx_mugs_nav_place__clean",
+   "persona": "defiant_novice"
+  },
+  {
+   "case": "cx_putback_nav_place__clean",
+   "persona": "credulous_expert"
+  },
+  {
+   "case": "cx_putback_skip_place__clean",
+   "persona": "safety_stepper"
+  },
+  {
+   "case": "cx_routine_nav_place__clean",
+   "persona": "quiet_perfectionist"
+  },
+  {
+   "case": "cx_routine_rep_obj__clean",
+   "persona": "defiant_novice"
+  },
+  {
+   "case": "cx_routine_skip_obj__clean",
+   "persona": "safety_stepper"
+  },
+  {
+   "case": "cx_routine_skip_obj_stall__clean",
+   "persona": "eager_parallel_novice"
+  },
+  {
+   "case": "cx_search_skip_stall__clean",
+   "persona": "safety_stepper"
+  },
+  {
+   "case": "cx_shutdown_missing_rep__clean",
+   "persona": "classic_novice"
+  },
+  {
+   "case": "cx_shutdown_skip_stall__clean",
+   "persona": "classic_novice"
+  },
+  {
+   "case": "cx_tidy_missing_rep__clean",
+   "persona": "quiet_perfectionist"
+  },
+  {
+   "case": "cx_tidy_missing_stall__clean",
+   "persona": "defiant_novice"
+  },
+  {
+   "case": "cx_tidybedroom_skip_rep__clean",
+   "persona": "credulous_expert"
+  },
+  {
+   "case": "cx_tidybedroom_stall_place__clean",
+   "persona": "classic_novice"
+  }
+ ]
+}

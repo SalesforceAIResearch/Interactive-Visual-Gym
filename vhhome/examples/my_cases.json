@@ -1,0 +1,52 @@
+{
+ "cases": [
+  {
+   "name": "my_tidy_1",
+   "task": "tidy_hard",
+   "mistakes": [
+    [
+     "skipped_step",
+     {
+      "sid": "switch_off(tablelamp@1)"
+     }
+    ],
+    [
+     "repetition",
+     {
+      "sid": "shut(fridge)",
+      "at": "switch_off(tv)",
+      "gap": "delayed"
+     }
+    ]
+   ],
+   "story": "She walks straight past the first bedroom lamp, and after the television she goes back and opens the fridge she had already shut.",
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "my_bedroom_1",
+   "task": "tidybedroom_hard",
+   "mistakes": [
+    [
+     "repetition",
+     {
+      "sid": "shut(cabinet)",
+      "at": "switch_off(tablelamp@1)",
+      "gap": "delayed"
+     }
+    ],
+    [
+     "wrong_placement",
+     {
+      "sid": "deposit(mug)",
+      "surf": "kitchencounter",
+      "room": "kitchen"
+     }
+    ]
+   ],
+   "story": "After switching off the lamp she goes back and opens the cabinet she had just closed, and at the end she leaves the mug on the kitchen counter instead of the kitchen table.",
+   "admitted": true,
+   "reason": "admitted"
+  }
+ ]
+}

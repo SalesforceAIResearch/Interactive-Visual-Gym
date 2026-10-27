@@ -1,0 +1,32 @@
+{
+ "note": "T_ref per case: the clean plan executed in the engine (plan seeded, no error, silent assistant), median ticks over the clean runs that completed. A case missing here had no completed clean run and falls back to the symbolic replay.",
+ "source": "tmp/bench_clean_scripted",
+ "by_case": {
+  "cx_aftermeal_missing_obj": 113.0,
+  "cx_aftermeal_stall_place": 109.0,
+  "cx_appliance_nav_place": 50.0,
+  "cx_appliance_obj_stall": 49.0,
+  "cx_dishes_missing_stall": 99.0,
+  "cx_dishes_nav_place": 103.0,
+  "cx_groceries_skip_stall": 70.0,
+  "cx_groceries_stall_place": 70.0,
+  "cx_guest_skip_stall": 98.0,
+  "cx_guest_stall_place": 92.0,
+  "cx_mugs_missing_stall": 76.0,
+  "cx_mugs_nav_place": 77.0,
+  "cx_putback_nav_place": 79.0,
+  "cx_putback_skip_place": 77.0,
+  "cx_routine_nav_place": 87.0,
+  "cx_routine_rep_obj": 87.0,
+  "cx_routine_skip_obj": 84.0,
+  "cx_routine_skip_obj_stall": 91.0,
+  "cx_search_skip_stall": 42.0,
+  "cx_shutdown_missing_rep": 53.0,
+  "cx_shutdown_skip_stall": 49.0,
+  "cx_tidy_missing_rep": 60.0,
+  "cx_tidy_missing_stall": 54.0,
+  "cx_tidybedroom_skip_rep": 58.0,
+  "cx_tidybedroom_stall_place": 58.0
+ },
+ "not_measured": []
+}

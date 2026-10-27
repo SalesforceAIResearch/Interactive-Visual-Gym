@@ -1,0 +1,9 @@
+name: cooksim
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - ffmpeg
+  - pip
+  - pip:
+      - -e .[anthropic,video,dev]

@@ -1,0 +1,221 @@
+{
+ "generated_by": "tools/tmp/test_engine.py",
+ "entries": [
+  {
+   "case": "iv_wrongobj_appliance",
+   "episode": "appliance_hard",
+   "err": "wrong_object",
+   "timing": "as-authored",
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "case": "iv_wrongobj_appliance",
+   "episode": "appliance_hard",
+   "err": "wrong_object",
+   "timing": "sid=deposit(milk)",
+   "admitted": false,
+   "reason": "not a legal anchor (I'm already holding the juice)"
+  },
+  {
+   "case": "iv_wrongobj_appliance",
+   "episode": "appliance_hard",
+   "err": "wrong_object",
+   "timing": "sid=switch_on(microwave)",
+   "admitted": false,
+   "reason": "not a legal anchor (the microwave is closed)"
+  },
+  {
+   "case": "iv_skip_appliance",
+   "episode": "appliance_hard",
+   "err": "skipped_step",
+   "timing": "as-authored",
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "case": "iv_skip_appliance",
+   "episode": "appliance_hard",
+   "err": "skipped_step",
+   "timing": "sid=deposit(milk)",
+   "admitted": false,
+   "reason": "anchor produces no real error (required {'grabbed': 'milk', 'not_in': None} ALREADY met after the deviated plan \u2014 the error is a no-op)"
+  },
+  {
+   "case": "iv_skip_appliance",
+   "episode": "appliance_hard",
+   "err": "skipped_step",
+   "timing": "sid=switch_on(microwave)",
+   "admitted": false,
+   "reason": "trailing omission \u2014 no successor subgoal to anchor a window"
+  },
+  {
+   "case": "iv_skip_tidy",
+   "episode": "tidy_hard",
+   "err": "skipped_step",
+   "timing": "as-authored",
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "case": "iv_skip_tidy",
+   "episode": "tidy_hard",
+   "err": "skipped_step",
+   "timing": "sid=switch_off(tablelamp@3)",
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "case": "iv_skip_tidy",
+   "episode": "tidy_hard",
+   "err": "skipped_step",
+   "timing": "sid=shut(fridge)",
+   "admitted": false,
+   "reason": "anchor produces no real error (required {'off': 'tablelamp'} ALREADY met after the deviated plan \u2014 the error is a no-op)"
+  },
+  {
+   "case": "iv_skip_tidy",
+   "episode": "tidy_hard",
+   "err": "skipped_step",
+   "timing": "sid=switch_off(tv)",
+   "admitted": false,
+   "reason": "trailing omission \u2014 no successor subgoal to anchor a window"
+  },
+  {
+   "case": "iv_missing_lamp",
+   "episode": "tidy_hard",
+   "err": "skipped_step",
+   "timing": "as-authored",
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "case": "iv_missing_lamp",
+   "episode": "tidy_hard",
+   "err": "skipped_step",
+   "timing": "sid=switch_off(tablelamp@1)",
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "case": "iv_missing_lamp",
+   "episode": "tidy_hard",
+   "err": "skipped_step",
+   "timing": "sid=shut(fridge)",
+   "admitted": false,
+   "reason": "anchor produces no real error (required {'off': 'tablelamp'} ALREADY met after the deviated plan \u2014 the error is a no-op)"
+  },
+  {
+   "case": "iv_missing_lamp",
+   "episode": "tidy_hard",
+   "err": "skipped_step",
+   "timing": "sid=switch_off(tv)",
+   "admitted": false,
+   "reason": "trailing omission \u2014 no successor subgoal to anchor a window"
+  },
+  {
+   "case": "iv_rep_toggle_tidy",
+   "episode": "tidy_hard",
+   "err": "repetition",
+   "timing": "as-authored",
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "case": "iv_rep_toggle_tidy",
+   "episode": "tidy_hard",
+   "err": "repetition",
+   "timing": "sid=switch_off(tablelamp@3)",
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "case": "iv_rep_toggle_tidy",
+   "episode": "tidy_hard",
+   "err": "repetition",
+   "timing": "sid=shut(fridge)",
+   "admitted": false,
+   "reason": "not a legal anchor (the fridge is already open)"
+  },
+  {
+   "case": "iv_rep_toggle_tidy",
+   "episode": "tidy_hard",
+   "err": "repetition",
+   "timing": "sid=switch_off(tv)",
+   "admitted": false,
+   "reason": "not a legal anchor (the tv is already on)"
+  },
+  {
+   "case": "iv_wrongplace_appliance",
+   "episode": "appliance_hard",
+   "err": "wrong_placement",
+   "timing": "as-authored",
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "case": "iv_wrongplace_appliance",
+   "episode": "appliance_hard",
+   "err": "wrong_placement",
+   "timing": "sid=fetch(milk)",
+   "admitted": false,
+   "reason": "not a legal anchor (I'm not holding the milk \u2014 my hands are empty)"
+  },
+  {
+   "case": "iv_wrongplace_appliance",
+   "episode": "appliance_hard",
+   "err": "wrong_placement",
+   "timing": "sid=switch_on(microwave)",
+   "admitted": false,
+   "reason": "not a legal anchor (I'm not holding the microwave \u2014 my hands are empty)"
+  },
+  {
+   "case": "iv_nav_appliance",
+   "episode": "appliance_hard",
+   "err": "navigation_inefficiency",
+   "timing": "as-authored",
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "case": "iv_nav_appliance",
+   "episode": "appliance_hard",
+   "err": "navigation_inefficiency",
+   "timing": "before=fetch(milk)",
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "case": "iv_nav_appliance",
+   "episode": "appliance_hard",
+   "err": "navigation_inefficiency",
+   "timing": "before=switch_on(microwave)",
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "case": "iv_stall_appliance",
+   "episode": "appliance_hard",
+   "err": "stall",
+   "timing": "as-authored",
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "case": "iv_stall_appliance",
+   "episode": "appliance_hard",
+   "err": "stall",
+   "timing": "after=deposit(milk)",
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "case": "iv_stall_appliance",
+   "episode": "appliance_hard",
+   "err": "stall",
+   "timing": "after=switch_on(microwave)",
+   "admitted": true,
+   "reason": "admitted"
+  }
+ ]
+}

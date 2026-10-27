@@ -1,0 +1,207 @@
+"""Core simulation tests."""
+import pytest
+
+from cooksim import KitchenGame, GameConfig, load_layout, list_layouts, generate_layout
+from cooksim.core.enums import Action
+from cooksim.core.items import Ingredient, Plate
+from cooksim.core.enums import PrepState
+
+
+def test_all_builtin_layouts_valid():
+    for name in list_layouts():
+        lay = load_layout(name)
+        assert lay.validate() == [], f"{name} invalid: {lay.validate()}"
+
+
+def test_layout_roundtrip():
+    lay = load_layout("bistro")
+    lines = lay.to_lines()
+    from cooksim.core.layout import Layout
+    lay2 = Layout.from_lines("bistro2", lines)
+    assert [[t.value for t in r] for r in lay.grid] == [[t.value for t in r] for r in lay2.grid]
+    # dict roundtrip
+    lay3 = Layout.from_dict(lay.to_dict())
+    assert lay3.width == lay.width and lay3.height == lay.height
+
+
+@pytest.mark.parametrize("style", ["ring", "divided"])
+def test_procedural_generation_valid(style):
+    for seed in range(5):
+        lay = generate_layout(width=11, height=7, n_players=2, style=style, seed=seed)
+        assert lay.validate() == []
+
+
+def test_movement_and_collision():
+    from cooksim.core.enums import Direction
+    g = KitchenGame(load_layout("cramped_room"), n_players=2, seed=0)
+    # two cooks cannot occupy the same cell; swapping is blocked
+    c0, c1 = g.cooks
+    c0.x, c0.y = 1, 2
+    c1.x, c1.y = 2, 2
+    # already facing the contested direction (orient-first: a turn step would
+    # otherwise just rotate them), so this step is a real move attempt
+    c0.direction, c1.direction = Direction.EAST, Direction.WEST
+    # c0 tries to move east into c1, c1 tries west into c0 -> both blocked
+    g.step([int(Action.EAST), int(Action.WEST)])
+    assert (c0.x, c0.y) != (c1.x, c1.y)
+    assert (c0.x, c0.y) == (1, 2) and (c1.x, c1.y) == (2, 2)  # neither swapped
+
+
+def test_orient_first_movement():
+    """A cook must face a direction before it can advance in it: pressing a new
+    direction only turns (no step) this tick; it walks once already facing."""
+    from cooksim.core.enums import Direction
+    g = KitchenGame(load_layout("open_kitchen"), n_players=1, seed=0)
+    c = g.cooks[0]
+    # place on open floor facing south, with east clear
+    c.x, c.y, c.direction = 4, 3, Direction.SOUTH
+    assert g._walkable(c.x + 1, c.y)
+    start = c.pos
+    g.step([int(Action.EAST)])           # not facing east yet -> pure turn
+    assert c.direction == Direction.EAST and c.pos == start
+    assert c.last_action == "turn"
+    g.step([int(Action.EAST)])           # now facing east -> actually steps
+    assert c.pos == (start[0] + 1, start[1])
+    assert c.last_action == "walk"
+
+
+def test_full_soup_delivery_scores():
+    """Realistic onion soup on cramped_room: chop each onion, boil the batch in
+    ONE pot, plate & serve — a delivery lands and scores."""
+    from cooksim.agents.highlevel import run_plan
+    g = KitchenGame(load_layout("cramped_room"), config=GameConfig(horizon=6000),
+                    n_players=1, seed=0, order_recipe_ids=["onion_soup"])
+    plan = []
+    for _ in range(3):
+        plan += ["go to onion source 1", "pick up", "go to the cutting board", "put down",
+                 "chop", "pick up", "go to the pot", "put down"]
+    plan += ["turn on the pot", "wait until the pot is done",
+             "go to the plates", "pick up", "go to the pot", "scoop",
+             "go to the serving pass", "serve"]
+    log = run_plan(g, plan)
+    assert all(r["status"] == "done" for r in log), [r for r in log if r["status"] != "done"]
+    assert g.stats.get("deliveries", 0) == 1
+    assert g.score > 15
+
+
+def test_pot_cooks_and_burns():
+    """cooking -> cooked -> (grace, no smoke) -> smoking -> burnt.
+
+    The grace phase is the point: a dish that has just finished must sit safely long
+    enough for the cook to walk over and collect it, so smoke always means "left too
+    long" and never "normal timing".
+    """
+    cfg = GameConfig(pot_cook_time=3, pot_burn_time=2)
+    g = KitchenGame(load_layout("cramped_room"), config=cfg, seed=0)
+    pot = g.stations[(2, 0)]
+    pot.smoke_grace = 4
+    for _ in range(3):
+        pot.add(Ingredient("onion"))
+    assert pot.status == "cooking"
+    for _ in range(3):
+        pot.tick()
+    assert pot.status == "cooked"
+    assert all(c.state == PrepState.COOKED for c in pot.contents)
+
+    for _ in range(4):                     # the whole grace window: done, and quiet
+        pot.tick()
+        assert not pot.smoking, "a dish inside its grace period must not smoke"
+    assert pot.status == "cooked"
+
+    pot.tick()                             # past the grace -> the warning starts
+    assert pot.smoking
+    assert pot.status == "cooked", "smoke is a warning; the food is still good"
+
+    for _ in range(2):                     # burn_time after the grace -> fire
+        pot.tick()
+    assert pot.status == "burnt"
+
+
+def test_recipe_matching():
+    from cooksim.core.recipes import RecipeBook
+    book = RecipeBook()
+    plate = Plate(contents=[Ingredient("onion", PrepState.COOKED)] * 3)
+    assert book.match_plate(plate).id == "onion_soup"
+    # burnt never matches
+    plate.contents[0].state = PrepState.BURNT
+    assert book.match_plate(plate) is None
+
+
+def test_ordered_recipe_requires_addition_sequence():
+    """An ordered recipe matches only when ingredients are added in sequence;
+    the same multiset in the wrong order does not satisfy it."""
+    from cooksim.core.recipes import RecipeBook
+    book = RecipeBook()
+    burger = book.get("burger")
+    assert burger.ordered
+    # correct order bun -> patty matches
+    good = Plate(contents=[Ingredient("bun"), Ingredient("meat", PrepState.COOKED)])
+    assert book.match_plate(good) is not None and book.match_plate(good).id == "burger"
+    # reversed order: same multiset, but no recipe accepts it
+    bad = Plate(contents=[Ingredient("meat", PrepState.COOKED), Ingredient("bun")])
+    assert book.match_plate(bad) is None
+    # an unordered recipe still matches in any order
+    soup = Plate(contents=[Ingredient("onion", PrepState.COOKED)] * 3)
+    assert book.match_plate(soup).id == "onion_soup"
+
+
+def test_feasible_recipes_filtering():
+    from cooksim.core.recipes import RecipeBook, feasible_recipes
+    book = RecipeBook()
+    feas = feasible_recipes(book.recipes, load_layout("cramped_room"))
+    ids = {r.id for r in feas}
+    assert "onion_soup" in ids
+    assert "burger" not in ids  # no bun/meat sources or pan in cramped_room
+
+
+def test_recipe_catalogue_size_and_steps():
+    from cooksim.core.recipes import RecipeBook
+    book = RecipeBook()
+    assert len(book.recipes) >= 18
+    # multi-step recipes carry human-readable steps and mix prep types
+    deluxe = book.get("deluxe_burger")
+    assert deluxe is not None and len(deluxe.steps) >= 2
+    states = {st for _, st in deluxe.contents}
+    assert "cooked" in states and "chopped" in states  # genuinely multi-step
+
+
+def test_board_to_plate_assembly():
+    """A chopped item can be scooped directly onto a carried plate."""
+    from cooksim.core.stations import CuttingBoard
+    from cooksim.core.enums import PrepState
+    g = KitchenGame(load_layout("diner"), seed=0)
+    # find a cutting board and put a chopped lettuce on it
+    board_cell = next(c for c, s in g.stations.items() if isinstance(s, CuttingBoard))
+    board = g.stations[board_cell]
+    board.item = Ingredient("lettuce", PrepState.CHOPPED)
+    cook = g.cooks[0]
+    cook.holding = Plate()
+    # stand next to the board facing it and interact
+    bx, by = board_cell
+    cook.x, cook.y = bx, by + 1 if g._walkable(bx, by + 1) else by - 1
+    from cooksim.core.enums import Direction
+    cook.direction = Direction.NORTH if cook.y > by else Direction.SOUTH
+    g._interact(cook)
+    assert any(i.name == "lettuce" and i.state == PrepState.CHOPPED for i in cook.holding.contents)
+    assert board.item is None
+
+
+@pytest.mark.parametrize("layout", ["pizzeria", "diner", "burger_bar"])
+def test_greedy_completes_multistep(layout):
+    from cooksim.agents import GreedyChef
+    g = KitchenGame(load_layout(layout), config=GameConfig(horizon=2000), n_players=1, seed=0)
+    bot = GreedyChef(0)
+    while not g.done:
+        g.step([bot(g, 0)])
+    assert g.stats.get("deliveries", 0) >= 3
+    assert g.stats.get("failed_deliveries", 0) == 0
+
+
+def test_render_state_schema():
+    g = KitchenGame(load_layout("open_kitchen"), seed=0)
+    g.step([5] * g.n_players)
+    s = g.render_state()
+    for key in ("tick", "width", "height", "terrain", "stations", "objects",
+                "players", "orders", "score", "stats", "done"):
+        assert key in s
+    assert len(s["players"]) == g.n_players

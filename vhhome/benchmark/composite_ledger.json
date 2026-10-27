@@ -1,0 +1,1148 @@
+{
+ "generated_by": "tests/verify_cases.py",
+ "rules": [
+  "R1 direct-twin exclusion",
+  "R2 anchor survival",
+  "R3 window separation",
+  "R4 independent observability",
+  "R5 semantic plausibility (audited separately)"
+ ],
+ "entries": [
+  {
+   "name": "cx_routine_skip_obj",
+   "episode": "routine_hard",
+   "errors": [
+    "skipped_step",
+    "wrong_object"
+   ],
+   "anchors": [
+    "switch_off(tablelamp)",
+    "fetch(milk)"
+   ],
+   "story": "She leaves the bedroom lamp burning, does the book correctly, and then opens the fridge and takes the juice instead of the milk.",
+   "shared_aliases": [],
+   "contributed": {
+    "skipped_step": {
+     "added": [],
+     "removed": [
+      "switch_off(tablelamp)"
+     ]
+    },
+    "wrong_object": {
+     "added": [
+      "wrong_grab(juice)"
+     ],
+     "removed": [
+      "fetch(milk)"
+     ]
+    }
+   },
+   "plan_order": [
+    "skipped_step",
+    "wrong_object"
+   ],
+   "anchor_gaps": [
+    2
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_routine_skip_obj_stall",
+   "episode": "routine_hard",
+   "errors": [
+    "skipped_step",
+    "wrong_object",
+    "stall"
+   ],
+   "anchors": [
+    "switch_off(tablelamp)",
+    "fetch(milk)",
+    "fetch(plate)"
+   ],
+   "story": "She leaves the lamp on, microwaves the juice instead of the milk, and then freezes with the plate in her hands before carrying it through.",
+   "shared_aliases": [
+    "navigation_inefficiency"
+   ],
+   "contributed": {
+    "skipped_step": {
+     "added": [],
+     "removed": [
+      "switch_off(tablelamp)"
+     ]
+    },
+    "wrong_object": {
+     "added": [
+      "wrong_grab(juice)"
+     ],
+     "removed": [
+      "fetch(milk)"
+     ]
+    },
+    "stall": {
+     "added": [
+      "lost"
+     ],
+     "removed": []
+    }
+   },
+   "plan_order": [
+    "skipped_step",
+    "wrong_object",
+    "stall"
+   ],
+   "anchor_gaps": [
+    2,
+    4
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_routine_nav_place",
+   "episode": "routine_hard",
+   "errors": [
+    "navigation_inefficiency",
+    "wrong_placement"
+   ],
+   "anchors": [
+    "fetch(milk)",
+    "deposit(plate)"
+   ],
+   "story": "On her way to the fridge she wanders over to the sofa and through to the bedroom, and at the end she leaves the plate on the kitchen counter instead of the coffee table.",
+   "shared_aliases": [],
+   "contributed": {
+    "navigation_inefficiency": {
+     "added": [
+      "search"
+     ],
+     "removed": []
+    },
+    "wrong_placement": {
+     "added": [
+      "put_wrong(plate)"
+     ],
+     "removed": [
+      "deposit(plate)"
+     ]
+    }
+   },
+   "plan_order": [
+    "navigation_inefficiency",
+    "wrong_placement"
+   ],
+   "anchor_gaps": [
+    5
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_routine_rep_obj",
+   "episode": "routine_hard",
+   "errors": [
+    "repetition",
+    "wrong_object"
+   ],
+   "anchors": [
+    "switch_off(tablelamp)",
+    "fetch(milk)"
+   ],
+   "story": "Having switched the bedroom lamp off she goes back and switches it on again, and later takes the juice out of the fridge instead of the milk.",
+   "shared_aliases": [],
+   "contributed": {
+    "repetition": {
+     "added": [
+      "redo(switch_off(tablelamp))"
+     ],
+     "removed": []
+    },
+    "wrong_object": {
+     "added": [
+      "wrong_grab(juice)"
+     ],
+     "removed": [
+      "fetch(milk)"
+     ]
+    }
+   },
+   "plan_order": [
+    "repetition",
+    "wrong_object"
+   ],
+   "anchor_gaps": [
+    2
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_tidy_missing_rep",
+   "episode": "tidy_hard",
+   "errors": [
+    "missing_step",
+    "repetition"
+   ],
+   "anchors": [
+    "switch_off(tablelamp@3)",
+    "shut(fridge)"
+   ],
+   "story": "She switches off one bedroom lamp but forgets its twin in the other bedroom, and after the television she goes back to the fridge she already shut and opens it again.",
+   "shared_aliases": [],
+   "contributed": {
+    "missing_step": {
+     "added": [],
+     "removed": [
+      "switch_off(tablelamp@3)"
+     ]
+    },
+    "repetition": {
+     "added": [
+      "redo(shut(fridge))"
+     ],
+     "removed": []
+    }
+   },
+   "plan_order": [
+    "missing_step",
+    "repetition"
+   ],
+   "anchor_gaps": [
+    2
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_tidy_missing_stall",
+   "episode": "tidy_hard",
+   "errors": [
+    "missing_step",
+    "stall"
+   ],
+   "anchors": [
+    "switch_off(tablelamp@3)",
+    "switch_off(tv)"
+   ],
+   "story": "She forgets the second bedroom lamp, finishes the fridge and the television, and then stands motionless in the living room.",
+   "shared_aliases": [],
+   "contributed": {
+    "missing_step": {
+     "added": [],
+     "removed": [
+      "switch_off(tablelamp@3)"
+     ]
+    },
+    "stall": {
+     "added": [
+      "lost"
+     ],
+     "removed": []
+    }
+   },
+   "plan_order": [
+    "missing_step",
+    "stall"
+   ],
+   "anchor_gaps": [
+    2
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_appliance_obj_stall",
+   "episode": "appliance_hard",
+   "errors": [
+    "wrong_object",
+    "stall"
+   ],
+   "anchors": [
+    "fetch(milk)",
+    "deposit(milk)"
+   ],
+   "story": "She opens the fridge and takes the juice instead of the milk, loads it into the microwave, and then stands there doing nothing before starting the machine.",
+   "shared_aliases": [],
+   "contributed": {
+    "wrong_object": {
+     "added": [
+      "wrong_grab(juice)"
+     ],
+     "removed": [
+      "fetch(milk)"
+     ]
+    },
+    "stall": {
+     "added": [
+      "lost"
+     ],
+     "removed": []
+    }
+   },
+   "plan_order": [
+    "wrong_object",
+    "stall"
+   ],
+   "anchor_gaps": [
+    2
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_appliance_nav_place",
+   "episode": "appliance_hard",
+   "errors": [
+    "navigation_inefficiency",
+    "wrong_placement"
+   ],
+   "anchors": [
+    "fetch(milk)",
+    "deposit(milk)"
+   ],
+   "story": "She wanders through the living room and bedroom before going to the fridge, then sets the milk down on the counter instead of putting it in the microwave.",
+   "shared_aliases": [],
+   "contributed": {
+    "navigation_inefficiency": {
+     "added": [
+      "search"
+     ],
+     "removed": []
+    },
+    "wrong_placement": {
+     "added": [
+      "put_wrong(milk)"
+     ],
+     "removed": [
+      "deposit(milk)",
+      "switch_on(microwave)"
+     ]
+    }
+   },
+   "plan_order": [
+    "navigation_inefficiency",
+    "wrong_placement"
+   ],
+   "anchor_gaps": [
+    2
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_search_skip_stall",
+   "episode": "search_hard",
+   "errors": [
+    "skipped_step",
+    "stall"
+   ],
+   "anchors": [
+    "inspect(fridge)",
+    "inspect(computer)"
+   ],
+   "story": "She never goes to look at the fridge at all, and after finding the computer she stops and stands still.",
+   "shared_aliases": [
+    "navigation_inefficiency"
+   ],
+   "contributed": {
+    "skipped_step": {
+     "added": [],
+     "removed": [
+      "inspect(fridge)"
+     ]
+    },
+    "stall": {
+     "added": [
+      "lost"
+     ],
+     "removed": []
+    }
+   },
+   "plan_order": [
+    "skipped_step",
+    "stall"
+   ],
+   "anchor_gaps": [
+    3
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_putback_skip_place",
+   "episode": "putback_hard",
+   "errors": [
+    "skipped_step",
+    "wrong_placement"
+   ],
+   "anchors": [
+    "fetch(toiletpaper)",
+    "deposit(book)"
+   ],
+   "story": "She never touches the toilet paper roll, carries the book to the bedroom and drops it on the bed instead of the desk.",
+   "shared_aliases": [],
+   "contributed": {
+    "skipped_step": {
+     "added": [],
+     "removed": [
+      "fetch(toiletpaper)"
+     ]
+    },
+    "wrong_placement": {
+     "added": [
+      "put_wrong(book)"
+     ],
+     "removed": [
+      "deposit(book)",
+      "fetch(pillow)",
+      "deposit(pillow)"
+     ]
+    }
+   },
+   "plan_order": [
+    "skipped_step",
+    "wrong_placement"
+   ],
+   "anchor_gaps": [
+    2
+   ],
+   "refusals": [
+    {
+     "cmd": "put the toiletpaper on the bathroomcounter",
+     "sid": "deposit(toiletpaper)",
+     "why": "I'm not holding the toiletpaper \u2014 my hands are empty"
+    }
+   ],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [
+    "skipped_step@fetch(toiletpaper) has dependents ['deposit(toiletpaper)'] that will refuse; the cascade may read as an extra unlabelled error"
+   ],
+   "admitted": true,
+   "reason": "admitted (with 1 caveat(s))"
+  },
+  {
+   "name": "cx_putback_nav_place",
+   "episode": "putback_hard",
+   "errors": [
+    "navigation_inefficiency",
+    "wrong_placement"
+   ],
+   "anchors": [
+    "fetch(book)",
+    "deposit(book)"
+   ],
+   "story": "After the toilet paper she wanders through the kitchen and the bedroom before coming back for the book, and then leaves the book on the nightstand instead of the desk.",
+   "shared_aliases": [],
+   "contributed": {
+    "navigation_inefficiency": {
+     "added": [
+      "search"
+     ],
+     "removed": []
+    },
+    "wrong_placement": {
+     "added": [
+      "put_wrong(book)"
+     ],
+     "removed": [
+      "deposit(book)",
+      "fetch(pillow)",
+      "deposit(pillow)"
+     ]
+    }
+   },
+   "plan_order": [
+    "navigation_inefficiency",
+    "wrong_placement"
+   ],
+   "anchor_gaps": [
+    2
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_dishes_missing_stall",
+   "episode": "dishes_hard",
+   "errors": [
+    "stall",
+    "missing_step"
+   ],
+   "anchors": [
+    "fetch(plate@2)",
+    "fetch(waterglass@1)"
+   ],
+   "story": "She stands still in the living room with the coffee-table plate in her hands, and at the end forgets the glass on the kitchen table.",
+   "shared_aliases": [],
+   "contributed": {
+    "stall": {
+     "added": [
+      "lost"
+     ],
+     "removed": []
+    },
+    "missing_step": {
+     "added": [],
+     "removed": [
+      "fetch(waterglass@1)"
+     ]
+    }
+   },
+   "plan_order": [
+    "stall",
+    "missing_step"
+   ],
+   "anchor_gaps": [
+    5
+   ],
+   "refusals": [
+    {
+     "cmd": "put the waterglass in the dishwasher",
+     "sid": "deposit(waterglass@1)",
+     "why": "I'm not holding the waterglass \u2014 my hands are empty"
+    }
+   ],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [
+    "missing_step@fetch(waterglass@1) has dependents ['deposit(waterglass@1)'] that will refuse; the cascade may read as an extra unlabelled error"
+   ],
+   "admitted": true,
+   "reason": "admitted (with 1 caveat(s))"
+  },
+  {
+   "name": "cx_dishes_nav_place",
+   "episode": "dishes_hard",
+   "errors": [
+    "navigation_inefficiency",
+    "wrong_placement"
+   ],
+   "anchors": [
+    "fetch(plate@2)",
+    "deposit(waterglass@1)"
+   ],
+   "story": "After the bedroom plate she wanders past the sofa and back to the bed before collecting the coffee-table dishes, and sets the last glass on the counter instead of in the machine.",
+   "shared_aliases": [],
+   "contributed": {
+    "navigation_inefficiency": {
+     "added": [
+      "search"
+     ],
+     "removed": []
+    },
+    "wrong_placement": {
+     "added": [
+      "put_wrong(waterglass@1)"
+     ],
+     "removed": [
+      "deposit(waterglass@1)",
+      "shut(dishwasher)"
+     ]
+    }
+   },
+   "plan_order": [
+    "navigation_inefficiency",
+    "wrong_placement"
+   ],
+   "anchor_gaps": [
+    8
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_groceries_stall_place",
+   "episode": "groceries_hard",
+   "errors": [
+    "stall",
+    "wrong_placement"
+   ],
+   "anchors": [
+    "fetch(milk)",
+    "deposit(juice)"
+   ],
+   "story": "She picks up the milk in the bedroom and stands there holding it, and later leaves the juice on the kitchen table instead of putting it in the fridge.",
+   "shared_aliases": [],
+   "contributed": {
+    "stall": {
+     "added": [
+      "lost"
+     ],
+     "removed": []
+    },
+    "wrong_placement": {
+     "added": [
+      "put_wrong(juice)"
+     ],
+     "removed": [
+      "deposit(juice)",
+      "shut(fridge)"
+     ]
+    }
+   },
+   "plan_order": [
+    "stall",
+    "wrong_placement"
+   ],
+   "anchor_gaps": [
+    4
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_groceries_skip_stall",
+   "episode": "groceries_hard",
+   "errors": [
+    "skipped_step",
+    "stall"
+   ],
+   "anchors": [
+    "fetch(milk)",
+    "fetch(juice)"
+   ],
+   "story": "She never goes to the bedroom for the milk, picks up the juice from the coffee table and stands there holding it.",
+   "shared_aliases": [
+    "navigation_inefficiency"
+   ],
+   "contributed": {
+    "skipped_step": {
+     "added": [],
+     "removed": [
+      "fetch(milk)"
+     ]
+    },
+    "stall": {
+     "added": [
+      "lost"
+     ],
+     "removed": []
+    }
+   },
+   "plan_order": [
+    "skipped_step",
+    "stall"
+   ],
+   "anchor_gaps": [
+    3
+   ],
+   "refusals": [
+    {
+     "cmd": "put the milk in the fridge",
+     "sid": "deposit(milk)",
+     "why": "I'm not holding the milk \u2014 my hands are empty"
+    }
+   ],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [
+    "skipped_step@fetch(milk) has dependents ['deposit(milk)'] that will refuse; the cascade may read as an extra unlabelled error"
+   ],
+   "admitted": true,
+   "reason": "admitted (with 1 caveat(s))"
+  },
+  {
+   "name": "cx_shutdown_missing_rep",
+   "episode": "shutdown_hard",
+   "errors": [
+    "repetition",
+    "missing_step"
+   ],
+   "anchors": [
+    "shut(fridge)",
+    "switch_off(tablelamp@1)"
+   ],
+   "story": "After the television she goes back and opens the fridge she had just shut, and later switches off only one of the two table lamps.",
+   "shared_aliases": [],
+   "contributed": {
+    "repetition": {
+     "added": [
+      "redo(shut(fridge))"
+     ],
+     "removed": []
+    },
+    "missing_step": {
+     "added": [],
+     "removed": [
+      "switch_off(tablelamp@1)"
+     ]
+    }
+   },
+   "plan_order": [
+    "repetition",
+    "missing_step"
+   ],
+   "anchor_gaps": [
+    2
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_shutdown_skip_stall",
+   "episode": "shutdown_hard",
+   "errors": [
+    "stall",
+    "skipped_step"
+   ],
+   "anchors": [
+    "shut(fridge)",
+    "switch_off(computer)"
+   ],
+   "story": "She shuts the fridge and stands motionless in front of it, and later walks past the computer without switching it off.",
+   "shared_aliases": [
+    "navigation_inefficiency"
+   ],
+   "contributed": {
+    "stall": {
+     "added": [
+      "lost"
+     ],
+     "removed": []
+    },
+    "skipped_step": {
+     "added": [],
+     "removed": [
+      "switch_off(computer)"
+     ]
+    }
+   },
+   "plan_order": [
+    "stall",
+    "skipped_step"
+   ],
+   "anchor_gaps": [
+    2
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_mugs_missing_stall",
+   "episode": "mugs_hard",
+   "errors": [
+    "missing_step",
+    "stall"
+   ],
+   "anchors": [
+    "fetch(mug@1)#2",
+    "fetch(mug@1)#3"
+   ],
+   "story": "She brings the first mug back, skips the second entirely, and stands frozen holding the third.",
+   "shared_aliases": [],
+   "contributed": {
+    "missing_step": {
+     "added": [],
+     "removed": [
+      "fetch(mug@1)#2"
+     ]
+    },
+    "stall": {
+     "added": [
+      "lost"
+     ],
+     "removed": []
+    }
+   },
+   "plan_order": [
+    "missing_step",
+    "stall"
+   ],
+   "anchor_gaps": [
+    2
+   ],
+   "refusals": [
+    {
+     "cmd": "put the mug on the kitchentable",
+     "sid": "deposit(mug@1)#2",
+     "why": "I'm not holding the mug \u2014 my hands are empty"
+    }
+   ],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [
+    "missing_step@fetch(mug@1)#2 has dependents ['deposit(mug@1)#2', 'deposit(mug@1)#3'] that will refuse; the cascade may read as an extra unlabelled error"
+   ],
+   "admitted": true,
+   "reason": "admitted (with 1 caveat(s))"
+  },
+  {
+   "name": "cx_mugs_nav_place",
+   "episode": "mugs_hard",
+   "errors": [
+    "navigation_inefficiency",
+    "wrong_placement"
+   ],
+   "anchors": [
+    "fetch(mug@1)#2",
+    "deposit(mug@1)#3"
+   ],
+   "story": "Between the first and second mug she wanders past the sofa and the bed, and puts the third mug on the counter instead of the table.",
+   "shared_aliases": [],
+   "contributed": {
+    "navigation_inefficiency": {
+     "added": [
+      "search"
+     ],
+     "removed": []
+    },
+    "wrong_placement": {
+     "added": [
+      "put_wrong(mug@1)"
+     ],
+     "removed": [
+      "deposit(mug@1)#3"
+     ]
+    }
+   },
+   "plan_order": [
+    "navigation_inefficiency",
+    "wrong_placement"
+   ],
+   "anchor_gaps": [
+    4
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_guest_skip_stall",
+   "episode": "guest_hard",
+   "errors": [
+    "skipped_step",
+    "stall"
+   ],
+   "anchors": [
+    "fetch(mug)",
+    "fetch(pillow)"
+   ],
+   "story": "She loads the plate but never fetches the mug from the desk, and later stands frozen with the pillow in her hands.",
+   "shared_aliases": [
+    "navigation_inefficiency"
+   ],
+   "contributed": {
+    "skipped_step": {
+     "added": [],
+     "removed": [
+      "fetch(mug)"
+     ]
+    },
+    "stall": {
+     "added": [
+      "lost"
+     ],
+     "removed": []
+    }
+   },
+   "plan_order": [
+    "skipped_step",
+    "stall"
+   ],
+   "anchor_gaps": [
+    3
+   ],
+   "refusals": [
+    {
+     "cmd": "put the mug in the dishwasher",
+     "sid": "deposit(mug)",
+     "why": "I'm not holding the mug \u2014 my hands are empty"
+    }
+   ],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [
+    "skipped_step@fetch(mug) has dependents ['deposit(mug)'] that will refuse; the cascade may read as an extra unlabelled error"
+   ],
+   "admitted": true,
+   "reason": "admitted (with 1 caveat(s))"
+  },
+  {
+   "name": "cx_guest_stall_place",
+   "episode": "guest_hard",
+   "errors": [
+    "stall",
+    "wrong_placement"
+   ],
+   "anchors": [
+    "fetch(plate)",
+    "deposit(mug)"
+   ],
+   "story": "She freezes with the plate in her hands, and later sets the mug on the kitchen table instead of in the dishwasher.",
+   "shared_aliases": [],
+   "contributed": {
+    "stall": {
+     "added": [
+      "lost"
+     ],
+     "removed": []
+    },
+    "wrong_placement": {
+     "added": [
+      "put_wrong(mug)"
+     ],
+     "removed": [
+      "deposit(mug)",
+      "shut(dishwasher)",
+      "fetch(pillow)",
+      "deposit(pillow)",
+      "switch_off(tv)"
+     ]
+    }
+   },
+   "plan_order": [
+    "stall",
+    "wrong_placement"
+   ],
+   "anchor_gaps": [
+    4
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_aftermeal_missing_obj",
+   "episode": "aftermeal_hard",
+   "errors": [
+    "missing_step",
+    "wrong_object"
+   ],
+   "anchors": [
+    "fetch(plate@1)",
+    "fetch(mug)"
+   ],
+   "story": "She clears only one of the two plates, and instead of the mug from the side table she takes a wine glass from the coffee table to the dishwasher.",
+   "shared_aliases": [],
+   "contributed": {
+    "missing_step": {
+     "added": [],
+     "removed": [
+      "fetch(plate@1)"
+     ]
+    },
+    "wrong_object": {
+     "added": [
+      "wrong_grab(wineglass)"
+     ],
+     "removed": [
+      "fetch(mug)"
+     ]
+    }
+   },
+   "plan_order": [
+    "missing_step",
+    "wrong_object"
+   ],
+   "anchor_gaps": [
+    4
+   ],
+   "refusals": [
+    {
+     "cmd": "put the plate in the dishwasher",
+     "sid": "deposit(plate@1)",
+     "why": "I'm not holding the plate \u2014 my hands are empty"
+    }
+   ],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [
+    "missing_step@fetch(plate@1) has dependents ['deposit(plate@1)', 'deposit(plate@2)'] that will refuse; the cascade may read as an extra unlabelled error"
+   ],
+   "admitted": true,
+   "reason": "admitted (with 1 caveat(s))"
+  },
+  {
+   "name": "cx_aftermeal_stall_place",
+   "episode": "aftermeal_hard",
+   "errors": [
+    "stall",
+    "wrong_placement"
+   ],
+   "anchors": [
+    "fetch(plate@2)",
+    "deposit(apple)"
+   ],
+   "story": "She stands still holding the second plate, and at the end leaves the apple on the kitchen table instead of in the fridge.",
+   "shared_aliases": [],
+   "contributed": {
+    "stall": {
+     "added": [
+      "lost"
+     ],
+     "removed": []
+    },
+    "wrong_placement": {
+     "added": [
+      "put_wrong(apple)"
+     ],
+     "removed": [
+      "deposit(apple)"
+     ]
+    }
+   },
+   "plan_order": [
+    "stall",
+    "wrong_placement"
+   ],
+   "anchor_gaps": [
+    6
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_tidybedroom_skip_rep",
+   "episode": "tidybedroom_hard",
+   "errors": [
+    "skipped_step",
+    "repetition"
+   ],
+   "anchors": [
+    "shut(cabinet)",
+    "switch_off(tablelamp@1)"
+   ],
+   "story": "She leaves the cabinet open, switches the lamp off, and when she reaches for the mug she turns back and switches the lamp on again.",
+   "shared_aliases": [
+    "navigation_inefficiency"
+   ],
+   "contributed": {
+    "skipped_step": {
+     "added": [],
+     "removed": [
+      "shut(cabinet)"
+     ]
+    },
+    "repetition": {
+     "added": [
+      "redo(switch_off(tablelamp@1))"
+     ],
+     "removed": []
+    }
+   },
+   "plan_order": [
+    "skipped_step",
+    "repetition"
+   ],
+   "anchor_gaps": [
+    2
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  },
+  {
+   "name": "cx_tidybedroom_stall_place",
+   "episode": "tidybedroom_hard",
+   "errors": [
+    "stall",
+    "wrong_placement"
+   ],
+   "anchors": [
+    "fetch(book)",
+    "deposit(mug)"
+   ],
+   "story": "She freezes with the book in her hands, and finally puts the mug on the kitchen counter instead of the kitchen table.",
+   "shared_aliases": [],
+   "contributed": {
+    "stall": {
+     "added": [
+      "lost"
+     ],
+     "removed": []
+    },
+    "wrong_placement": {
+     "added": [
+      "put_wrong(mug)"
+     ],
+     "removed": [
+      "deposit(mug)"
+     ]
+    }
+   },
+   "plan_order": [
+    "stall",
+    "wrong_placement"
+   ],
+   "anchor_gaps": [
+    5
+   ],
+   "refusals": [],
+   "clean_final_ok": true,
+   "dev_final_ok": false,
+   "caveats": [],
+   "admitted": true,
+   "reason": "admitted"
+  }
+ ]
+}

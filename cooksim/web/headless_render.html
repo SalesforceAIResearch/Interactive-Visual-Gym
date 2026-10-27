@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<!-- Headless single-frame renderer: a VLM-observation harness. Python drives the
+     authoritative game, pushes a render_state() dict via window.__renderFrame, and
+     screenshots the REAL 3D scene — no game-state text is ever drawn. -->
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<style>html,body{margin:0;background:#15131b;overflow:hidden}</style>
+</head>
+<body>
+<canvas id="stage" width="760" height="540"></canvas>
+<script type="module">
+window.__capture = true;     // enable preserveDrawingBuffer so toDataURL works
+window.__noshadow = true;    // ANGLE/Vulkan headless shadow bug
+// PHOTOREAL RENDERER. render3d.js picks its style from window.__style at construction
+// (`this.real = window.__style === "real"`), and this page never set it — so every
+// harness capture rendered in the flat CLASSIC style while film.html, which does set
+// it, produced the photoreal look the presentation videos were judged on. Once the
+// rollouts began capturing their own frames, that classic look silently became what
+// both the supervisor saw and every new video showed.
+// ?style=classic restores the old look for anything that needs it.
+window.__style = new URLSearchParams(location.search).get("style") === "classic"
+  ? undefined : "real";
+import * as THREE from "three";
+import "./js/render3d.js";
+let r = null;
+function ensure() {
+  if (!r) {
+    const c = document.getElementById("stage");
+    // CAPTURE RESOLUTION. Photoreal PBR under software rendering costs 15.5 s/tick
+    // at 760x540 per half — episodes managed 5-70 ticks in 90 minutes. At 520x370
+    // it is 8.0 s/tick and the plate, station contents and cook are still clearly
+    // readable (checked by eye). COOKSIM_CAP_W/H via ?w=&h= overrides.
+    const q = new URLSearchParams(location.search);
+    c.width = +(q.get("w") || 520); c.height = +(q.get("h") || 370);
+    r = new window.KitchenRenderer(c); r.resize(c.width, c.height);
+  }
+  return r;
+}
+// returns a PNG data URL of the rendered frame for the given state
+window.__renderFrame = (json) => {
+  const rr = ensure(); window.__rr = rr;
+  rr.setState(typeof json === "string" ? JSON.parse(json) : json);
+  rr.update(1.0);    // snap cook to its tile (interp clamps; also clears stale particles)
+  // several small updates so particle FX (steam/SMOKE/FIRE) accumulate into a visible
+  // plume within this single captured frame — each headless frame is independent
+  for (let i = 0; i < 7; i++) rr.update(0.06);
+  // Override with a FIXED whole-kitchen camera so a viewer can judge the cook's
+  // absolute position & arrival frame-to-frame (the follow-cam re-centers and
+  // hides motion). Not state — just a stable viewpoint. Then re-render.
+  const s = rr.state, span = Math.max(s.width, s.height), d = span * 0.92 + 2.5;
+  rr.camera.position.set(0, d * 1.18, d * 0.66);
+  rr.camera.lookAt(0, 0.3, 0);
+  rr.composer.render();
+  // JPEG by default: measured 5.4x smaller and ~19% faster than PNG, and the
+  // byte count is what dominates once several captures run concurrently.
+  // window.__framePng = true restores PNG for anything that needs it.
+  return document.getElementById("stage").toDataURL(
+      window.__framePng ? "image/png" : "image/jpeg", 0.85);
+};
+// DUAL OBSERVATION (2026-07-31): the supervisor now receives BOTH views of every tick —
+// the fixed top-down shot above and the cook's own first-person view. Measured cost is
+// only +23% per tick, because the expensive part is encoding the top-down PNG, not
+// rendering; the ego pass is captured as JPEG (~38 KB vs 262 KB).
+// The TOP-DOWN view remains the coordinate frame: x grows RIGHT, y grows DOWN, y=0 is the
+// TOP row. The ego view shows the same instant from inside the kitchen and carries NO
+// coordinates of its own — the prompt says so explicitly, so the two are never confused.
+// Returns ONE image per tick: top-down on the LEFT, first-person on the RIGHT, captioned.
+// Sending them as a single composite (rather than two separate images) is what makes the
+// synchronisation self-evident to the model — the two halves are the same instant by
+// construction, exactly as they appear in the presentation videos — and it keeps the
+// image count per turn unchanged.
+// Persistent scratch canvases: allocating three per tick cost more than the render.
+let _sbsTop = null, _sbsEgo = null, _sbsOut = null;
+let _filmTop = null, _filmEgo = null, _filmOut = null;   // film path (see __renderFilmSbs)
+window.__renderFrameSbs = (json, quality) => {
+  window.__renderFrame(json);                  // state + fixed top-down camera
+  const cv = document.getElementById("stage");
+  const w = cv.width, h = cv.height, pad = 2, bar = 26;
+  if (!_sbsOut || _sbsTop.width !== w || _sbsTop.height !== h) {
+    _sbsTop = document.createElement("canvas"); _sbsTop.width = w; _sbsTop.height = h;
+    _sbsEgo = document.createElement("canvas"); _sbsEgo.width = w; _sbsEgo.height = h;
+    _sbsOut = document.createElement("canvas");
+    _sbsOut.width = w * 2 + pad; _sbsOut.height = h + bar;
+  }
+  _sbsTop.getContext("2d").drawImage(cv, 0, 0);
+  const rr = window.__rr;
+  rr.toggleEgo(0);
+  // Each headless frame is INDEPENDENT — it must show where the cook is facing on this
+  // tick, not ease toward it. Without this the ego camera advanced 6% of a turn per
+  // captured tick (~48 ticks for 90 degrees, against 1 tick in the simulation), so the
+  // supervisor's first-person half showed a direction the cook was not facing and every
+  // filmed turn crawled.
+  rr.setEgoSnap(true);
+  rr.update(0.01);
+  rr.composer.render();
+  _sbsEgo.getContext("2d").drawImage(cv, 0, 0);
+  rr.toggleEgo(0);                             // restore the top-down camera
+
+  const g = _sbsOut.getContext("2d");
+  g.fillStyle = "#0d0f13"; g.fillRect(0, 0, _sbsOut.width, _sbsOut.height);
+  g.drawImage(_sbsTop, 0, bar);
+  g.drawImage(_sbsEgo, w + pad, bar);
+  g.font = "600 16px system-ui, sans-serif";
+  g.textBaseline = "middle";
+  g.fillStyle = "#ffc94f";
+  g.fillText("TOP-DOWN (coordinates: x right, y down, y=0 top)", 8, bar / 2);
+  g.fillStyle = "#4fa3ff";
+  g.fillText("FIRST PERSON (cook's own view — no coordinates)", w + pad + 8, bar / 2);
+  return _sbsOut.toDataURL("image/jpeg", quality || 0.85);
+};
+// FILM CAPTURE — several frames per game tick, for presentation video only.
+//
+// This is deliberately NOT __renderFrameSbs with a different argument. That function is
+// the SUPERVISOR'S OBSERVATION: exactly one composite per tick, ego snapped, and the
+// standing configuration pins it that way. Smoothing the observation would change the
+// experiment's input, so film gets its own path and the two cannot drift into each other.
+//
+// Differences from the observation path, all of them intentional:
+//   - cook position interpolates LINEARLY across the tick (rr.setFilmLerp(alpha)) instead
+//     of snapping, so walking reads as walking rather than a hop between cells;
+//   - the ego camera EASES (setEgoSnap(false)) so turns sweep instead of cutting — safe
+//     here because these frames are real sub-tick time steps, which is the situation the
+//     easing was written for and the one KNOWN_ISSUES #1 was NOT;
+//   - no rr.update(1.0) anywhere, since that saturates the very lerp being driven.
+// alpha runs 0 -> 1 across the tick; dt is the real time each sub-frame represents.
+window.__renderFilmSbs = (json, alpha, dt, quality) => {
+  const rr = ensure(); window.__rr = rr;
+  rr.setState(typeof json === "string" ? JSON.parse(json) : json);
+  rr.setFilmLerp(alpha);
+  rr.setEgoSnap(false);
+  rr.update(dt || 0.04);
+  const s = rr.state, span = Math.max(s.width, s.height), d = span * 0.92 + 2.5;
+  rr.camera.position.set(0, d * 1.18, d * 0.66);
+  rr.camera.lookAt(0, 0.3, 0);
+  rr.composer.render();
+
+  const cv = document.getElementById("stage");
+  // Own scratch canvases, not the observation path's: the caption bar scales with the
+  // (larger) film resolution, so the two paths' composites are different sizes and must
+  // not share a cache keyed only on the pane dimensions.
+  const w = cv.width, h = cv.height, pad = 2, bar = Math.max(26, Math.round(h / 14));
+  if (!_filmOut || _filmTop.width !== w || _filmTop.height !== h) {
+    _filmTop = document.createElement("canvas"); _filmTop.width = w; _filmTop.height = h;
+    _filmEgo = document.createElement("canvas"); _filmEgo.width = w; _filmEgo.height = h;
+    _filmOut = document.createElement("canvas");
+    _filmOut.width = w * 2 + pad; _filmOut.height = h + bar;
+  }
+  _filmTop.getContext("2d").drawImage(cv, 0, 0);
+  rr.toggleEgo(0);
+  rr.update(dt || 0.04);
+  rr.composer.render();
+  _filmEgo.getContext("2d").drawImage(cv, 0, 0);
+  rr.toggleEgo(0);
+
+  const g = _filmOut.getContext("2d");
+  g.fillStyle = "#0d0f13"; g.fillRect(0, 0, _filmOut.width, _filmOut.height);
+  g.drawImage(_filmTop, 0, bar);
+  g.drawImage(_filmEgo, w + pad, bar);
+  g.font = "600 " + Math.max(13, Math.round(w / 47)) + "px system-ui, sans-serif";
+  g.textBaseline = "middle";
+  g.fillStyle = "#ffc94f";
+  g.fillText("TOP-DOWN (coordinates: x right, y down, y=0 top)", 8, bar / 2);
+  g.fillStyle = "#4fa3ff";
+  g.fillText("FIRST PERSON (cook's own view — no coordinates)", w + pad + 8, bar / 2);
+  return _filmOut.toDataURL("image/jpeg", quality || 0.9);
+};
+// kept for callers that want the halves separately
+window.__renderFrameDual = (json) => {
+  const top = window.__renderFrame(json);
+  const rr = window.__rr;
+  rr.toggleEgo(0); rr.setEgoSnap(true); rr.update(0.01); rr.composer.render();
+  const ego = document.getElementById("stage").toDataURL("image/jpeg", 0.82);
+  rr.toggleEgo(0);
+  return [top, ego];
+};
+// screen-space position of the cook's head under the fixed camera set by __renderFrame —
+// used by the video overlay to anchor a dialog bubble above the agent
+window.__cookScreen = () => {
+  const rr = window.__rr; if (!rr) return null;
+  const ids = Object.keys(rr.cooks); if (!ids.length) return null;
+  const c = rr.cooks[ids[0]];
+  const wp = rr.toWorld(c.x, c.y);
+  const v = new THREE.Vector3(wp.x, 1.35, wp.z);      // just above the head
+  v.project(rr.camera);
+  const cv = document.getElementById("stage");
+  return { x: (v.x * 0.5 + 0.5) * cv.width, y: (-v.y * 0.5 + 0.5) * cv.height };
+};
+window.__ready = true;
+</script>
+</body>
+</html>

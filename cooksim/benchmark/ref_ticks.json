@@ -1,0 +1,17 @@
+{
+ "easy_nops_easy_map": 46,
+ "easy_nops_hard_map": 60,
+ "easy_nops_medium_map": 43,
+ "expert_nops_easy_map": 136,
+ "expert_nops_hard_map": 140,
+ "expert_nops_medium_map": 166,
+ "hard_nops_easy_map": 122,
+ "hard_nops_hard_map": 128,
+ "hard_nops_medium_map": 151,
+ "master_nops_easy_map": 151,
+ "master_nops_hard_map": 237,
+ "master_nops_medium_map": 171,
+ "medium_nops_easy_map": 51,
+ "medium_nops_hard_map": 85,
+ "medium_nops_medium_map": 51
+}

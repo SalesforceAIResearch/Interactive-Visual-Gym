@@ -1,0 +1,494 @@
+{
+ "schema": "intents-v3",
+ "cases": [
+  {
+   "cell": "easy_nops_medium_map",
+   "family": "plan_change",
+   "name": "plan_change_add_lettuce",
+   "trigger_after": 11,
+   "resume_from": 11,
+   "intent_label": "add some fresh lettuce on top before serving",
+   "intent_seq": [
+    "go to the lettuce source",
+    "scoop"
+   ],
+   "goal_extend": {
+    "ingredient": "lettuce",
+    "state": "raw"
+   },
+   "inject": true,
+   "anchor": {
+    "m": 11,
+    "plate": [
+     "*",
+     "*"
+    ],
+    "held": true,
+    "prep": [
+     1,
+     0
+    ]
+   },
+   "clean_tick": 65,
+   "duration": 9,
+   "verification": {
+    "ok": true,
+    "outcome": "won",
+    "ticks": 47,
+    "rejected": [],
+    "t_fire": 36,
+    "t_end": 45
+   },
+   "rationale": "A genuine, announced recipe change: the goal itself extends when the intent fires, so the extra item is exactly what the order now asks for \u2014 an objection is a false alarm."
+  },
+  {
+   "cell": "easy_nops_medium_map",
+   "family": "plan_change",
+   "name": "plan_change_add_cheese",
+   "trigger_after": 11,
+   "resume_from": 11,
+   "intent_label": "add an extra helping of cheese on top before serving",
+   "intent_seq": [
+    "go to the cheese source",
+    "scoop"
+   ],
+   "goal_extend": {
+    "ingredient": "cheese",
+    "state": "raw"
+   },
+   "inject": true,
+   "anchor": {
+    "m": 11,
+    "plate": [
+     "*",
+     "*"
+    ],
+    "held": true,
+    "prep": [
+     1,
+     0
+    ]
+   },
+   "clean_tick": 65,
+   "duration": 3,
+   "verification": {
+    "ok": true,
+    "outcome": "won",
+    "ticks": 46,
+    "rejected": [],
+    "t_fire": 36,
+    "t_end": 39
+   },
+   "rationale": "A genuine, announced recipe change: the goal itself extends when the intent fires, so the extra item is exactly what the order now asks for \u2014 an objection is a false alarm."
+  },
+  {
+   "cell": "easy_nops_hard_map",
+   "family": "plan_change",
+   "name": "plan_change_add_cheese",
+   "trigger_after": 11,
+   "resume_from": 11,
+   "intent_label": "add an extra helping of cheese on top before serving",
+   "intent_seq": [
+    "go to the cheese source",
+    "scoop"
+   ],
+   "goal_extend": {
+    "ingredient": "cheese",
+    "state": "raw"
+   },
+   "inject": false,
+   "anchor": {
+    "m": 11,
+    "plate": [
+     "*",
+     "*"
+    ],
+    "held": true,
+    "prep": [
+     1,
+     0
+    ]
+   },
+   "clean_tick": 83,
+   "duration": 3,
+   "verification": {
+    "ok": true,
+    "outcome": "won",
+    "ticks": 63,
+    "rejected": [],
+    "t_fire": 54,
+    "t_end": 57
+   },
+   "rationale": "A genuine, announced recipe change: the goal itself extends when the intent fires, so the extra item is exactly what the order now asks for \u2014 an objection is a false alarm."
+  },
+  {
+   "cell": "medium_nops_medium_map",
+   "family": "plan_change",
+   "name": "plan_change_add_lettuce",
+   "trigger_after": 13,
+   "resume_from": 13,
+   "intent_label": "add some fresh lettuce on top before serving",
+   "intent_seq": [
+    "go to the lettuce source",
+    "scoop"
+   ],
+   "goal_extend": {
+    "ingredient": "lettuce",
+    "state": "raw"
+   },
+   "inject": true,
+   "anchor": {
+    "m": 13,
+    "plate": [
+     "bun",
+     "meat",
+     "cheese"
+    ],
+    "held": true,
+    "prep": [
+     0,
+     1
+    ]
+   },
+   "clean_tick": 75,
+   "duration": 7,
+   "verification": {
+    "ok": true,
+    "outcome": "won",
+    "ticks": 61,
+    "rejected": [],
+    "t_fire": 46,
+    "t_end": 53
+   },
+   "rationale": "A genuine, announced recipe change: the goal itself extends when the intent fires, so the extra item is exactly what the order now asks for \u2014 an objection is a false alarm."
+  },
+  {
+   "cell": "medium_nops_medium_map",
+   "family": "plan_change",
+   "name": "plan_change_add_cheese",
+   "trigger_after": 13,
+   "resume_from": 13,
+   "intent_label": "add an extra helping of cheese on top before serving",
+   "intent_seq": [
+    "go to the cheese source",
+    "scoop"
+   ],
+   "goal_extend": {
+    "ingredient": "cheese",
+    "state": "raw"
+   },
+   "inject": true,
+   "anchor": {
+    "m": 13,
+    "plate": [
+     "bun",
+     "meat",
+     "cheese"
+    ],
+    "held": true,
+    "prep": [
+     0,
+     1
+    ]
+   },
+   "clean_tick": 75,
+   "duration": 3,
+   "verification": {
+    "ok": true,
+    "outcome": "won",
+    "ticks": 54,
+    "rejected": [],
+    "t_fire": 46,
+    "t_end": 49
+   },
+   "rationale": "A genuine, announced recipe change: the goal itself extends when the intent fires, so the extra item is exactly what the order now asks for \u2014 an objection is a false alarm."
+  },
+  {
+   "cell": "medium_nops_hard_map",
+   "family": "plan_change",
+   "name": "plan_change_add_cheese",
+   "trigger_after": 13,
+   "resume_from": 13,
+   "intent_label": "add an extra helping of cheese on top before serving",
+   "intent_seq": [
+    "go to the cheese source",
+    "scoop"
+   ],
+   "goal_extend": {
+    "ingredient": "cheese",
+    "state": "raw"
+   },
+   "inject": false,
+   "anchor": {
+    "m": 13,
+    "plate": [
+     "bun",
+     "meat",
+     "cheese"
+    ],
+    "held": true,
+    "prep": [
+     0,
+     1
+    ]
+   },
+   "clean_tick": 108,
+   "duration": 3,
+   "verification": {
+    "ok": true,
+    "outcome": "won",
+    "ticks": 88,
+    "rejected": [],
+    "t_fire": 79,
+    "t_end": 82
+   },
+   "rationale": "A genuine, announced recipe change: the goal itself extends when the intent fires, so the extra item is exactly what the order now asks for \u2014 an objection is a false alarm."
+  },
+  {
+   "cell": "hard_nops_medium_map",
+   "family": "plan_change",
+   "name": "plan_change_add_lettuce",
+   "trigger_after": 30,
+   "resume_from": 30,
+   "intent_label": "add some fresh lettuce on top before serving",
+   "intent_seq": [
+    "go to the lettuce source",
+    "scoop"
+   ],
+   "goal_extend": {
+    "ingredient": "lettuce",
+    "state": "raw"
+   },
+   "inject": true,
+   "anchor": {
+    "m": 30,
+    "plate": [
+     "*",
+     "*",
+     "*"
+    ],
+    "held": true,
+    "prep": [
+     2,
+     2
+    ]
+   },
+   "clean_tick": 169,
+   "duration": 17,
+   "verification": {
+    "ok": true,
+    "outcome": "won",
+    "ticks": 160,
+    "rejected": [],
+    "t_fire": 140,
+    "t_end": 157
+   },
+   "rationale": "A genuine, announced recipe change: the goal itself extends when the intent fires, so the extra item is exactly what the order now asks for \u2014 an objection is a false alarm."
+  },
+  {
+   "cell": "hard_nops_hard_map",
+   "family": "plan_change",
+   "name": "plan_change_add_lemon",
+   "trigger_after": 30,
+   "resume_from": 30,
+   "intent_label": "add a squeeze of lemon on top before serving",
+   "intent_seq": [
+    "go to the lemon source",
+    "scoop"
+   ],
+   "goal_extend": {
+    "ingredient": "lemon",
+    "state": "raw"
+   },
+   "inject": false,
+   "anchor": {
+    "m": 30,
+    "plate": [
+     "*",
+     "*",
+     "*"
+    ],
+    "held": true,
+    "prep": [
+     2,
+     2
+    ]
+   },
+   "clean_tick": 149,
+   "duration": 7,
+   "verification": {
+    "ok": true,
+    "outcome": "won",
+    "ticks": 135,
+    "rejected": [],
+    "t_fire": 120,
+    "t_end": 127
+   },
+   "rationale": "A genuine, announced recipe change: the goal itself extends when the intent fires, so the extra item is exactly what the order now asks for \u2014 an objection is a false alarm."
+  },
+  {
+   "cell": "hard_nops_hard_map",
+   "family": "plan_change",
+   "name": "plan_change_add_peas",
+   "trigger_after": 30,
+   "resume_from": 30,
+   "intent_label": "add a spoon of peas on top before serving",
+   "intent_seq": [
+    "go to the peas source",
+    "scoop"
+   ],
+   "goal_extend": {
+    "ingredient": "peas",
+    "state": "raw"
+   },
+   "inject": false,
+   "anchor": {
+    "m": 30,
+    "plate": [
+     "*",
+     "*",
+     "*"
+    ],
+    "held": true,
+    "prep": [
+     2,
+     2
+    ]
+   },
+   "clean_tick": 149,
+   "duration": 6,
+   "verification": {
+    "ok": true,
+    "outcome": "won",
+    "ticks": 135,
+    "rejected": [],
+    "t_fire": 120,
+    "t_end": 126
+   },
+   "rationale": "A genuine, announced recipe change: the goal itself extends when the intent fires, so the extra item is exactly what the order now asks for \u2014 an objection is a false alarm."
+  },
+  {
+   "cell": "expert_nops_medium_map",
+   "family": "plan_change",
+   "name": "plan_change_add_lettuce",
+   "trigger_after": 34,
+   "resume_from": 34,
+   "intent_label": "add some fresh lettuce on top before serving",
+   "intent_seq": [
+    "go to the lettuce source",
+    "scoop"
+   ],
+   "goal_extend": {
+    "ingredient": "lettuce",
+    "state": "raw"
+   },
+   "inject": true,
+   "anchor": {
+    "m": 34,
+    "plate": [
+     "*",
+     "*",
+     "*"
+    ],
+    "held": true,
+    "prep": [
+     3,
+     2
+    ]
+   },
+   "clean_tick": 188,
+   "duration": 13,
+   "verification": {
+    "ok": true,
+    "outcome": "won",
+    "ticks": 185,
+    "rejected": [],
+    "t_fire": 159,
+    "t_end": 172
+   },
+   "rationale": "A genuine, announced recipe change: the goal itself extends when the intent fires, so the extra item is exactly what the order now asks for \u2014 an objection is a false alarm."
+  },
+  {
+   "cell": "expert_nops_hard_map",
+   "family": "plan_change",
+   "name": "plan_change_add_butter",
+   "trigger_after": 34,
+   "resume_from": 34,
+   "intent_label": "add a knob of butter on top before serving",
+   "intent_seq": [
+    "go to the butter source",
+    "scoop"
+   ],
+   "goal_extend": {
+    "ingredient": "butter",
+    "state": "raw"
+   },
+   "inject": false,
+   "anchor": {
+    "m": 34,
+    "plate": [
+     "*",
+     "*",
+     "*"
+    ],
+    "held": true,
+    "prep": [
+     3,
+     2
+    ]
+   },
+   "clean_tick": 159,
+   "duration": 9,
+   "verification": {
+    "ok": true,
+    "outcome": "won",
+    "ticks": 150,
+    "rejected": [],
+    "t_fire": 130,
+    "t_end": 139
+   },
+   "rationale": "A genuine, announced recipe change: the goal itself extends when the intent fires, so the extra item is exactly what the order now asks for \u2014 an objection is a false alarm."
+  },
+  {
+   "cell": "expert_nops_hard_map",
+   "family": "plan_change",
+   "name": "plan_change_add_pepper",
+   "trigger_after": 34,
+   "resume_from": 34,
+   "intent_label": "add a twist of pepper on top before serving",
+   "intent_seq": [
+    "go to the pepper source",
+    "scoop"
+   ],
+   "goal_extend": {
+    "ingredient": "pepper",
+    "state": "raw"
+   },
+   "inject": false,
+   "anchor": {
+    "m": 34,
+    "plate": [
+     "*",
+     "*",
+     "*"
+    ],
+    "held": true,
+    "prep": [
+     3,
+     2
+    ]
+   },
+   "clean_tick": 159,
+   "duration": 12,
+   "verification": {
+    "ok": true,
+    "outcome": "won",
+    "ticks": 161,
+    "rejected": [],
+    "t_fire": 130,
+    "t_end": 142
+   },
+   "rationale": "A genuine, announced recipe change: the goal itself extends when the intent fires, so the extra item is exactly what the order now asks for \u2014 an objection is a false alarm."
+  }
+ ]
+}

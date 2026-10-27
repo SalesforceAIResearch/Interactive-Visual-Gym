@@ -1,0 +1,1216 @@
+{
+ "entries": {
+  "reading_hard": {
+   "aligned": false,
+   "clauses": [
+    {
+     "text": "Get a book from the bedroom",
+     "seen": true,
+     "at_s": "00:05",
+     "note": "Book picked up from bedroom shelf."
+    },
+    {
+     "text": "sit down on the living-room sofa",
+     "seen": true,
+     "at_s": "00:12",
+     "note": "Person sits on sofa."
+    },
+    {
+     "text": "and read it",
+     "seen": false,
+     "at_s": "none",
+     "note": "Book is briefly held but not visibly read."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [
+    "read"
+   ],
+   "ambiguity": [
+    "Which book to get from the bedroom is not specified."
+   ],
+   "meaningful": true,
+   "complexity_ok": false,
+   "verdict": "drop",
+   "problems": [
+    "Reading action is not visually recognizable.",
+    "Task is too simple."
+   ],
+   "rewrite": "Get the black book from the bedroom shelf and sit on the living-room sofa.",
+   "task": "reading_hard",
+   "film": "tools/tmp/refilm/reading_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "coffee_hard": {
+   "aligned": false,
+   "clauses": [
+    {
+     "text": "Bring the mug from the bedroom",
+     "seen": false,
+     "at_s": "00:03-00:07",
+     "note": "Person enters a bedroom but does not pick up a mug."
+    },
+    {
+     "text": "to the kitchen table",
+     "seen": false,
+     "at_s": "00:11",
+     "note": "A mug appears on the table, but it was not carried there."
+    },
+    {
+     "text": "then switch the coffee maker on",
+     "seen": false,
+     "at_s": "N/A",
+     "note": "This action is not shown."
+    }
+   ],
+   "objects_not_visible": [
+    "coffee maker"
+   ],
+   "actions_not_recognizable": [
+    "picking up mug",
+    "switching on coffee maker"
+   ],
+   "ambiguity": [
+    "Which bedroom to enter"
+   ],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "drop",
+   "problems": [
+    "Mug is not fetched from the bedroom.",
+    "Coffee maker is not switched on.",
+    "Instruction is ambiguous about the bedroom."
+   ],
+   "rewrite": "Bring the yellow mug from the east bedroom to the kitchen table, then switch on the coffee maker.",
+   "task": "coffee_hard",
+   "film": "tools/tmp/refilm/coffee_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "breakfast_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Bring the mug from the bedroom to the kitchen table",
+     "seen": true,
+     "at_s": "00:07-00:13",
+     "note": "Mug picked up in bedroom and placed on kitchen table"
+    },
+    {
+     "text": "take the slice of bread from the kitchen to the living-room coffee table",
+     "seen": true,
+     "at_s": "00:16-00:23",
+     "note": "Bread picked up in kitchen and placed on coffee table"
+    },
+    {
+     "text": "then pick up the remote",
+     "seen": true,
+     "at_s": "00:28",
+     "note": "Remote picked up from sofa side table"
+    },
+    {
+     "text": "and switch the TV on",
+     "seen": true,
+     "at_s": "00:34",
+     "note": "TV screen turns white"
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "breakfast_hard",
+   "film": "tools/tmp/v2f/breakfast_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "cleartable_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Take the plate and the water glass from the living room to the kitchen table",
+     "seen": true,
+     "at_s": "00:03-00:28",
+     "note": "Both items moved successfully."
+    },
+    {
+     "text": "switch the living-room TV off",
+     "seen": true,
+     "at_s": "00:34-00:36",
+     "note": "TV screen goes black."
+    },
+    {
+     "text": "then turn on the bedroom lamp",
+     "seen": true,
+     "at_s": "00:44-00:46",
+     "note": "Lamp illuminates."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "cleartable_hard",
+   "film": "tools/tmp/v2f/cleartable_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "bathroom_reset": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "In the bathroom, put the toothbrush and the toothpaste into the wall cabinet",
+     "seen": true,
+     "at_s": "00:06-00:30",
+     "note": "Toothbrush placed at 00:19, toothpaste at 00:29."
+    },
+    {
+     "text": "and shut it.",
+     "seen": true,
+     "at_s": "00:35",
+     "note": "Cabinet is closed."
+    },
+    {
+     "text": "Then take the mug from the bedroom to the kitchen table.",
+     "seen": true,
+     "at_s": "00:37-00:48",
+     "note": "Mug picked up in bedroom at 00:42, placed on kitchen table at 00:48."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "bathroom_reset",
+   "film": "tools/tmp/v2f/bathroom_reset.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "dishwasher_load": {
+   "aligned": false,
+   "clauses": [
+    {
+     "text": "Put the plate into the dishwasher",
+     "seen": false,
+     "at_s": "",
+     "note": "The person picks up a plate at 00:15, but places a water glass into the dishwasher at 00:19 instead of the plate."
+    },
+    {
+     "text": "and the water glass into the dishwasher",
+     "seen": true,
+     "at_s": "00:19",
+     "note": "A water glass is placed in the dishwasher, though the pickup action was not shown."
+    },
+    {
+     "text": "close it",
+     "seen": true,
+     "at_s": "00:22",
+     "note": "The dishwasher door is closed."
+    },
+    {
+     "text": "and switch it on",
+     "seen": true,
+     "at_s": "00:26",
+     "note": "The person interacts with the dishwasher panel."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [
+    "putting the plate into the dishwasher"
+   ],
+   "ambiguity": [
+    "There are multiple plates on the dining table.",
+    "There are multiple water glasses on the dining table."
+   ],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "drop",
+   "problems": [
+    "The instruction is ambiguous because there are multiple plates and water glasses.",
+    "The execution is flawed: the person picks up a plate but magically places a water glass into the dishwasher, completely failing to put the plate in."
+   ],
+   "rewrite": "",
+   "task": "dishwasher_load",
+   "film": "tools/tmp/refilm/dishwasher_load.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "office_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Take the book from the bedroom to the living-room desk",
+     "seen": true,
+     "at_s": "00:00-00:07",
+     "note": "Agent picks up book and drops it near/on the desk."
+    },
+    {
+     "text": "and switch the computer on",
+     "seen": true,
+     "at_s": "00:08-00:16",
+     "note": "Computer screen turns on."
+    },
+    {
+     "text": "bring the mug from the kitchen to that desk",
+     "seen": true,
+     "at_s": "00:17-00:32",
+     "note": "Agent fetches mug and places it on the desk."
+    },
+    {
+     "text": "then turn on the bedroom lamp",
+     "seen": true,
+     "at_s": "00:33-00:42",
+     "note": "Lamp lights up."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "office_hard",
+   "film": "tools/tmp/v2f/office_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "tvnight_hard": {
+   "aligned": false,
+   "clauses": [
+    {
+     "text": "Pick up the remote",
+     "seen": false,
+     "at_s": "",
+     "note": "Spawns in hand"
+    },
+    {
+     "text": "switch the TV on",
+     "seen": true,
+     "at_s": "00:07",
+     "note": "TV turns on"
+    },
+    {
+     "text": "sit on the sofa",
+     "seen": true,
+     "at_s": "00:14",
+     "note": "Sits down"
+    },
+    {
+     "text": "watch it",
+     "seen": true,
+     "at_s": "00:15",
+     "note": "Faces TV"
+    }
+   ],
+   "objects_not_visible": [
+    "remote before pickup"
+   ],
+   "actions_not_recognizable": [
+    "picking up remote"
+   ],
+   "ambiguity": [
+    "remote location"
+   ],
+   "meaningful": true,
+   "complexity_ok": false,
+   "verdict": "drop",
+   "problems": [
+    "Remote appears magically",
+    "Task too short"
+   ],
+   "rewrite": "Take the remote from the table, turn on the TV, and sit on the sofa.",
+   "task": "tvnight_hard",
+   "film": "tools/tmp/refilm/tvnight_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "kitchenreset_hard": {
+   "aligned": false,
+   "clauses": [
+    {
+     "text": "Put the plate in the dishwasher",
+     "seen": false,
+     "at_s": "",
+     "note": "Plate is not picked up."
+    },
+    {
+     "text": "close it",
+     "seen": true,
+     "at_s": "00:11",
+     "note": "Dishwasher is closed."
+    },
+    {
+     "text": "and switch the coffee maker on",
+     "seen": false,
+     "at_s": "00:13",
+     "note": "Touched but no visible change."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [
+    "putting plate in dishwasher",
+    "switching coffee maker on"
+   ],
+   "ambiguity": [
+    "Which plate to use is not specified."
+   ],
+   "meaningful": true,
+   "complexity_ok": false,
+   "verdict": "drop",
+   "problems": [
+    "Main task not completed.",
+    "No plate was moved.",
+    "Coffee maker shows no state change."
+   ],
+   "rewrite": "",
+   "task": "kitchenreset_hard",
+   "film": "tools/tmp/refilm/kitchenreset_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "study_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Take the book from the living room to the bedroom coffee table",
+     "seen": true,
+     "at_s": "00:04-00:15",
+     "note": "Book is picked up and placed on the bedroom table."
+    },
+    {
+     "text": "and switch the bedroom computer on",
+     "seen": true,
+     "at_s": "00:21",
+     "note": "Computer screen turns on."
+    },
+    {
+     "text": "switch the living-room TV off",
+     "seen": true,
+     "at_s": "00:31",
+     "note": "TV screen goes black."
+    },
+    {
+     "text": "then bring the mug from the living room to the kitchen table",
+     "seen": true,
+     "at_s": "00:36-00:43",
+     "note": "Mug is picked up and placed on the kitchen table."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "study_hard",
+   "film": "tools/tmp/v2f/study_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "routine_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Turn off the bedroom lamp that is on",
+     "seen": true,
+     "at_s": "00:09",
+     "note": "Lamp is turned off."
+    },
+    {
+     "text": "put the book that is lying on the bed on the living-room coffee table",
+     "seen": true,
+     "at_s": "00:14-00:22",
+     "note": "Book is moved from bed to coffee table."
+    },
+    {
+     "text": "heat the milk from the fridge in the microwave",
+     "seen": true,
+     "at_s": "00:34-00:54",
+     "note": "Milk is taken from fridge, placed in microwave, and microwave is started."
+    },
+    {
+     "text": "bring one of the plates from the kitchen table over to the coffee table",
+     "seen": true,
+     "at_s": "00:59-01:05",
+     "note": "Plate is moved from kitchen table to coffee table."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "routine_hard",
+   "film": "tools/tmp/v4/routine_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "tidy_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "switch off the lights on both table lamps",
+     "seen": true,
+     "at_s": "00:04 and 00:16",
+     "note": "Both lamps are visibly switched off."
+    },
+    {
+     "text": "switch off the TV",
+     "seen": true,
+     "at_s": "00:37",
+     "note": "The TV screen goes black."
+    },
+    {
+     "text": "close the fridge",
+     "seen": true,
+     "at_s": "00:27",
+     "note": "The fridge door is shut."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "tidy_hard",
+   "film": "tools/tmp/v4/tidy_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "settable_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Put a book",
+     "seen": true,
+     "at_s": "00:10",
+     "note": "Book placed on table"
+    },
+    {
+     "text": "and a plate",
+     "seen": true,
+     "at_s": "00:23",
+     "note": "Plate placed on table"
+    },
+    {
+     "text": "onto the coffee table in the living room.",
+     "seen": true,
+     "at_s": "00:10, 00:23",
+     "note": "Both items deposited on the correct table"
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "settable_hard",
+   "film": "tools/tmp/v4/settable_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "appliance_hard": {
+   "aligned": false,
+   "clauses": [
+    {
+     "text": "Take the milk from the fridge",
+     "seen": true,
+     "at_s": "00:15",
+     "note": "Milk taken from fridge."
+    },
+    {
+     "text": "put it in the microwave",
+     "seen": false,
+     "at_s": "00:31",
+     "note": "The milk is placed on top of the microwave, not inside."
+    },
+    {
+     "text": "and switch the microwave on",
+     "seen": false,
+     "at_s": "00:38",
+     "note": "No interaction to turn the microwave on is visible."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [
+    "put in microwave",
+    "switch on"
+   ],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "drop",
+   "problems": [
+    "The agent places the milk on top of the microwave instead of inside it.",
+    "The agent fails to switch the microwave on."
+   ],
+   "rewrite": "",
+   "task": "appliance_hard",
+   "film": "tools/tmp/v4/appliance_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "search_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Find each of these somewhere in the house and go up to it: a TV",
+     "seen": true,
+     "at_s": "00:10-00:15",
+     "note": "Approaches TV in living room"
+    },
+    {
+     "text": "a table lamp",
+     "seen": true,
+     "at_s": "00:20-00:22",
+     "note": "Approaches table lamp in bedroom"
+    },
+    {
+     "text": "the fridge",
+     "seen": true,
+     "at_s": "00:01-00:05",
+     "note": "Approaches fridge in kitchen"
+    },
+    {
+     "text": "and the computer",
+     "seen": true,
+     "at_s": "00:34-00:37",
+     "note": "Approaches computer in second bedroom"
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "search_hard",
+   "film": "tools/tmp/v4/search_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "winddown_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Pick up the remote control in the living room",
+     "seen": true,
+     "at_s": "00:07",
+     "note": "Picks up remote from sofa"
+    },
+    {
+     "text": "switch the television off",
+     "seen": true,
+     "at_s": "00:15",
+     "note": "TV screen goes black"
+    },
+    {
+     "text": "and put the remote on the coffee table.",
+     "seen": true,
+     "at_s": "00:19",
+     "note": "Remote placed on table"
+    },
+    {
+     "text": "Then turn on the bedroom lamp",
+     "seen": true,
+     "at_s": "00:37",
+     "note": "Lamp illuminates"
+    },
+    {
+     "text": "and bring the water glass from the bathroom to the bedroom nightstand.",
+     "seen": true,
+     "at_s": "00:30-00:38",
+     "note": "Fetches glass from bathroom and places it on nightstand"
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "winddown_hard",
+   "film": "tools/tmp/v2f/winddown_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "tidyliving_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Take the pillow from the sofa in the living room",
+     "seen": true,
+     "at_s": "00:04",
+     "note": "Pillow taken from sofa."
+    },
+    {
+     "text": "and put it on the bed",
+     "seen": true,
+     "at_s": "00:15",
+     "note": "Pillow placed on bed."
+    },
+    {
+     "text": "take the book from the living room",
+     "seen": true,
+     "at_s": "00:24",
+     "note": "Book taken from shelf."
+    },
+    {
+     "text": "to the desk in the bedroom",
+     "seen": true,
+     "at_s": "00:32",
+     "note": "Book placed on desk."
+    },
+    {
+     "text": "switch off the television in the living room",
+     "seen": true,
+     "at_s": "00:42",
+     "note": "TV screen goes black."
+    },
+    {
+     "text": "and bring the mug from the living room",
+     "seen": true,
+     "at_s": "00:46",
+     "note": "Mug picked up."
+    },
+    {
+     "text": "to the kitchen table",
+     "seen": true,
+     "at_s": "00:51",
+     "note": "Mug placed on table."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "tidyliving_hard",
+   "film": "tools/tmp/v2f/tidyliving_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "guestready_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Put the pillow from the living room on the bed",
+     "seen": true,
+     "at_s": "00:04-00:16",
+     "note": "Picks up pillow in living room, places on bed."
+    },
+    {
+     "text": "bring the mug from the bedroom to the kitchen table",
+     "seen": true,
+     "at_s": "00:20-00:28",
+     "note": "Picks up mug in bedroom, places on kitchen table."
+    },
+    {
+     "text": "take the apple from the kitchen to the living-room coffee table",
+     "seen": true,
+     "at_s": "00:32-00:40",
+     "note": "Picks up apple in kitchen, places on coffee table."
+    },
+    {
+     "text": "and switch the TV on",
+     "seen": true,
+     "at_s": "00:42-00:46",
+     "note": "Approaches TV and screen turns on."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "guestready_hard",
+   "film": "tools/tmp/v2f/guestready_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "dinnerliving_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Bring the plate from the kitchen to the living-room coffee table",
+     "seen": true,
+     "at_s": "00:05-00:14",
+     "note": "Plate is picked up in kitchen and placed on coffee table."
+    },
+    {
+     "text": "Bring the water glass from the kitchen to the living-room coffee table",
+     "seen": true,
+     "at_s": "00:19-00:28",
+     "note": "Water glass is picked up in kitchen and placed on coffee table."
+    },
+    {
+     "text": "switch the TV on",
+     "seen": true,
+     "at_s": "00:32-00:33",
+     "note": "TV screen turns on."
+    },
+    {
+     "text": "then go and turn the bedroom lamp off",
+     "seen": true,
+     "at_s": "00:39-00:41",
+     "note": "Lamp light turns off."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "dinnerliving_hard",
+   "film": "tools/tmp/v2f/dinnerliving_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "tidyup_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Take the plate from the living room to the kitchen table",
+     "seen": true,
+     "at_s": "00:02-00:13",
+     "note": "Plate moved to kitchen table."
+    },
+    {
+     "text": "bring the mug from the kitchen to the bedroom nightstand",
+     "seen": true,
+     "at_s": "00:18-00:24",
+     "note": "Mug moved to nightstand."
+    },
+    {
+     "text": "put the pillow from the living room on the bed",
+     "seen": true,
+     "at_s": "00:32-00:39",
+     "note": "Pillow moved to bed."
+    },
+    {
+     "text": "then switch the living-room TV off",
+     "seen": true,
+     "at_s": "00:45",
+     "note": "TV switched off."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "tidyup_hard",
+   "film": "tools/tmp/v2f/tidyup_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "groceries_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "The milk was left on the bedroom nightstand",
+     "seen": true,
+     "at_s": "00:12",
+     "note": "Agent finds and picks up the milk from the bedroom nightstand."
+    },
+    {
+     "text": "and the juice on the living-room coffee table.",
+     "seen": true,
+     "at_s": "00:33",
+     "note": "Agent finds and picks up the juice from the living room coffee table."
+    },
+    {
+     "text": "Put them both in the fridge,",
+     "seen": true,
+     "at_s": "00:26, 00:42",
+     "note": "Milk is placed in the fridge at 00:26, juice at 00:42."
+    },
+    {
+     "text": "then close it.",
+     "seen": true,
+     "at_s": "00:46",
+     "note": "The fridge door is closed."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "groceries_hard",
+   "film": "tools/tmp/v4/groceries_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "putback_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Put the toilet paper roll on the bathroom counter",
+     "seen": true,
+     "at_s": "00:06-00:16",
+     "note": "Moved TP to counter"
+    },
+    {
+     "text": "the book on the bedroom desk",
+     "seen": true,
+     "at_s": "00:24-00:35",
+     "note": "Moved book to desk"
+    },
+    {
+     "text": "and the pillow on the bed",
+     "seen": true,
+     "at_s": "00:43-00:53",
+     "note": "Moved pillow to bed"
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "putback_hard",
+   "film": "tools/tmp/v4/putback_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "shutdown_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Switch off all the table lamps",
+     "seen": true,
+     "at_s": "00:28-00:31, 00:36-00:39",
+     "note": "Two table lamps are switched off."
+    },
+    {
+     "text": "Switch off the TV",
+     "seen": true,
+     "at_s": "00:15-00:18",
+     "note": "TV screen turns black."
+    },
+    {
+     "text": "Switch off the computer",
+     "seen": true,
+     "at_s": "00:21-00:24",
+     "note": "Computer screen and tower light turn off."
+    },
+    {
+     "text": "close the fridge",
+     "seen": true,
+     "at_s": "00:04-00:10",
+     "note": "Fridge door is closed."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "shutdown_hard",
+   "film": "tools/tmp/v4/shutdown_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "guest_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Put the plate on the coffee table into the dishwasher",
+     "seen": true,
+     "at_s": "00:10-00:19",
+     "note": "Plate picked up from coffee table and placed in dishwasher."
+    },
+    {
+     "text": "and the mug on the desk into the dishwasher",
+     "seen": true,
+     "at_s": "00:24-00:36",
+     "note": "Mug picked up from desk and placed in dishwasher."
+    },
+    {
+     "text": "put the pillow from the sofa back on the bed",
+     "seen": true,
+     "at_s": "00:42-00:56",
+     "note": "Pillow picked up from sofa and placed on bed."
+    },
+    {
+     "text": "and switch the TV off",
+     "seen": true,
+     "at_s": "01:03-01:05",
+     "note": "TV screen goes black."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "guest_hard",
+   "film": "tools/tmp/v4/guest_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "books_hard": {
+   "aligned": false,
+   "clauses": [
+    {
+     "text": "Collect all three [books]",
+     "seen": true,
+     "at_s": "00:05, 00:09, 00:26",
+     "note": "Picks up books from the coffee table, sofa, and bed."
+    },
+    {
+     "text": "put them on the bedroom desk",
+     "seen": false,
+     "at_s": "00:18, 00:30",
+     "note": "Books are placed on the desk, but they replace each other and change color. Only one book remains at the end."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [
+    "Depositing multiple items (engine glitch causes items to disappear or change color instead of accumulating)"
+   ],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "drop",
+   "problems": [
+    "Engine glitch: The agent picks up blue books but deposits a brown book at 00:18.",
+    "Engine glitch: The books do not accumulate on the desk. Placing a new book makes the previous one disappear, leaving only one book at the end."
+   ],
+   "rewrite": "",
+   "task": "books_hard",
+   "film": "tools/tmp/v3/books_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "towels_hard": {
+   "aligned": false,
+   "clauses": [
+    {
+     "text": "Three towels have been left around the house.",
+     "seen": true,
+     "at_s": "00:06, 00:16, 00:34",
+     "note": "Towels are seen in the kitchen, living room, and bedroom."
+    },
+    {
+     "text": "Collect all of them",
+     "seen": false,
+     "at_s": "00:07, 00:16",
+     "note": "Only two towels are collected. The third towel in the bedroom is approached but never picked up."
+    },
+    {
+     "text": "and hang them on the towel rack in the bathroom.",
+     "seen": false,
+     "at_s": "00:25",
+     "note": "Only two towels are deposited, and the visual representation of the hanging towel is glitchy and blue, unlike the white towels collected."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [
+    "hanging the towels (they appear as a glitchy blue shape clipping into the wall)"
+   ],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "drop",
+   "problems": [
+    "The agent fails to collect and hang the third towel.",
+    "The towels change color and shape when placed on the rack, making the deposit action look like a visual glitch."
+   ],
+   "rewrite": "",
+   "task": "towels_hard",
+   "film": "tools/tmp/v3/towels_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "aftermeal_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "the two plates on the coffee table go in the dishwasher",
+     "seen": true,
+     "at_s": "00:18, 00:37",
+     "note": "Both plates are fetched and deposited in the dishwasher."
+    },
+    {
+     "text": "the mug on the side table go in the dishwasher",
+     "seen": true,
+     "at_s": "00:58",
+     "note": "Mug is deposited in the dishwasher."
+    },
+    {
+     "text": "the apple on the side table goes back in the fridge",
+     "seen": true,
+     "at_s": "01:12",
+     "note": "Apple is placed in the fridge."
+    },
+    {
+     "text": "and close both",
+     "seen": true,
+     "at_s": "01:03, 01:16",
+     "note": "Dishwasher and fridge are both closed."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "aftermeal_hard",
+   "film": "tools/tmp/v4/aftermeal_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "dishes_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "a plate on the bedroom desk. Put all of them in the dishwasher",
+     "seen": true,
+     "at_s": "00:06-00:18",
+     "note": "Plate taken from desk and placed in dishwasher."
+    },
+    {
+     "text": "a plate and a glass on the living-room coffee table... Put all of them in the dishwasher",
+     "seen": true,
+     "at_s": "00:24-00:37",
+     "note": "Plate and glass taken from coffee table and placed in dishwasher."
+    },
+    {
+     "text": "a plate and a glass on the kitchen table... Put all of them in the dishwasher",
+     "seen": true,
+     "at_s": "00:42-00:54",
+     "note": "Plate and glass taken from kitchen table and placed in dishwasher."
+    },
+    {
+     "text": "and close it.",
+     "seen": true,
+     "at_s": "00:56-00:58",
+     "note": "Dishwasher is closed."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "dishes_hard",
+   "film": "tools/tmp/v4/dishes_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "mugs_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "Collect mug from the bathroom",
+     "seen": true,
+     "at_s": "00:08",
+     "note": "Picks up blue mug from bathroom floor"
+    },
+    {
+     "text": "Collect mug from the living room",
+     "seen": true,
+     "at_s": "00:26",
+     "note": "Picks up green mug from living room desk"
+    },
+    {
+     "text": "Collect mug from the bedroom nightstand",
+     "seen": true,
+     "at_s": "00:43",
+     "note": "Picks up red mug from bedroom nightstand"
+    },
+    {
+     "text": "Put them on the kitchen table",
+     "seen": true,
+     "at_s": "00:18, 00:37, 00:51",
+     "note": "Places all three mugs on the kitchen table"
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "mugs_hard",
+   "film": "tools/tmp/v4/mugs_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  },
+  "tidybedroom_hard": {
+   "aligned": true,
+   "clauses": [
+    {
+     "text": "put the book that is lying on the bed back on the desk",
+     "seen": true,
+     "at_s": "00:07-00:14",
+     "note": "Book is taken from the bed and placed on the desk."
+    },
+    {
+     "text": "turn off the lamp that was left on",
+     "seen": true,
+     "at_s": "00:27-00:29",
+     "note": "The lamp on the nightstand is switched off."
+    },
+    {
+     "text": "close the cabinet",
+     "seen": true,
+     "at_s": "00:18-00:21",
+     "note": "The open cabinet doors are shut."
+    },
+    {
+     "text": "and take the mug from the nightstand to the kitchen table",
+     "seen": true,
+     "at_s": "00:29-00:36",
+     "note": "Mug is picked up from the nightstand and placed on the kitchen table."
+    }
+   ],
+   "objects_not_visible": [],
+   "actions_not_recognizable": [],
+   "ambiguity": [],
+   "meaningful": true,
+   "complexity_ok": true,
+   "verdict": "keep",
+   "problems": [],
+   "rewrite": "",
+   "task": "tidybedroom_hard",
+   "film": "tools/tmp/v4/tidybedroom_hard.mp4",
+   "model": "gemini-3.1-pro-preview"
+  }
+ }
+}

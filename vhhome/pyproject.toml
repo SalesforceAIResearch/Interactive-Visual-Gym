@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vhhome"
+version = "1.0.0"
+description = "VH-Home: a household simulator and benchmark for interactive visual assistants"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "async-timeout>=4; python_version < '3.11'",
+    "numpy",
+    "opencv-python-headless>=4.8",
+    "pillow",
+    "matplotlib",
+    "imageio",
+    "imageio-ffmpeg",
+    "requests",
+    "google-genai>=1.0",
+    "openai>=1.50",
+    "websockets>=12",
+]
+
+[project.optional-dependencies]
+anthropic = ["anthropic>=0.80"]      # the Claude assistant and the third rubric judge
+cluster = ["beaker-py>=2.5"]         # running the formal protocol on a Beaker cluster
+dev = ["pytest"]
+
+[project.scripts]
+vhhome-episode = "vhhome_bench.cli.episode:main"
+vhhome-benchmark = "vhhome_bench.cli.benchmark:main"
+vhhome-score = "vhhome_bench.cli.score:main"
+vhhome-case = "vhhome_bench.cli.case:main"
+vhhome-roster = "vhhome_bench.roster:main"
+
+[tool.setuptools]
+packages = ["vhhome", "vhhome_bench", "vhhome_bench.scoring", "vhhome_bench.video", "vhhome_bench.cluster", "vhhome_bench.cli"]
+
+[tool.setuptools.package-data]
+vhhome = ["data/*.json"]
+vhhome_bench = ["cluster/*.sh"]

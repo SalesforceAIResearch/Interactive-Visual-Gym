@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cooksim"
+version = "1.0.0"
+description = "CookSim: an interactive kitchen simulator and benchmark for proactive visual assistants (a simulated cook, scheduled mistakes, a model under test that watches and speaks)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "CookSim authors" }]
+keywords = ["benchmark", "visual assistant", "simulation", "streaming", "vision-language", "proactive"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "async-timeout>=4; python_version < '3.11'",
+    "numpy",
+    "gymnasium>=0.29",
+    "pettingzoo>=1.24",
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.27",
+    "websockets>=12",
+    "pydantic>=2",
+    "pillow>=10",
+    "requests",
+    "google-genai>=1",
+    "openai>=1.50",
+    "playwright>=1.45",
+]
+
+[project.optional-dependencies]
+anthropic = ["anthropic>=1.7"]
+video = ["imageio", "imageio-ffmpeg"]
+cluster = ["beaker-py>=2"]
+dev = ["pytest", "ruff"]
+
+[project.scripts]
+cooksim-server = "cooksim.server.app:main"
+cooksim-episode = "cooksim_bench.cli.episode:main"
+cooksim-benchmark = "cooksim_bench.cli.benchmark:main"
+cooksim-score = "cooksim_bench.cli.score:main"
+cooksim-case = "cooksim_bench.cli.case:main"
+cooksim-roster = "cooksim_bench.roster:main"
+
+[tool.setuptools.packages.find]
+include = ["cooksim*"]
+
+[tool.setuptools.package-data]
+cooksim = ["layouts/*.txt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

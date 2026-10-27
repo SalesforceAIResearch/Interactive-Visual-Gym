@@ -1,0 +1,17 @@
+{"type":"object","additionalProperties":false,
+ "required":["cook_progress","goal_change","text","flag"],
+ "properties":{
+  "cook_progress":{"type":"object","additionalProperties":false,
+    "required":["subgoals_completed","current_subgoal","subgoals_future"],
+    "properties":{
+      "subgoals_completed":{"type":"array","items":{"type":"object","additionalProperties":false,
+          "required":["subgoal","completed_at","evidence"],
+          "properties":{"subgoal":{"type":"string"},"completed_at":{"type":"integer"},"evidence":{"type":"string"}}}},
+      "current_subgoal":{"type":"object","additionalProperties":false,"required":["hypotheses","since"],
+          "properties":{"hypotheses":{"type":"array","items":{"type":"string"}},"since":{"type":"integer"}}},
+      "subgoals_future":{"type":"object","additionalProperties":false,"required":["remaining","constraints"],
+          "properties":{"remaining":{"type":"array","items":{"type":"string"}},"constraints":{"type":"array","items":{"type":"string"}}}}}},
+  "goal_change":{"anyOf":[{"type":"null"},{"type":"string"},{"type":"object"}]},
+  "text":{"type":"string"},
+  "flag":{"anyOf":[{"type":"null"},{"type":"object","additionalProperties":false,"required":["error"],
+      "properties":{"error":{"type":"string","enum":["add_foreign","forget_next_step","leave_unattended","mis_prep","omit_subgoal","repeat_step","serve_raw","wrong_order"]}}}]}}}

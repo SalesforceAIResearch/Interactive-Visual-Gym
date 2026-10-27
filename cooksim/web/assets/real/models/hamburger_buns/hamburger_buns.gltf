@@ -1,0 +1,324 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "hamburger_buns_01",
+      "translation": [
+        -0.15000000596046448,
+        0,
+        0
+      ]
+    },
+    {
+      "mesh": 1,
+      "name": "hamburger_buns_02"
+    },
+    {
+      "mesh": 2,
+      "name": "hamburger_buns_03",
+      "translation": [
+        0.15000000596046448,
+        0,
+        0
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "hamburger_buns",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "mesh.024",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        }
+      ]
+    },
+    {
+      "name": "mesh.023",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 4,
+            "NORMAL": 5,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 0
+        }
+      ]
+    },
+    {
+      "name": "mesh.022",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 8,
+            "NORMAL": 9,
+            "TEXCOORD_0": 10
+          },
+          "indices": 11,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/jpeg",
+      "name": "hamburger_buns_nor_gl",
+      "uri": "textures/hamburger_buns_nor_gl_1k.jpg"
+    },
+    {
+      "mimeType": "image/jpeg",
+      "name": "hamburger_buns_diff",
+      "uri": "textures/hamburger_buns_diff_1k.jpg"
+    },
+    {
+      "mimeType": "image/jpeg",
+      "name": "hamburger_buns_rough",
+      "uri": "textures/hamburger_buns_arm_1k.jpg"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 2038,
+      "max": [
+        0.05522224307060242,
+        0.06327313929796219,
+        0.0647527277469635
+      ],
+      "min": [
+        -0.04894179850816727,
+        -0.00004612950579030439,
+        -0.04904375970363617
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 2038,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 2038,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 11664,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 2033,
+      "max": [
+        0.05439377203583717,
+        0.05778049677610397,
+        0.0569869801402092
+      ],
+      "min": [
+        -0.05642892047762871,
+        -0.000003865882717946079,
+        -0.04893888905644417
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 2033,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 2033,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5123,
+      "count": 11850,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5126,
+      "count": 1967,
+      "max": [
+        0.048282235860824585,
+        0.057136744260787964,
+        0.05263875797390938
+      ],
+      "min": [
+        -0.05916422978043556,
+        -0.00011559481936274096,
+        -0.045540936291217804
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 9,
+      "componentType": 5126,
+      "count": 1967,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 10,
+      "componentType": 5126,
+      "count": 1967,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 11,
+      "componentType": 5123,
+      "count": 11250,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 24456,
+      "byteOffset": 0,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 24456,
+      "byteOffset": 24456,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 16304,
+      "byteOffset": 48912,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 23328,
+      "byteOffset": 65216,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 24396,
+      "byteOffset": 88544,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 24396,
+      "byteOffset": 112940,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 16264,
+      "byteOffset": 137336,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 23700,
+      "byteOffset": 153600,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 23604,
+      "byteOffset": 177300,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 23604,
+      "byteOffset": 200904,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 15736,
+      "byteOffset": 224508,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 22500,
+      "byteOffset": 240244,
+      "target": 34963
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 262744,
+      "uri": "hamburger_buns.bin"
+    }
+  ]
+}
