@@ -60,7 +60,10 @@ INTERRUPT = os.environ.get("STEPIN_INTERRUPT", "1") != "0"
 # A reply that took x s is delivered ceil(x / ASSIST_TICK_S) ticks after the tick it was asked
 # on; the world (the person's queue) advances in between, and the next assistant call starts
 # only when the reply has landed. ASSIST_LATENCY=0 restores the instantaneous assistant.
-ASSIST_LATENCY = os.environ.get("ASSIST_LATENCY", "1") != "0"
+_LAT_ENV = (os.environ.get("ASSIST_LATENCY", "1") or "1").strip().lower()
+ASSIST_LATENCY = _LAT_ENV != "0"
+# Match the research runner: 0 = zero, 1/measured = measured, integers >= 2 = fixed ticks.
+ASSIST_FIXED_TICKS = int(_LAT_ENV) if _LAT_ENV.isdigit() and int(_LAT_ENV) >= 2 else None
 DEAD_CONV_TICKS = int(os.environ.get("VH_DEAD_CONV_TICKS", "30"))    # standstill the dead-conversation guard needs
 ASSIST_TICK_S = float(os.environ.get("ASSIST_TICK_S", "1.2"))   # wall seconds per game tick
 # D3 (pilot 2026-09-05): 8 of 222 calls took 45-86 s of API stalls and retries and froze the
@@ -648,6 +651,8 @@ def run(port, case_name, persona, out_json, paradigm="combo"):
         sup_sys = NV.native_system_prompt(sup_sys)
 
     def _nat_ticks(x):
+        if ASSIST_FIXED_TICKS is not None:
+            return ASSIST_FIXED_TICKS
         return min(math.ceil(x / ASSIST_TICK_S), ASSIST_MAX_TICKS) if ASSIST_LATENCY else 0
 
     def native_poll(b, said_):
@@ -1520,6 +1525,8 @@ def run(port, case_name, persona, out_json, paradigm="combo"):
                 _x_charged = _x / ASSIST_LAT_DIV            # A100-equivalent (see ASSIST_LAT_DIV)
                 _y_raw = math.ceil(_x_charged / ASSIST_TICK_S) if ASSIST_LATENCY else 0
                 _y = min(_y_raw, ASSIST_MAX_TICKS)
+                if ASSIST_FIXED_TICKS is not None:
+                    _y_raw = _y = ASSIST_FIXED_TICKS
                 report["assistant_latency"].append({"called_at": b, "wall_s": round(_x_wall, 2),
                                                     "gen_s": round(_x, 2),
                                                     "gen_s_charged": round(_x_charged, 2),
@@ -1684,7 +1691,7 @@ def run(port, case_name, persona, out_json, paradigm="combo"):
     _sync_out()
     _lat = report.get("assistant_latency") or []
     report["assistant_latency_summary"] = {
-        "calls": len(_lat), "tick_s": ASSIST_TICK_S, "enabled": ASSIST_LATENCY,
+        "calls": len(_lat), "tick_s": ASSIST_TICK_S, "enabled": ASSIST_LATENCY, "fixed_ticks": ASSIST_FIXED_TICKS,
         "lat_div": ASSIST_LAT_DIV, "gpu": os.environ.get("VH_GPU_NAME", ""),
         "mean_wall_s": round(sum(l["wall_s"] for l in _lat) / len(_lat), 2) if _lat else None,
         "mean_ticks": round(sum(l["ticks"] for l in _lat) / len(_lat), 2) if _lat else None,

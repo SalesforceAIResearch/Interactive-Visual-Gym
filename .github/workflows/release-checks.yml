@@ -1,0 +1,76 @@
+name: Release checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submission-tools:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -e .
+      - run: python -m unittest discover -s tests -p 'test_submission*.py' -v
+      - run: ivg-submit --help
+      - name: Check the static interface
+        if: matrix.python == '3.12'
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+          python scripts/smoke_submission_site.py --out browser-checks
+      - uses: actions/upload-artifact@v4
+        if: matrix.python == '3.12'
+        with:
+          name: submission-interface-check
+          path: browser-checks/
+
+  documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/check_release.py --docs-only
+
+  offline-engines:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [cooksim, screensim, vhhome]
+        python: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install engine and test dependencies
+        run: |
+          if [ '${{ matrix.engine }}' = screensim ]; then
+            python -m pip install -e 'screensim[all,dev]'
+          else
+            python -m pip install -e '${{ matrix.engine }}[dev]'
+          fi
+      - name: Install pinned VirtualHome Python client
+        if: matrix.engine == 'vhhome'
+        run: bash vhhome/simulator/install_virtualhome.sh --client-only
+      - name: Check public commands and offline tests
+        run: python scripts/check_release.py --engine '${{ matrix.engine }}' --tests --report release-checks.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: checks-${{ matrix.engine }}-${{ matrix.python }}
+          path: release-checks.json

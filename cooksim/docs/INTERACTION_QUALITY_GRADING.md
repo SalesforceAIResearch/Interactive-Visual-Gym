@@ -118,6 +118,11 @@ never grades the same episode twice. `--judge all` adds the third judge to alrea
 and `--limit N` restrict a pass. The orchestrator (`cooksim-score`, step `rubric`) runs exactly the
 `--judge gemini,gpt` command once a phase is complete and verified.
 
+**Validity of a stored judgement.** A judge entry counts as a judgement only if it carries a `score` and at least one Boolean
+item verdict, or if it is a documented not-applicable round (`na_round: true`, written when the judge answers but marks every
+item not applicable, e.g. for an empty or malformed assistant line). A `score` key alone does not; the resume logic re-calls
+such slots. The rule is `valid_judgement()` in `cooksim_bench/scoring/sq_v4_score.py`.
+
 ## 6. Output format
 
 Per episode (`sq_v4/frames/.../<episode>.json`):

@@ -48,3 +48,5 @@ This checkout contains legacy alerting-persona fields and environment-specific g
 | ScreenSim | [Benchmark](../screensim/docs/BENCHMARK.md) | [Reproduce](../screensim/docs/REPRODUCE.md) | [Generate cases](../screensim/docs/GENERATE_CASES.md) |
 
 Custom tasks and altered event schedules are useful experiments, but should be reported separately from the fixed benchmark.
+
+For new leaderboard submissions, use the versioned [submission protocol](submissions.md): three runs, fixed two-tick delay for CookSim/VH-Home, pulled assistant interfaces, and two-judge quality scoring. Historical reproduction commands retain their original defaults.

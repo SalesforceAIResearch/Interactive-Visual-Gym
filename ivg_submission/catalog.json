@@ -1,0 +1,1585 @@
+{
+  "version": "ivg-bench-submissions-v2",
+  "runs": [
+    1,
+    2,
+    3
+  ],
+  "engines": {
+    "cooksim": [
+      {
+        "case": "b3_easy_nops_hard_map_1",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_easy_nops_hard_map_1",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_easy_nops_hard_map_1",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_easy_nops_hard_map_2",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_easy_nops_hard_map_2",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_easy_nops_hard_map_2",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_easy_nops_hard_map_3",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_easy_nops_hard_map_3",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_easy_nops_hard_map_3",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_easy_nops_hard_map_4",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_easy_nops_hard_map_4",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_easy_nops_hard_map_4",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_easy_nops_hard_map_5",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_easy_nops_hard_map_5",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_easy_nops_hard_map_5",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_easy_nops_medium_map_1",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_easy_nops_medium_map_1",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_easy_nops_medium_map_1",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_easy_nops_medium_map_2",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_easy_nops_medium_map_2",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_easy_nops_medium_map_2",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_easy_nops_medium_map_3",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_easy_nops_medium_map_3",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_easy_nops_medium_map_3",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_easy_nops_medium_map_4",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_easy_nops_medium_map_4",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_easy_nops_medium_map_4",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_easy_nops_medium_map_5",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_easy_nops_medium_map_5",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_easy_nops_medium_map_5",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_expert_nops_hard_map_1",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_expert_nops_hard_map_1",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_expert_nops_hard_map_1",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_expert_nops_hard_map_2",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_expert_nops_hard_map_2",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_expert_nops_hard_map_2",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_expert_nops_hard_map_3",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_expert_nops_hard_map_3",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_expert_nops_hard_map_3",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_expert_nops_hard_map_4",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_expert_nops_hard_map_4",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_expert_nops_hard_map_4",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_expert_nops_hard_map_5",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_expert_nops_hard_map_5",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_expert_nops_hard_map_5",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_expert_nops_medium_map_1",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_expert_nops_medium_map_1",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_expert_nops_medium_map_1",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_expert_nops_medium_map_2",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_expert_nops_medium_map_2",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_expert_nops_medium_map_2",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_expert_nops_medium_map_3",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_expert_nops_medium_map_3",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_expert_nops_medium_map_3",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_expert_nops_medium_map_4",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_expert_nops_medium_map_4",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_expert_nops_medium_map_4",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_expert_nops_medium_map_5",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_expert_nops_medium_map_5",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_expert_nops_medium_map_5",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_hard_nops_hard_map_1",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_hard_nops_hard_map_1",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_hard_nops_hard_map_1",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_hard_nops_hard_map_2",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_hard_nops_hard_map_2",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_hard_nops_hard_map_2",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_hard_nops_hard_map_3",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_hard_nops_hard_map_3",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_hard_nops_hard_map_3",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_hard_nops_hard_map_4",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_hard_nops_hard_map_4",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_hard_nops_hard_map_4",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_hard_nops_hard_map_5",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_hard_nops_hard_map_5",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_hard_nops_hard_map_5",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_hard_nops_medium_map_1",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_hard_nops_medium_map_1",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_hard_nops_medium_map_1",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_hard_nops_medium_map_2",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_hard_nops_medium_map_2",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_hard_nops_medium_map_2",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_hard_nops_medium_map_3",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_hard_nops_medium_map_3",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_hard_nops_medium_map_3",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_hard_nops_medium_map_4",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_hard_nops_medium_map_4",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_hard_nops_medium_map_4",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_hard_nops_medium_map_5",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_hard_nops_medium_map_5",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_hard_nops_medium_map_5",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_master_nops_hard_map_1",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_master_nops_hard_map_1",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_master_nops_hard_map_1",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_master_nops_hard_map_2",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_master_nops_hard_map_2",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_master_nops_hard_map_2",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_master_nops_hard_map_3",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_master_nops_hard_map_3",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_master_nops_hard_map_3",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_master_nops_hard_map_4",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_master_nops_hard_map_4",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_master_nops_hard_map_4",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_master_nops_hard_map_5",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_master_nops_hard_map_5",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_master_nops_hard_map_5",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_master_nops_medium_map_1",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_master_nops_medium_map_1",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_master_nops_medium_map_1",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_master_nops_medium_map_2",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_master_nops_medium_map_2",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_master_nops_medium_map_2",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_master_nops_medium_map_3",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_master_nops_medium_map_3",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_master_nops_medium_map_3",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_master_nops_medium_map_4",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_master_nops_medium_map_4",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_master_nops_medium_map_4",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_master_nops_medium_map_5",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_master_nops_medium_map_5",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_master_nops_medium_map_5",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_medium_nops_hard_map_1",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_medium_nops_hard_map_1",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_medium_nops_hard_map_1",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_medium_nops_hard_map_2",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_medium_nops_hard_map_2",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_medium_nops_hard_map_2",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_medium_nops_hard_map_3",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_medium_nops_hard_map_3",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_medium_nops_hard_map_3",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_medium_nops_hard_map_4",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_medium_nops_hard_map_4",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_medium_nops_hard_map_4",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_medium_nops_hard_map_5",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_medium_nops_hard_map_5",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_medium_nops_hard_map_5",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_medium_nops_medium_map_1",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_medium_nops_medium_map_1",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_medium_nops_medium_map_1",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_medium_nops_medium_map_2",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_medium_nops_medium_map_2",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_medium_nops_medium_map_2",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_medium_nops_medium_map_3",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_medium_nops_medium_map_3",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_medium_nops_medium_map_3",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_medium_nops_medium_map_4",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_medium_nops_medium_map_4",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_medium_nops_medium_map_4",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "b3_medium_nops_medium_map_5",
+        "persona": "baseline"
+      },
+      {
+        "case": "b3_medium_nops_medium_map_5",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "b3_medium_nops_medium_map_5",
+        "persona": "classic_novice"
+      }
+    ],
+    "vhhome": [
+      {
+        "case": "cx_aftermeal_missing_obj",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "cx_aftermeal_missing_obj",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "cx_aftermeal_missing_obj",
+        "persona": "speed_demon"
+      },
+      {
+        "case": "cx_aftermeal_stall_place",
+        "persona": "baseline"
+      },
+      {
+        "case": "cx_aftermeal_stall_place",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "cx_aftermeal_stall_place",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "cx_appliance_nav_place",
+        "persona": "baseline"
+      },
+      {
+        "case": "cx_appliance_nav_place",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "cx_appliance_nav_place",
+        "persona": "eager_parallel_novice"
+      },
+      {
+        "case": "cx_appliance_obj_stall",
+        "persona": "baseline"
+      },
+      {
+        "case": "cx_appliance_obj_stall",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "cx_appliance_obj_stall",
+        "persona": "credulous_expert"
+      },
+      {
+        "case": "cx_dishes_missing_stall",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "cx_dishes_missing_stall",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "cx_dishes_missing_stall",
+        "persona": "speed_demon"
+      },
+      {
+        "case": "cx_dishes_nav_place",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "cx_dishes_nav_place",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "cx_dishes_nav_place",
+        "persona": "eager_parallel_novice"
+      },
+      {
+        "case": "cx_groceries_skip_stall",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "cx_groceries_skip_stall",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "cx_groceries_skip_stall",
+        "persona": "speed_demon"
+      },
+      {
+        "case": "cx_groceries_stall_place",
+        "persona": "baseline"
+      },
+      {
+        "case": "cx_groceries_stall_place",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "cx_groceries_stall_place",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "cx_guest_skip_stall",
+        "persona": "baseline"
+      },
+      {
+        "case": "cx_guest_skip_stall",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "cx_guest_skip_stall",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "cx_guest_stall_place",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "cx_guest_stall_place",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "cx_guest_stall_place",
+        "persona": "credulous_expert"
+      },
+      {
+        "case": "cx_mugs_missing_stall",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "cx_mugs_missing_stall",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "cx_mugs_missing_stall",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "cx_mugs_nav_place",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "cx_mugs_nav_place",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "cx_mugs_nav_place",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "cx_putback_nav_place",
+        "persona": "credulous_expert"
+      },
+      {
+        "case": "cx_putback_nav_place",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "cx_putback_nav_place",
+        "persona": "speed_demon"
+      },
+      {
+        "case": "cx_putback_skip_place",
+        "persona": "credulous_expert"
+      },
+      {
+        "case": "cx_putback_skip_place",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "cx_putback_skip_place",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "cx_routine_nav_place",
+        "persona": "eager_parallel_novice"
+      },
+      {
+        "case": "cx_routine_nav_place",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "cx_routine_nav_place",
+        "persona": "speed_demon"
+      },
+      {
+        "case": "cx_routine_rep_obj",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "cx_routine_rep_obj",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "cx_routine_rep_obj",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "cx_routine_skip_obj",
+        "persona": "baseline"
+      },
+      {
+        "case": "cx_routine_skip_obj",
+        "persona": "credulous_expert"
+      },
+      {
+        "case": "cx_routine_skip_obj",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "cx_routine_skip_obj_stall",
+        "persona": "baseline"
+      },
+      {
+        "case": "cx_routine_skip_obj_stall",
+        "persona": "credulous_expert"
+      },
+      {
+        "case": "cx_routine_skip_obj_stall",
+        "persona": "eager_parallel_novice"
+      },
+      {
+        "case": "cx_search_skip_stall",
+        "persona": "eager_parallel_novice"
+      },
+      {
+        "case": "cx_search_skip_stall",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "cx_search_skip_stall",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "cx_shutdown_missing_rep",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "cx_shutdown_missing_rep",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "cx_shutdown_missing_rep",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "cx_shutdown_skip_stall",
+        "persona": "baseline"
+      },
+      {
+        "case": "cx_shutdown_skip_stall",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "cx_shutdown_skip_stall",
+        "persona": "eager_parallel_novice"
+      },
+      {
+        "case": "cx_tidy_missing_rep",
+        "persona": "eager_parallel_novice"
+      },
+      {
+        "case": "cx_tidy_missing_rep",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "cx_tidy_missing_rep",
+        "persona": "speed_demon"
+      },
+      {
+        "case": "cx_tidy_missing_stall",
+        "persona": "credulous_expert"
+      },
+      {
+        "case": "cx_tidy_missing_stall",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "cx_tidy_missing_stall",
+        "persona": "speed_demon"
+      },
+      {
+        "case": "cx_tidybedroom_skip_rep",
+        "persona": "credulous_expert"
+      },
+      {
+        "case": "cx_tidybedroom_skip_rep",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "cx_tidybedroom_skip_rep",
+        "persona": "speed_demon"
+      },
+      {
+        "case": "cx_tidybedroom_stall_place",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "cx_tidybedroom_stall_place",
+        "persona": "eager_parallel_novice"
+      },
+      {
+        "case": "cx_tidybedroom_stall_place",
+        "persona": "safety_stepper"
+      }
+    ],
+    "screensim": [
+      {
+        "case": "app_privacy_quarantine__c1",
+        "persona": "baseline"
+      },
+      {
+        "case": "app_privacy_quarantine__c1",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "app_privacy_quarantine__c1",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "app_privacy_quarantine__c2",
+        "persona": "baseline"
+      },
+      {
+        "case": "app_privacy_quarantine__c2",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "app_privacy_quarantine__c2",
+        "persona": "speed_demon"
+      },
+      {
+        "case": "app_privacy_quarantine__c3",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "app_privacy_quarantine__c3",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "app_privacy_quarantine__c3",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "hearing_setup__c1",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "hearing_setup__c1",
+        "persona": "eager_parallel_novice"
+      },
+      {
+        "case": "hearing_setup__c1",
+        "persona": "speed_demon"
+      },
+      {
+        "case": "hearing_setup__c2",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "hearing_setup__c2",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "hearing_setup__c2",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "hearing_setup__c3",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "hearing_setup__c3",
+        "persona": "eager_parallel_novice"
+      },
+      {
+        "case": "hearing_setup__c3",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "keyboard_stop_correcting__c1",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "keyboard_stop_correcting__c1",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "keyboard_stop_correcting__c1",
+        "persona": "credulous_expert"
+      },
+      {
+        "case": "keyboard_stop_correcting__c2",
+        "persona": "baseline"
+      },
+      {
+        "case": "keyboard_stop_correcting__c2",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "keyboard_stop_correcting__c2",
+        "persona": "eager_parallel_novice"
+      },
+      {
+        "case": "keyboard_stop_correcting__c3",
+        "persona": "baseline"
+      },
+      {
+        "case": "keyboard_stop_correcting__c3",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "keyboard_stop_correcting__c3",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "lock_screen_lockdown__c1",
+        "persona": "baseline"
+      },
+      {
+        "case": "lock_screen_lockdown__c1",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "lock_screen_lockdown__c1",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "lock_screen_lockdown__c2",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "lock_screen_lockdown__c2",
+        "persona": "credulous_expert"
+      },
+      {
+        "case": "lock_screen_lockdown__c2",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "lock_screen_lockdown__c3",
+        "persona": "credulous_expert"
+      },
+      {
+        "case": "lock_screen_lockdown__c3",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "lock_screen_lockdown__c3",
+        "persona": "speed_demon"
+      },
+      {
+        "case": "lost_phone_lockdown__c1",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "lost_phone_lockdown__c1",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "lost_phone_lockdown__c1",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "lost_phone_lockdown__c2",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "lost_phone_lockdown__c2",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "lost_phone_lockdown__c2",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "lost_phone_lockdown__c3",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "lost_phone_lockdown__c3",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "lost_phone_lockdown__c3",
+        "persona": "speed_demon"
+      },
+      {
+        "case": "parent_phone_readability__c1",
+        "persona": "credulous_expert"
+      },
+      {
+        "case": "parent_phone_readability__c1",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "parent_phone_readability__c1",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "parent_phone_readability__c2",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "parent_phone_readability__c2",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "parent_phone_readability__c2",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "parent_phone_readability__c3",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "parent_phone_readability__c3",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "parent_phone_readability__c3",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "rent_landlord_instant__c1",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "rent_landlord_instant__c1",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "rent_landlord_instant__c1",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "rent_landlord_instant__c2",
+        "persona": "baseline"
+      },
+      {
+        "case": "rent_landlord_instant__c2",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "rent_landlord_instant__c2",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "rent_share_standard__c1",
+        "persona": "baseline"
+      },
+      {
+        "case": "rent_share_standard__c1",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "rent_share_standard__c1",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "siri_lock_screen_privacy__c1",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "siri_lock_screen_privacy__c1",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "siri_lock_screen_privacy__c1",
+        "persona": "speed_demon"
+      },
+      {
+        "case": "siri_lock_screen_privacy__c2",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "siri_lock_screen_privacy__c2",
+        "persona": "eager_parallel_novice"
+      },
+      {
+        "case": "siri_lock_screen_privacy__c2",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "siri_lock_screen_privacy__c3",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "siri_lock_screen_privacy__c3",
+        "persona": "eager_parallel_novice"
+      },
+      {
+        "case": "siri_lock_screen_privacy__c3",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "standby_bedside__c1",
+        "persona": "baseline"
+      },
+      {
+        "case": "standby_bedside__c1",
+        "persona": "credulous_expert"
+      },
+      {
+        "case": "standby_bedside__c1",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "standby_bedside__c2",
+        "persona": "classic_expert"
+      },
+      {
+        "case": "standby_bedside__c2",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "standby_bedside__c2",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "standby_bedside__c3",
+        "persona": "defiant_novice"
+      },
+      {
+        "case": "standby_bedside__c3",
+        "persona": "quiet_perfectionist"
+      },
+      {
+        "case": "standby_bedside__c3",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "stop_profiling__c1",
+        "persona": "baseline"
+      },
+      {
+        "case": "stop_profiling__c1",
+        "persona": "credulous_expert"
+      },
+      {
+        "case": "stop_profiling__c1",
+        "persona": "eager_parallel_novice"
+      },
+      {
+        "case": "stop_profiling__c2",
+        "persona": "baseline"
+      },
+      {
+        "case": "stop_profiling__c2",
+        "persona": "credulous_expert"
+      },
+      {
+        "case": "stop_profiling__c2",
+        "persona": "safety_stepper"
+      },
+      {
+        "case": "stop_profiling__c3",
+        "persona": "baseline"
+      },
+      {
+        "case": "stop_profiling__c3",
+        "persona": "classic_novice"
+      },
+      {
+        "case": "stop_profiling__c3",
+        "persona": "credulous_expert"
+      }
+    ]
+  },
+  "source_sha256": {
+    "cooksim/benchmark/case_allowance.json": "97233d9e91853115a1fd7e45eff824a0b10e2763d8dbef5585b59c6f779d8c2b",
+    "cooksim/benchmark/case_allowance_v3.json": "580c30a1b7b73c31f7e20faccc62483f5ba83955c7b0774e1b32c4521d73bef9",
+    "cooksim/benchmark/cases_composite_v5.json": "5dd1e078214325fc85f6a62dd7418651b708b0362c13e5e638a89ce2a4b74db6",
+    "cooksim/benchmark/cook_ablation_cells.json": "28fec9f81805012091260f19f3f4040518a1288075438793484adf12c9a8ac9c",
+    "cooksim/benchmark/error_inventory_v5.json": "3f64691f142c788eb0f3fdf298e720e9875ecf881cf9f51158ec7f1d68913fd4",
+    "cooksim/benchmark/grid.json": "c5619bde39b787b4945e7b89cfdecbfa3fd53c777d4e4ee63a1f175ba20f6c6b",
+    "cooksim/benchmark/intents_v3.json": "5233c0f961c4466b9dfc586edf5cac5edf49d69e920b236998f749ec4ed06e3c",
+    "cooksim/benchmark/ref_ticks.json": "67bf838219cae47c8677c85fc62698bcd9a000986480d5d966d70612dd310320",
+    "cooksim/benchmark/ref_ticks.meta.json": "761d22c51592f69d0934dd6ddec4dc5973f1a9b6525ac2c6e06eb3423e3b2822",
+    "cooksim/cooksim/__init__.py": "625af9b6d963a456233f0d30a135b70c4d65302e4aea32f2887aa8d710b076ef",
+    "cooksim/cooksim/agents/__init__.py": "0668e483c801b56757ca22ab55a0536c3c046fbc0970140f1c950291f7e8f491",
+    "cooksim/cooksim/agents/heuristic.py": "9df12fbfe8c44ae7e81517550f6ca52640057f030b28bd4b5f1159cc676c3920",
+    "cooksim/cooksim/agents/highlevel.py": "64b8d9a2ec1b0d8b685eb9f886b675c0ea9b092fe08b35f0f9061b2be8be50a7",
+    "cooksim/cooksim/agents/noisy_human.py": "5cde3ccbb6d2960c8970187bcefb8cedb5b406f860585b1bbd3734939db24935",
+    "cooksim/cooksim/agents/observe.py": "b9788e0f25866844f86810095a9798da4d4e3b9c3bb4d540c1c955943d87a0ef",
+    "cooksim/cooksim/agents/observe_text.py": "803f1c947e5eab6084deae3b0b831ff543320f23ba92351deee7ce31a7076b68",
+    "cooksim/cooksim/agents/places.py": "98b84de6b52327b2e16ebb70b9114b794fc1d06ab49bb479efb6fea45ef5599d",
+    "cooksim/cooksim/core/__init__.py": "c988398762568f5700b9490bdd1a0353acc9db00c5c942259cb5cc14796f010a",
+    "cooksim/cooksim/core/config.py": "eae7d39480abd019c3b5ea34930ba9cc659baea5de9a5d08d66688ad79c37952",
+    "cooksim/cooksim/core/enums.py": "510e08fec75715ff0c5a25160c27c59046008962517501b51ecf62ec8c940caf",
+    "cooksim/cooksim/core/error_lib.py": "f8184eccf3c5ebeaf5a2df9beabf9cfc14b418c78d612a4b9a71486efaff0e15",
+    "cooksim/cooksim/core/game.py": "0a33f7658d884a44df55fea9234307ae74b415ea2ea3bb705fdbcf8723c1a1d7",
+    "cooksim/cooksim/core/generator.py": "0c414e6af30057ec1cfd4efc1f6deaefa364a7ba52d6493a686bb99b586eb728",
+    "cooksim/cooksim/core/items.py": "49b01b7ecdadc565229402137c286e231d9e5a34f65732d5f05d4009114cd2f3",
+    "cooksim/cooksim/core/lang_events.py": "8172d15b56da7dce133c87d55f1212f092a78adf464e3aae3e7306c9959ce237",
+    "cooksim/cooksim/core/layout.py": "ae4b2c45973808d50c2601428366bbe499eac06e7118ae1eb841f4730bd606f0",
+    "cooksim/cooksim/core/orders.py": "36a673cbdf96f16427ab888f82429be885d1adeabeda988018fd40520866c208",
+    "cooksim/cooksim/core/plan_ir.py": "57482b561e41cd1631230a3b53785a92440f1b5e1d35b67bf4d644214a22a895",
+    "cooksim/cooksim/core/player.py": "542daf547aa8d0a909545a691a0414bb160ac2712713601c3c4b386a95284f98",
+    "cooksim/cooksim/core/recipes.py": "453775cce996ba7948730c9f0bad79a7cf7dd04b109facdc3f52d85472754917",
+    "cooksim/cooksim/core/stations.py": "f1cb5a909fd47117da90de7eac69af276518469e9171edf49bb4354009d87595",
+    "cooksim/cooksim/core/utterances.py": "343f4a79b86522eac761130106b88440bec844d14d25ba3890ccc98d66b0c69f",
+    "cooksim/cooksim/envs/__init__.py": "4a393e8b9407e5767da8cf3c1c722bfd6ccf8ca956588adf0eecf9c8defcb37c",
+    "cooksim/cooksim/envs/gym_env.py": "eb7cbeaa2b2edc21847e7c081cd9b0923de796cb8e4c164425522c2981b82c31",
+    "cooksim/cooksim/envs/observation.py": "d8e8dd028a549a3f0c6f5017af704e2bc09b499b1a8379f0e998b7255e61841d",
+    "cooksim/cooksim/envs/pettingzoo_env.py": "10013b15de11d8d763daea06b54073be06857aa5ca7263203e50d34dda13d3af",
+    "cooksim/cooksim/interact/__init__.py": "90cc12f614261c9f1cd7a6e55a192717b216f21723452f32bdc69e5d39616356",
+    "cooksim/cooksim/interact/checks.py": "729a5f51c9c7958f6c5ab9e0cd99e307b9a91dc5270a830e7c45e149557d16e6",
+    "cooksim/cooksim/interact/kitchen_rules.py": "35db5d3be740c27efae15324e91a4788bdb63b6d9c3ba27194b748ecce5e946f",
+    "cooksim/cooksim/interact/persona_v2.py": "894beee104160bba41494870587c8031926b0a71ecdc921f03aa3e2ab33821f0",
+    "cooksim/cooksim/interact/protocol.py": "61182062da528a314f011552b8bba36ac84604d79ee7160bea1d2a42dc1ef80e",
+    "cooksim/cooksim/interact/state.py": "64205773dc022039e5a07869ab8d23743b56524040225824421f6f34f6976a85",
+    "cooksim/cooksim/interact/system.py": "464a7eecd3035a27ed9e7c4f7148478ab3af66843c2fff19bf4dbb9ef11dbb4f",
+    "cooksim/cooksim/interact/windows.py": "724803205241abd9834ff4d9edef6c5f19219e168b210c373ea05b9c339b1cd0",
+    "cooksim/cooksim/layouts/__init__.py": "d9562a1b56ca2174ccbf975e949022fdd0afdc26bfd182149d8b92fcb6e509d4",
+    "cooksim/cooksim/layouts/builtin.py": "b3d36163ff6ccb37acbec27d836455d68b5a00afe74d4a6670093348001b80d6",
+    "cooksim/cooksim/server/__init__.py": "178699f783de866c7983bbeb6173931c8a3ff406434b9cb02bda5e95dc7d8c0b",
+    "cooksim/cooksim/server/app.py": "cd920a1648aa55f2bc08c9cb1c6f89ca20281dfcc37cce17baf14ab52be147bb",
+    "cooksim/cooksim/server/session.py": "dd5a2709aaf5e84c4931847bbf04071f6bc22e2dcbef8a3c4886ecaf9088cac3",
+    "cooksim/cooksim_bench/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cooksim/cooksim_bench/agent_context.py": "7f7e65dce614f3168d7bb74b3754e02b4ec93870b7cd6b73e645926338932794",
+    "cooksim/cooksim_bench/backends/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cooksim/cooksim_bench/backends/anthropic_backend.py": "8d7f05d9ca621307372ad921852cc57c84c8e9a70a289d2d653b8a7af1fd22a7",
+    "cooksim/cooksim_bench/backends/assistant_backend.py": "88f66764806ce9fe7d5323728e7d9634e3f24156e0ca6cdf01e349142a3527e8",
+    "cooksim/cooksim_bench/backends/assistant_reply_schema.json": "203fa416a410638a94785ff6773b2c35af3fa8273885fab57e56d38b6f064b9d",
+    "cooksim/cooksim_bench/backends/cmd_feedback.py": "37440db5e4c071631d46bb210c806e47cc1da91c19da4046a70f91f3e44ead41",
+    "cooksim/cooksim_bench/backends/controller_eval.py": "3056bfc708eee3a041bb26e91b47bd2bd250a712f87429aba667b4caf61bfb45",
+    "cooksim/cooksim_bench/backends/gemini_stream_rgb.py": "57dada70022e7f2071dfe3b867f37f169faed3fcc01aa357efd65708f3ad1250",
+    "cooksim/cooksim_bench/backends/gemini_stream_v3.py": "4b93849b232c2e75f6e77cfdc216928ffb3367c7be6c00e9762b481c98ea74e8",
+    "cooksim/cooksim_bench/backends/genai_client.py": "d7ed0537d59743330cf1be78767db3809c91bb2095a46b643d3136030b975aae",
+    "cooksim/cooksim_bench/backends/native_assistant.py": "9b92456b4fe17c318a52a841715e5ba11f58b92a1645e0fe44ac64d8e819e3f2",
+    "cooksim/cooksim_bench/backends/planact_v3_prompts.py": "31065262cfd74b0fd1d4cc93707077a78922a48ea17d8e49e0b1f26b6ca65e62",
+    "cooksim/cooksim_bench/backends/warmup_server.py": "cc39a3b0887f5c2202b0db24370570c1ced11c22b83c60733eef3690a75d1d9e",
+    "cooksim/cooksim_bench/cli/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cooksim/cooksim_bench/cli/_common.py": "cc2052930c0845ef72133d35da41c38251138269bbc03eb82b84808ef43152a2",
+    "cooksim/cooksim_bench/cli/benchmark.py": "25ac357771952c1bdec4b825a463c57e9f7f374952a9c54286f93bff952e3698",
+    "cooksim/cooksim_bench/cli/case.py": "c697c461ec43e62ce35e2459d5560234e94f0fe81dce2e9cf21a9a4326dd8e1d",
+    "cooksim/cooksim_bench/cli/episode.py": "41c15ea8762288edfdbc99abbc84a4747f8c9cee754f026a05c2f9d4550ea54c",
+    "cooksim/cooksim_bench/cli/score.py": "964267233eac3db1328e6d2cb1698bb97c58f315348c34d4d3f9e2a022c285bd",
+    "cooksim/cooksim_bench/cluster/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cooksim/cooksim_bench/cluster/beaker_submit.py": "beb043a03c5730153e5d6006de802f401565a5cf7f9691b8508ed6b260b2ec05",
+    "cooksim/cooksim_bench/cluster/make_replica_manifest.py": "587641e10a3f861caf571d81bcadfcdee76f86e9da64ef3a9536bc6569817c90",
+    "cooksim/cooksim_bench/cluster/roster_check_report.py": "1cc04c0a56c583fefd831a90bf66b4d1bab47b51af5259d27235174c791f1373",
+    "cooksim/cooksim_bench/cluster/run_lane.py": "d9a3d200fa9a3a80b88fd8591685c0435476077d1e2fdf561de10894173a282b",
+    "cooksim/cooksim_bench/cluster/run_local_pass3.py": "2bb2bdcf82bf9f300ede2351547052abae0057b430e0de2583066c637bcdd0ab",
+    "cooksim/cooksim_bench/cluster/run_roster_check.py": "28e78d58a07637b6bb49de913d725858f5a87fc7030e75a562db3ce37af176d6",
+    "cooksim/cooksim_bench/cluster/run_v5_sample.py": "7dd4754cad879cd9a291bf48a2e6b6ef2a3e4e56bfb5c59aede98cb939a201e8",
+    "cooksim/cooksim_bench/e2e_rollout.py": "ae154b8bdb4c8ca1e05fa0db864d9c7d04c047eeec6df738b814c3dbb1e2eefb",
+    "cooksim/cooksim_bench/e2e_stepin_rollout.py": "3d70f1026938a07c0a2063da0f72fb85b96cd8a649a41fa47cad89ca6ffc62f6",
+    "cooksim/cooksim_bench/engine_stamp.py": "6f2990c2cbdd85639ecdcf80b07d6576fce1a76010f524d2948fa6b59c118641",
+    "cooksim/cooksim_bench/exp_error_rollout.py": "4777e17733bd5dc06ff84ce510af68e4a4a2d26865f95239dc5c4512676a2aa0",
+    "cooksim/cooksim_bench/exp_interact.py": "4709c211cd21cb8aa8c8b0a539229044434a4bda3e8714ca9cc8a0db62cd606d",
+    "cooksim/cooksim_bench/exp_multi_error.py": "9a9e9c6f40480043682f9ea8e0b66699015681cfc1c4b6c373e391eb2e8ba78e",
+    "cooksim/cooksim_bench/paths.py": "2401d7df4442d0b10446d8c2182bfd4336c639de79f9cce10dcaa40c8c8c86f5",
+    "cooksim/cooksim_bench/recovery_rollout.py": "422e958ea1ef6edb1f90fb373c41b6d91a7043761108ba1117c096f21b1f42d7",
+    "cooksim/cooksim_bench/roster.py": "4d305061dfc832402dbd132312da622b1863e1c3ff4bf21f98347864b0234263",
+    "cooksim/cooksim_bench/run_assist_bench.py": "e03577ba2d0631e62d75f794e1b7a957e8413e94b8869718693ecd1a288ff8af",
+    "cooksim/cooksim_bench/scoring/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cooksim/cooksim_bench/scoring/controller_eval_report.py": "cd5606134b2e796beaa740618efca4f94e9ac557a1b19c036b71fdba0e37e60e",
+    "cooksim/cooksim_bench/scoring/eval_assistant.py": "e7974c2e11ad838375bea3ae217db06d2446f52980cd8339e5f12488ad589244",
+    "cooksim/cooksim_bench/scoring/eval_intent.py": "4f26cdd240191b1d12eb865c741de5dbdeb919d6507ff1886852bfbf30087a6f",
+    "cooksim/cooksim_bench/scoring/eval_judge.py": "c6d1e29f3c3abcc542c366ff6c5c89be0cd6bce161249530476dc2e20be063ad",
+    "cooksim/cooksim_bench/scoring/eval_v2.py": "44fff412e3da77e3ec2bf012a7cadcc996d8d14704ad336128c1a33e18ac4f0e",
+    "cooksim/cooksim_bench/scoring/eval_v2_sweep.py": "c7f11feecb79ee55a2c874f30be501b7434946c95780619af029cfa60afc5329",
+    "cooksim/cooksim_bench/scoring/interact_eval.py": "18c63eb0a47befe23f0aaf07498308a4dd594bec0f8388c3ea66f3e9e03cd58a",
+    "cooksim/cooksim_bench/scoring/post_episode.py": "0dd7c8609bd69494cddb2a5047ebeb61120986593f6a7d6fb06357ac217ed6e1",
+    "cooksim/cooksim_bench/scoring/qa_replay.py": "1d56854daa618454deefc90824dd025a67cbb4fef995d448dc71e18db05d5059",
+    "cooksim/cooksim_bench/scoring/qa_v3_lib.py": "3608c3f208b7eae9d28cfc0c06fa10ed63698a96b827a297f82c02825db24f43",
+    "cooksim/cooksim_bench/scoring/qa_world.py": "c69efaf72ff05390a08ec56cd2571e72f87def23d1f426164695533da6c32c66",
+    "cooksim/cooksim_bench/scoring/regrade_proactive_v2.py": "adb13455b6ee8bbbad9c81ab9f744001e39d7d12d7a5a01e31bf7e5aa5b927f4",
+    "cooksim/cooksim_bench/scoring/regrade_qa.py": "4ef7714f55d778cabf31ba13dad977783e88a9aea4b804571563f898eff74412",
+    "cooksim/cooksim_bench/scoring/sq_v4_replay.py": "4c56d4e33c8aca095e196b2a569df66f6819035995439b05d0567e7e5c15f41f",
+    "cooksim/cooksim_bench/scoring/sq_v4_score.py": "8928e5e3939537df688d9002f1b4392473922cf426bff9b303b20d4db33a2d9d",
+    "cooksim/cooksim_bench/scoring/sq_v4_three_runs.py": "b226f304b5c1253f341189b5563bc02b4571a39323bff8e1726b247c014e7d33",
+    "cooksim/cooksim_bench/scoring/validate_suite_questions.py": "e8088c16cd8fe14c6bc207c9f935b2a50738cd87fcc9ddf6321c1eec1c8cefff",
+    "cooksim/cooksim_bench/suite/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cooksim/cooksim_bench/suite/backfill_after_search_delete.py": "d84b6be0c185dc12d87d7a01264ad1ed875eb1d650c7c5270b1b02065fa61d1a",
+    "cooksim/cooksim_bench/suite/composite_v2_spec.py": "d3759c021ff9bf0121fee92eb673a7b0ab688e9f04b8af8a04048d52bb9825ed",
+    "cooksim/cooksim_bench/suite/curate_cases_v5.py": "d4bc6fca70a670c854c62da7af7d2afc5b072fba688e763e07461736f7746bd2",
+    "cooksim/cooksim_bench/suite/design_composite_v2.py": "df2426a1ecdfe0af71abf87260383df402dee6a6cb3ba8cb5b67ca4213225f52",
+    "cooksim/cooksim_bench/suite/design_composite_v3.py": "c12c9622a91e63d533f732c13d4ad4f03c0f0fcef7c53e849e729d1933bcf98e",
+    "cooksim/cooksim_bench/suite/design_composite_v5.py": "f0ddc8b8f406f52e88f6b2730d600d4f31ed825b1d6ac95a86adc973ed7d1ef3",
+    "cooksim/cooksim_bench/suite/draw_cook_ablation_cells.py": "d2689bb865487ad6d54b7ca1613e6f0b35d6e49619d9e182f7d0b286cb5d66e0",
+    "cooksim/cooksim_bench/suite/gen_composite_cases.py": "250b80c8015ea25b34d0359155ea79423ca3883ad953770bf3f01fa396721cbf",
+    "cooksim/cooksim_bench/suite/gen_composite_errors.py": "9d56ee4b68a2e1cce0d40899ae3496adafd28a909e080a1c24b3579ce4f1cb71",
+    "cooksim/cooksim_bench/suite/gen_detect_cases_v2.py": "421c96fafb091a1baa569af003f9a24a3df07ed117c3c84206b0c6293fff2939",
+    "cooksim/cooksim_bench/suite/gen_error_inventory.py": "6a3abed4023d053b65c87418ab26896bccf7beff8db56a2319da64f80c4671eb",
+    "cooksim/cooksim_bench/suite/gen_hardmap_cases.py": "68247b361f18601127375869a9ab6a3641a49348edeca63c09dd2bffed091453",
+    "cooksim/cooksim_bench/suite/gen_intent_cases.py": "b11b7dd46ebcc9a09b6e4767661586ead12aa4f06a0e96aae1595fe05aa26813",
+    "cooksim/cooksim_bench/suite/gen_ref_ticks.py": "ad286c7d1cbcb1da0686805d961db136a03b35ecf4d52d10e0183eb445e72e97",
+    "cooksim/cooksim_bench/suite/intent_lib.py": "9d69fe817fd9ae74db355096992f07eaeb60892caa8813f4872039a1c6ca66e0",
+    "cooksim/cooksim_bench/suite/verify_cases_v5.py": "9e18e0807b83c833ee0fd9bb5395b56548d505e3feb8640db101d3bbe3ef243d",
+    "cooksim/cooksim_bench/suite/verify_firing_llm.py": "58a125d7fff5ae2b54458d9b20febcc98bba8fd4ef454850726cc07ba9ea01c8",
+    "cooksim/cooksim_bench/video/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cooksim/cooksim_bench/video/film_states_smooth.py": "f1e04431a07d4063b5e8953b11f147e1b8355fc3435bc077b1a85185034889d6",
+    "cooksim/cooksim_bench/video/present_video.py": "070619b7c0c233c1713ebfdd640b3a9aadf88a5d109a92dfb4119ea827670385",
+    "cooksim/cooksim_bench/video/render_rollout.py": "7bf382f3767abe798d67fc42b17923385eb99e604a364e0f786241f707653594",
+    "cooksim/cooksim_bench/video/replay_states_dump.py": "fa6d746b17fce3a1a87a913a2dc848f21803f3ab731f6ed32402d3538ba53c13",
+    "screensim/benchmark/auto_tasks.jsonl": "a14348ed32c74bfd7a1c9b3b26c3a4180e74f70c96d2a0bf227c51a4c4ddee39",
+    "screensim/benchmark/manual_procedures.jsonl": "d8d7858fde34a950730cfccb060cabb39910e7df5fb6acd06dd1e98f091b52e6",
+    "screensim/screensim/__init__.py": "e2ddbe88ad877ac3e0ef34b50f2fefb709fceb00be457c8c94549c48d2a0b7e3",
+    "screensim/screensim/apps/__init__.py": "9e12d3f65bc1022bda73f5729c525c2e2dd6558b4366dfce18e95a1faacc9103",
+    "screensim/screensim/apps/bank_app.py": "ee58af3092a5df1837fe1fc050b50f787f6b1802ea35640801a45cb75c0b9efd",
+    "screensim/screensim/apps/inventory.py": "17a04ed6c4462bb364a0701478209d24efeb8ebd2d2a7571d1b44a2eab395af7",
+    "screensim/screensim/apps/mail_app.py": "0cbe112dca66a770d6ba37d69499ef1bc6fab3499435787944e7bc8b1b2d4e6a",
+    "screensim/screensim/apps/messages_app.py": "fead8a0893f5ab26bf5da6cd3bdc7fa1d3d593208212dc0c5b89a7452ff6f38d",
+    "screensim/screensim/apps/phone_app.py": "13084c1d085f61fbeccd1d16febc2afb5a14176052856eb14b5713795a683da7",
+    "screensim/screensim/apps/photos_app.py": "3053c283ba6b69e158ce94c11b90ee8cf14af814be926da3c93565e7899ec8bd",
+    "screensim/screensim/apps/settings_app.py": "4a1a9716b96a9cfd04b422a31439014162274e3e507d8c791cf30badc682456c",
+    "screensim/screensim/apps/settings_data.py": "7eaa7de25dee09d36fb42e9c3bb909d95599159cbdf7e524ce8977fa0773e8f3",
+    "screensim/screensim/apps/settings_engine.py": "f1384268f35cdf2bd91a9df0619c83ef3819a9ba9adaaada9c9f61ec815b28e2",
+    "screensim/screensim/apps/settings_gen.py": "7b0c69326e2dbddbc23c327690ea1bb220bb6c5a565767e54617dd982ccae802",
+    "screensim/screensim/apps/shop_app.py": "6dbe222214e545b8e61abe1c8a702f84fb90f8c947b2adc66e68f3b3e726595a",
+    "screensim/screensim/autotasks.py": "91b33bcc72052facacd77ae2b292d6b53f1041d7fb7d114e6b31a5827d11df9f",
+    "screensim/screensim/core/__init__.py": "aa2401689c1685d15d151ca84621624e46a58789bf5c879b0b13ec6cfbae4bd6",
+    "screensim/screensim/core/actions.py": "3b9daa99b58b6bbd76abc1b3dbffb8f63efff63909ad149b4d938923a9fc3e09",
+    "screensim/screensim/core/app.py": "2b93325026c46d3de49a2553d36450ae118c9909414e6726d39a6c44cc0846f8",
+    "screensim/screensim/core/engine.py": "3c82ac5fdf0678dd0163c092b5e83337a5b507a7c064d8229da942de5522b012",
+    "screensim/screensim/core/layout.py": "c6a920c516b19c826595f3bb69190a9a0947b2263e052e24440af5efd6061464",
+    "screensim/screensim/core/model.py": "ada99471db55bb221835d3afdf0551696ecf99d786e09b74061144c05cc490e4",
+    "screensim/screensim/core/pacing.py": "8e61aa6d17b5f1e600ff7e1eb1286cac7aaa20246e3f4460c2647282dcfb274f",
+    "screensim/screensim/core/shell.py": "2480517c6fdbc793fdd81a47499ed990552a526e787152b557bca74e9c8844a2",
+    "screensim/screensim/core/state.py": "7065feaa6ad10a92e44c57ce22e2d7ef89d651729f9ca5e880c65b9fb3461bb5",
+    "screensim/screensim/dag.py": "8da6218b51d3133bb865af15e519eb884e1b8554c475c38f6a2aca890df21abd",
+    "screensim/screensim/engine_rev.py": "00ba650fcc88b21f0f7241ccd121b10dd20cfe7e523168aab05abad5bfab0a6a",
+    "screensim/screensim/interact/__init__.py": "379bf3d09ce180ced2e364986aa254cef49211b41f4cb87243cabec4bd8005cd",
+    "screensim/screensim/interact/agents.py": "a07ed15cd331353e8bb696c2c08ad8e5ff5e0bc68bce6352c7e5d866746e4bd9",
+    "screensim/screensim/interact/anthropic_backend.py": "bf6e72fd8aeed81708417b053c7d04c7edae5119d61ca091052a8ae8a3da8e4e",
+    "screensim/screensim/interact/assistant_reply_schema.json": "b2b18578ae2078b86d2304b6e08332cee26ff34fcfb12e75281e93d7a4e3d314",
+    "screensim/screensim/interact/backends.py": "15eabb4a9e2d3f737bea98cd2874509b79dd21e05464befe28630f0e336ce6cc",
+    "screensim/screensim/interact/beats_design.py": "d211d74177b1c01c91c0a0cf9c1f915f4a8ffd15caabb100368cda740db1daf0",
+    "screensim/screensim/interact/composite.py": "b698e595d30551997eeed2ef530f63e03e44d070dff0a7d54dfa49557dae023e",
+    "screensim/screensim/interact/composite_run.py": "bce6df071e9ff668ec75c1e89bc850ed5b403dc2401e944e006a9b54a53a0c4e",
+    "screensim/screensim/interact/composite_run_v2.py": "f2d32f36d5576b45b6aab36e11487f521aa40953ff115c40639a2f6cb6d394d9",
+    "screensim/screensim/interact/episode.py": "448708d0439ed6fa12e4d693b21d47c35e2181033747737dbce119292fcd3504",
+    "screensim/screensim/interact/episode_design.py": "dcf33daef7ceca1a0f23262b2f29df3172c8f32066be2077bde4d96f9d02da2d",
+    "screensim/screensim/interact/errors.py": "902b5813eaa6545e2557a9e07bd647b67e9c87ac1a74fba9ee506e70fdb95097",
+    "screensim/screensim/interact/grade.py": "d329267df16c1e58c872eb5b46cd96f400c75aeb9c2a0b05527e8edfbe68274f",
+    "screensim/screensim/interact/harness.py": "6e5dd652fdfbad59fa4e5120f75818e5705e31aff4829070632dc5332cd84343",
+    "screensim/screensim/interact/leaderboard.py": "added7a049ede58ab6100990748df1c39dbf69106e024a86994d86933ddbb46f",
+    "screensim/screensim/interact/manual.py": "3ee9e8c5ab7ef05dd1dfb68ef4dcb3a24a1416d9c35fdd093a947ca99bb1890d",
+    "screensim/screensim/interact/personas.py": "39603126cc91ef4ed2fb86d56fb6693520c170fb1aeb64921e913199fee61655",
+    "screensim/screensim/interact/plan_ir.py": "c6485e1bc4df70972f1cd135e94279460dfe23c5e9c3bb273570ea774488e65f",
+    "screensim/screensim/interact/prompts.py": "850a229559c2b12543500b347b702901bb464e71aff1c2eac63d90294d48a545",
+    "screensim/screensim/interact/readout.py": "2004925596c0f0fe0851fc235231943c762bfa59b374b49c4e08422133f8e7b1",
+    "screensim/screensim/interact/roster.py": "6a21dba1375ff5ee04c34054c24cff4b036cc02d43897f687736816782bf17d2",
+    "screensim/screensim/interact/verdicts.py": "98b696bef283f6bdfa4909dc89dcd0b03b73d9d3a7aebb7332d82c25065bb854",
+    "screensim/screensim/render/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "screensim/screensim/render/capture.py": "26e3d023fae2eda5668aa07d517ed206184dbd400d049fe3a66230e2b5b0e4b2",
+    "screensim/screensim/render/fonts/inter_b64.json": "b20c33696b3632fc5fa070ae9e633d063891d8341f75b90fefff3ddde6d4f912",
+    "screensim/screensim/render/icons.py": "5de49927cb2bf3d8dd730a1195d9c5ba171ed2f336bbebabc0c95748039e2bc3",
+    "screensim/screensim/render/renderer.py": "c372da7153f75cfcb84dc1d7805051a19b922cd6d7342c3a11d493ee28e05966",
+    "screensim/screensim/runner.py": "079de0353b9b1d8e8f5e61b1a617c48a5439e3998f61bdba488309f82611fa78",
+    "screensim/screensim/task_splits.py": "cc4b8a6247707d443b2c17575fe2f8c0838ec6e7de26b51c21eaf37cdeab9cb6",
+    "screensim/screensim/tasks.py": "6bceb533c8818d2008ac6f03459d19883997420fbc114b189664b4d421b247cd",
+    "screensim/screensim/tasks_rl.py": "067762779b630ea7ba43c64a5aacce371f1ed8b99ffc9d5948dfe7dbb656ac25",
+    "screensim/screensim_bench/__init__.py": "e41cf651ccd773aebb04522784b05c32ad41a77aa84d47bd9bf73ae45f312bd3",
+    "screensim/screensim_bench/backends/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "screensim/screensim_bench/backends/gemini_client.py": "a4c89a506a9167d9202498e4e708fed7db1ac4ea7cdd33c833d56e46d3aa80f0",
+    "screensim/screensim_bench/cli/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "screensim/screensim_bench/cli/_common.py": "d2d004e53bb17310d8cd27dd717bcb3f266cfb97dd42eb777736d24b3130dc7a",
+    "screensim/screensim_bench/cli/benchmark.py": "7072bc20e87c50df9a95a7e05e31edb9bfca9d1413a54d74262bd00f6c7b2b53",
+    "screensim/screensim_bench/cli/case.py": "a0bcc1efb299d9c86f13efad8ed5de73a55c22b8f0608d2608860cfc0414ecc0",
+    "screensim/screensim_bench/cli/episode.py": "48abecdf50d7c0a110d0aa789fe4a0a5d1adb18e939e230660a1704e5141d84d",
+    "screensim/screensim_bench/cli/grade.py": "67d2d436776da100088ce1f2c8f60020da74701ddbddf6e2685ac1fb1b490a19",
+    "screensim/screensim_bench/cli/roster.py": "b9df678f07470edf58cbdda651f95f89742d785dadbc23f2147f8d4c9e6c84ea",
+    "screensim/screensim_bench/cli/score.py": "b19366bef22a46554b6725234ebd9bd670de3d821f9fcd12e851833212d4e9d3",
+    "screensim/screensim_bench/cluster/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "screensim/screensim_bench/cluster/beaker_status.py": "053fa87da1aa4e24de728d3100fe216587c04ebd7d5de8dcd48fe800e4700b28",
+    "screensim/screensim_bench/cluster/beaker_submit.py": "fc775ab1da79df12f2bdd499b2e73a40ac7b361036fb67f7ed30b537601ec3a7",
+    "screensim/screensim_bench/paths.py": "2aae0cf61034cdaa99e8470372d2afd674d34f6f9a836351195d0c061ad56eac",
+    "screensim/screensim_bench/runs/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "screensim/screensim_bench/runs/sweep.py": "950a0a98ad2aa7630363afac53ce2fd0c246bbd13a028a362deca0315dd24ac9",
+    "screensim/screensim_bench/scoring/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "screensim/screensim_bench/scoring/five_categories.py": "ae03b0472663b1dc85cf53e281df28d10b4f4f863cdfff47f8a3cd617ed18169",
+    "screensim/screensim_bench/scoring/person_quality.py": "5e2ab675b73bb9b51cdd84f71bd3656cd204e589baa681673dea3377b27ddea9",
+    "screensim/screensim_bench/scoring/rubric.py": "80aa3b42640179b28e2528f237f044b18dd5b833b207c651098741425fc56d8e",
+    "screensim/screensim_bench/scoring/scores.py": "732dd29f002d28477ff7d52496372f238cbefb818732b3818616fde3ce5c51fc",
+    "screensim/screensim_bench/scoring/three_runs.py": "20279fa58de9e3f400b8b721b785afcff612ae143897865720ca44d6bf9191c6",
+    "screensim/screensim_bench/suite/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "screensim/screensim_bench/suite/author.py": "d89a0554922224ad805be67fe8eec34e6e1604db23d0b2c04f35fd07fcdb3fe3",
+    "screensim/screensim_bench/suite/build_tasks.py": "7d31d5ab93c8346b2584c0b904002c8ff786aa1056c5953b3836d759fcbe08ed",
+    "screensim/screensim_bench/suite/check_instructions.py": "6f914ec47c12d54b2b441621fde8a8d20589c0a3df8665c9cd6e068e5efe75f9",
+    "screensim/screensim_bench/suite/event_example.py": "b10973eb30f4d850a2c1d200156d5a576acfa49c5783c5340ff14ec61a72af67",
+    "screensim/screensim_bench/suite/gen_auto_tasks.py": "e5bb901dbcccae94afbefe82a4c73ec583a76eaa517499d8c6a30323b0254f01",
+    "screensim/screensim_bench/suite/manual_coverage.py": "041e7b492247ab6f437f7a68e26a15b2b3b9449cae684c2e32dba3758e4f833b",
+    "screensim/screensim_bench/suite/manual_procedures.py": "7f0360280d55cc46534e568c418a8b80f9f838197df398d488271f9c24904738",
+    "screensim/screensim_bench/suite/split.py": "1e22ce653969df914dd20eb9911cc846e68e9bed4b2dcd05ea1925411f70872e",
+    "screensim/screensim_bench/suite/task_specs.py": "a370698fb558f601d6f5fcb93c80870835e831c304167be3a030fffd74dc155f",
+    "screensim/screensim_bench/suite/verify_instructions.py": "3a06a95ecf12144dd9abde118b71d9528fa1be0c2a7a755164f217c3cc0546e2",
+    "screensim/screensim_bench/video/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "screensim/screensim_bench/video/episode_film.py": "696dbec46de67e38140f01e6469e88c490b9371c1fee53476d9e0373fdb2a25a",
+    "screensim/screensim_bench/video/film.py": "85daaea173ffac261006eca9e716d7528dd05ed6ba05d1b9c2cc35e2707d195b",
+    "screensim/screensim_bench/video/replay.py": "7f025ea3a7250e2bacbecc0089cef4064e21e453b1e45658ec323e9d7e2aac5b",
+    "screensim/screensim_bench/video/sample.py": "cb8bd7569bfbe5722fa89fd8b52571dddff7236e15f7831d6b688beabfb495b2",
+    "vhhome/benchmark/admissibility_ledger.json": "68788e141a1317df9c54984800c34830fd822f10a3b8f956e3d7ee5249604df5",
+    "vhhome/benchmark/cells.json": "19cd75095c14f27489e4f7c65262cadab7075c1aada175d45264de5df7f5a418",
+    "vhhome/benchmark/clean_cells.json": "4fe397fe0d0caf035fc234dfc656f355d12c7b62e25f32e9a4fc0f1b70d2f4ea",
+    "vhhome/benchmark/composite_ledger.json": "a60b92b564f74437918836cac839fca6124b73ba005cf337603b6631defdc62c",
+    "vhhome/benchmark/composite_vlm_audit.json": "d80e889700acc2a32ac146c3e303b00749d67d93e5103fa040d75ca48f0b8f55",
+    "vhhome/benchmark/gpu_latency_ratio.json": "3d18772db8b27af62dfbc8ef06961f4c6ab682f5f958f2423681891cd77f12ed",
+    "vhhome/benchmark/t_ref.json": "440e4c95179ee95dc3d9b1004778995ef1ae798323a273d9688d6b9f93e54fa5",
+    "vhhome/benchmark/task_video_audit.json": "82a9f8c5d335d818ae68b6afb8afa8222ffe08bbdefe7dd879d2904165d654e7",
+    "vhhome/vhhome/__init__.py": "12ef118b48710348147baff95d1bc2e662806403fd93de33576a4255262a6ae5",
+    "vhhome/vhhome/actions.py": "7da4538f5affb2cd625d682cb679971697f8994655a113e4e29f629c090127cd",
+    "vhhome/vhhome/data/assistant_reply_schema.json": "de60adee6d12e32e4b490bd7d5718f4a1b187050e23a57b47f284233bc29d98f",
+    "vhhome/vhhome/data/scene_passages.json": "67435879327c4fee828baf6fd0411a9b8d2f68c1883381ad44103386b7aadbd6",
+    "vhhome/vhhome/gates.py": "5a66ff6a4f44de690cb69899b1b965496fa879a9ffa49a86febfca9b38bdd48c",
+    "vhhome/vhhome/goals.py": "71c562ddd59132927d8251562f11ced69991233cf275e6831ccaee702143ed6e",
+    "vhhome/vhhome/keys.py": "148d02f2facd2af276dcfccd54c6f731a618cb8cf850a5525ee5fc612efe2d81",
+    "vhhome/vhhome/mistakes.py": "1dd35c64101799144e53aa74e35fb5313efcbab105cda56e40574234e83afa41",
+    "vhhome/vhhome/paths.py": "820450cd115865d8cfb391d9e7fd3c6ce92e14a103fb06e857adc2090e87aff2",
+    "vhhome/vhhome/plan.py": "35c3d55d11f896bbd6f0237fe8c764970a8044084839534ef67fb479ff1b9fc7",
+    "vhhome/vhhome/render.py": "5870ee9c2462b0de821190bf399f0757c91e72fecad65df6bb1edcc055de9067",
+    "vhhome/vhhome/tasks.py": "cc7d8fd7120d5e0579f5d53799054179ebcdb1fc595e274c2b252560e95d7d1e",
+    "vhhome/vhhome/topdown_map.py": "1e3e98cf4468e92d1735f87938bd837f64f4bd76206fbb8f61c3d96d365e8b90",
+    "vhhome/vhhome/world.py": "44fc2c8479a83f1742774ee11e316b74719449dbf09197c1479d390e15f42b4a",
+    "vhhome/vhhome_bench/__init__.py": "7d39498572c3f2e92c4c6d8601708ce41da6b9bc34fcf6dded0b71db6b3e391a",
+    "vhhome/vhhome_bench/case_checks.py": "01a126b8199548c63f6c8fe37779373eff7de5cddc2ead6be19706ebac9fecff",
+    "vhhome/vhhome_bench/cases.py": "0c5e430031387c4abb76b8f086675b6e95e7349f374e3bd45ef74e2ad3198139",
+    "vhhome/vhhome_bench/cases_spec.py": "c8eccfbe5b24d7a5955565cce2ad20c76a4476209cb20f0d61aa55836a1fdfe0",
+    "vhhome/vhhome_bench/check.py": "277f93a89b5ad93715043341d9648597fe43729cceb6b7c0a1af50154dc0e041",
+    "vhhome/vhhome_bench/cli/__init__.py": "631967d5f8394b55193ce66cab663e6b0251efc36b81268751cef3a9681259ab",
+    "vhhome/vhhome_bench/cli/_common.py": "b0923021094bcd881db977cd414f9c043e2a87a7f0596bcce414a87046a29ac7",
+    "vhhome/vhhome_bench/cli/benchmark.py": "bbda78385114fa7f6ab6450b861a9927b4a22b04cc4a962114423fe9d2d96eb4",
+    "vhhome/vhhome_bench/cli/case.py": "40371b75c5b1c74ac211a9901a6a502dd6dfe8c39e7970a312730f6028964b48",
+    "vhhome/vhhome_bench/cli/episode.py": "3693717f2eabdb9d5c1730cadfb2990b982d2ab8994751721011b2a1695c3906",
+    "vhhome/vhhome_bench/cli/score.py": "07cbac0ef3dfe62c46902c4c4069c94b1af7a73a36ba9f1d14d030b7a98e3502",
+    "vhhome/vhhome_bench/cluster/__init__.py": "689f78552c297ea2a944893536265163effa91553078fc2c1757eae3b07adc2b",
+    "vhhome/vhhome_bench/cluster/beaker_dedupe.py": "a083c8a5c9136fb87b41923655b0bb0eb319c7162b36d8be6d9029382c01f238",
+    "vhhome/vhhome_bench/cluster/beaker_submit.py": "476364117022f42dcd02b29d03fccf2f31c066192f2f2d4ea7d50496b1c068f0",
+    "vhhome/vhhome_bench/cluster/fill_missing.py": "fc7d4cde4fc7083c997191ab7224127d433559d3c09481b5c3164d498288c400",
+    "vhhome/vhhome_bench/cluster/latency_ratio.py": "e00c75b66383096676faf5e95f0637c2e7783d0d64c419abc3810557d8f22e9d",
+    "vhhome/vhhome_bench/cluster/orchestrate.py": "453ba1ba9cc6e838c5672be515b79e68c021703db6dbb1210f047ad361cdff80",
+    "vhhome/vhhome_bench/cluster/page.py": "e773abbdeec1344a49650af13c4283b0eed41b87baceaf5cfd3e918d660a6521",
+    "vhhome/vhhome_bench/cluster/plan.py": "87025d6f10dc5e4b74291424102132b08667db372038f919a377c0903ee496b1",
+    "vhhome/vhhome_bench/cluster/verify_phase.py": "1e740e306bc655176a9b4a5019dc75b2084cf56ba8d39edec6efe6672254de4d",
+    "vhhome/vhhome_bench/episode.py": "c1fc7da2203435b37683582b6d2df429f3a2c69b0c8763c92b18367d71f08ae6",
+    "vhhome/vhhome_bench/lane.py": "f0286e610e1f5eaa7292eb3ad381f22d49c88ed99081d01cfb257871f2f21373",
+    "vhhome/vhhome_bench/native.py": "3c1110ce10e12cb87fa5f00cfd960d456abd920ea4494961efa8c6dd646c1a00",
+    "vhhome/vhhome_bench/native_backend.py": "1a91e2278bed700e2c68748082c18c666101c761bd17f260f60235be0591a201",
+    "vhhome/vhhome_bench/person.py": "4dbf40564c1c93861ab7da8ac1c4e83d04a8e350e80692b134912d25cb258ebe",
+    "vhhome/vhhome_bench/preflight.py": "516b79df747bb29b299989d3dfd4a0aeec315800ca3a4a667f33edac99f04c61",
+    "vhhome/vhhome_bench/protocol.py": "3cc6f6218b8839e097ac97f86c86afbdd21d36669948533c7f201b313359447f",
+    "vhhome/vhhome_bench/roster.py": "bc53c1212afa65b8b7f25b33c8f85cfb29acdd8f942bcb6a60c3294082db1a08",
+    "vhhome/vhhome_bench/scoring/__init__.py": "8364aff8a5d7f9b293d74cccfeb9512099a96c7e5d4a45d329060eaf372e236d",
+    "vhhome/vhhome_bench/scoring/final_table.py": "cfabcc4755f5425c86beaae31187d893599e8a0fae5d83551ec8fc372f90dbfd",
+    "vhhome/vhhome_bench/scoring/metrics.py": "0346e8c92b3a2d953a865c09b835faf718c14d2ef8d4a5cce1a06900889f6906",
+    "vhhome/vhhome_bench/scoring/metrics_table.py": "ee7ce12e3fa294c87432a5de548119ccaa6fb0e1670a476473c21f13409eac21",
+    "vhhome/vhhome_bench/scoring/results_table.py": "2a38e2e41ec6c25b8828188ff51b9e794fcc0073c5804b7dae08933d3b5003b3",
+    "vhhome/vhhome_bench/scoring/rubric.py": "6aaf1f1a4c24f1f3f979e515f51f2f40941f66046e89b8aab5534609d784d869",
+    "vhhome/vhhome_bench/scoring/rubric_batch.py": "b7cbb4a7f1963b78b2a07dd13be70656329d6fa58e3f68411624e0e3f007ced8",
+    "vhhome/vhhome_bench/scoring/rubric_table.py": "dcedfd6c19199adc5052b6a924ce26d46c652d150f4a35e29bad4da8f33708e3",
+    "vhhome/vhhome_bench/video/__init__.py": "8ba7e18a811816198bd061398f77fe474e2d2705459531142e0fd859b0bb1262",
+    "vhhome/vhhome_bench/video/film.py": "866d57a429bca4d1d6c47ba3517b1d2b8927a5a64d175b090714b470c6086cc5",
+    "vhhome/vhhome_bench/video/film_reference.py": "ee30593db543728444fd61114e303a96db03d5057273dd32a211bb84b83cbcfe"
+  },
+  "settings": {
+    "cooksim": {
+      "delay": "fixed-2-ticks",
+      "interface": "pulled",
+      "human_model": "gemini-3.7-flash"
+    },
+    "vhhome": {
+      "delay": "fixed-2-ticks",
+      "interface": "pulled",
+      "human_model": "gemini-3.7-flash"
+    },
+    "screensim": {
+      "delay": "interaction-steps",
+      "interface": "pulled",
+      "human_model": "gemini-3.7-flash"
+    }
+  },
+  "judges": {
+    "gemini": "gemini-3.7-flash",
+    "gpt": "gpt-5.4-mini"
+  }
+}

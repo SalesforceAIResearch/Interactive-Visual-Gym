@@ -335,7 +335,10 @@ class GptJudge:
 
     def __init__(self):
         from cooksim_bench.backends.controller_eval import OpenAIBackend
-        key = open(os.path.expanduser("~/.openai_key")).read().strip()
+        key = os.environ.get("OPENAI_API_KEY")
+        if not key:
+            with open(os.path.expanduser("~/.openai_key")) as f:
+                key = f.read().strip()
         self.b = OpenAIBackend(self.name, "https://api.openai.com/v1", api_key=key, json_mode=True, max_tokens=6000, profile="gpt5")
 
     def __call__(self, prompt, image):
@@ -470,7 +473,17 @@ def judge_for(model_tag, args_judge):
     return ["gemini", "gpt"]
 
 
-def grade_episode(f, judges, pool, frame_root, existing=None):
+def valid_judgement(v):
+    """A stored judge entry counts as a judgement only if it carries a score AND at least one Boolean item verdict, or if
+    it is a documented not-applicable round (`na_round`). A `score` key alone does not."""
+    if not isinstance(v, dict) or "score" not in v:
+        return False
+    if v.get("na_round"):
+        return True
+    return any(isinstance((it or {}).get("pass"), bool) for it in (v.get("items") or {}).values() if isinstance(it, dict))
+
+
+def grade_episode(f, judges, pool, frame_root, existing=None, recall=None):
     """existing: a previous output for this episode; its per-round verdicts of judges already in `judges` are kept and
     only the missing (or errored) judges are called, then the round is re-merged (ruling 2026-10-09: a judge that
     already graded an episode is not called again)."""
@@ -502,10 +515,16 @@ def grade_episode(f, judges, pool, frame_root, existing=None):
         prev = {}
         if existing:
             er = [x for x in existing.get("rounds") or [] if x.get("round") == r["round"]]
-            prev = {jn: v for jn, v in ((er[0].get("judges") or {}).items() if er else []) if jn in judges and "score" in v}
+            ex_j = (er[0].get("judges") or {}) if er else {}
+            if recall is not None:
+                prev = {jn: v for jn, v in ex_j.items() if jn in judges and jn not in recall.get(r["round"], ())}
+            else:
+                prev = {jn: v for jn, v in ex_j.items() if jn in judges and valid_judgement(v)}
         for jn in judges:
             if jn in prev:
                 per_judge[jn] = prev[jn]
+                continue
+            if recall is not None and jn not in recall.get(r["round"], ()):
                 continue
             jd = pool[jn]
             res = None; err = "judge returned nothing"            # (err was unbound when parse() returned an empty result)
@@ -521,6 +540,9 @@ def grade_episode(f, judges, pool, frame_root, existing=None):
                 except Exception as e:                                # noqa: BLE001
                     res = None; err = repr(e)[:160]; time.sleep(4 + 4 * k)
             per_judge[jn] = resolve(res, live_err, live_intent, stop, stamp) | {"raw": res} if res else {"error": err}
+            if res and not any(isinstance((it or {}).get("pass"), bool) for it in (per_judge[jn].get("items") or {}).values()):
+                per_judge[jn]["na_round"] = True
+                per_judge[jn]["na_note"] = "judge returned no Boolean verdict on any item (all not applicable)"
         good = [v for v in per_judge.values() if "score" in v]
         merged = None
         if good:
@@ -579,8 +601,7 @@ def main():
                 existing = json.load(open(outp))
             except Exception:                                     # noqa: BLE001
                 existing = None
-            if existing and all(all(jn in (x.get("judges") or {}) and "score" in (x.get("judges") or {}).get(jn, {})
-                                    for jn in judges) for x in existing.get("rounds") or []):
+            if existing and all(all(valid_judgement((x.get("judges") or {}).get(jn)) for jn in judges) for x in existing.get("rounds") or []):
                 continue                                          # every judge has graded every round: nothing to do
         if args.judge in ("auto", "gpt-main") and len(judges) == 1 and k % args.double_every == 0:
             judges = ["gemini", "gpt"]

@@ -1,0 +1,29 @@
+name: Export reviewed leaderboard
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'submissions/reviewed/**'
+      - 'ivg_submission/**'
+      - 'leaderboard/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m ivg_submission leaderboard --reviewed submissions/reviewed --out leaderboard/feed.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reviewed-leaderboard-site
+          path: leaderboard/

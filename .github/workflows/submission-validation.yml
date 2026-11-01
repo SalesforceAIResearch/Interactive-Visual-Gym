@@ -1,0 +1,39 @@
+name: Submission validation
+
+on:
+  pull_request:
+    paths:
+      - 'submissions/requests/*.json'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: trusted
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: incoming
+          persist-credentials: false
+          sparse-checkout: submissions/requests
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate external data with the base branch's validator
+        run: >-
+          python trusted/scripts/check_submission_requests.py
+          --base trusted/submissions/requests
+          --incoming incoming/submissions/requests
+          --report validation.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: submission-validation
+          path: validation.json

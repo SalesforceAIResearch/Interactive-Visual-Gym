@@ -11,3 +11,9 @@ __pycache__/
 *.log
 .env
 .DS_Store
+/grading/
+/submission-config.json
+/submission.zip
+/leaderboard/feed.json
+/leaderboard/protocol.json
+/build/

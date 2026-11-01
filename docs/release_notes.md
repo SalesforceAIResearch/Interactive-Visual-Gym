@@ -8,6 +8,16 @@ The release is intended to be installed from an editable checkout. Standalone wh
 
 ## Release fixes
 
+### Submission workflow
+
+The root `ivg-submit` package adds data-only packaging, exact suite validation, trusted grading staging, strict two-judge score collection, sampled-audit plans, and hash-bound approval/export. PR intake does not execute contributor inference code or call judges. See [submissions](submissions.md) for service status and [operations](submission_operations.md) for launch requirements.
+
+The submission aggregator gates each judge's round before averaging the two judge scores. It does not reuse historical merged-item or product-of-means aggregation. Native scoring interfaces and existing result files are unchanged.
+
+VH-Home now accepts `ASSIST_LATENCY=2` for a fixed two-tick delay, matching the current research runner. Its existing `0` (zero) and `1`/`measured` settings retain their behavior. CookSim's quality grader now accepts `OPENAI_API_KEY` before falling back to the legacy key file.
+
+CookSim's quality grader retries cached entries that contain a score but no valid item verdict, preserves documented not-applicable rounds, and supports targeted judge repairs. The Salesforce release uses submission protocol `ivg-bench-submissions-v2` to pin this corrected grader; its episode membership and evaluation settings match v1. A regression check ensures all frozen source hashes match the shipped files.
+
 ### ScreenSim public workflows
 
 Explicit case, persona, provider, model, and endpoint selections now reach the rollout. `--dry-run` validates a selection without model calls. The runner source is included in Git rather than excluded with generated run directories.
@@ -46,4 +56,4 @@ The grading entry points default to Gemini and GPT. Some VH-Home historical resu
 
 ### Citation and licensing
 
-Project citation metadata is shared at the repository root. License files are unchanged: MIT at the root and in CookSim/VH-Home; Apache-2.0 in ScreenSim. Third-party dependencies retain their respective licenses.
+Project citation metadata is shared at the repository root. The Salesforce release uses the root [Apache-2.0 license](../LICENSE.txt). CookSim and VH-Home retain their included MIT licenses; ScreenSim uses Apache-2.0. Third-party dependencies retain their respective licenses.
