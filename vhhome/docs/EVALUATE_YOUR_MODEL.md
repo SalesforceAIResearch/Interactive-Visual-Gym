@@ -11,7 +11,7 @@ overrides the path).
 ## 1. An OpenAI-compatible endpoint (vLLM, SGLang, your own server)
 
 ```bash
-vhhome-episode --case cx_tidy_missing_rep --persona baseline \
+vhhome-episode --latency 2 --case cx_tidy_missing_rep --persona baseline \
     --assistant openai:my-model --base-url http://127.0.0.1:8000/v1 --profile default --out runs/mine
 ```
 
@@ -138,16 +138,11 @@ as an empty reply, which is silence. A bare string in `flag` (`"flag": "wrong_pl
 grader, and how often a model met the declared object shape is reported separately as schema compliance. Nothing
 else is repaired.
 
-### Latency is charged to the clock
+### Response timing
 
-A reply that took *x* wall-seconds lands `ceil(x / 1.2)` ticks after the tick it was asked on, capped at 15 ticks
-(`ASSIST_TICK_S = 1.2`, `ASSIST_MAX_TICKS = 15`). The person keeps moving meanwhile, and the next call starts only
-when the reply has landed. A model that thinks for 10 s answers 9 ticks late. Only the successful attempt's own
-generation time is charged; the raw wall time of every call is recorded in the record (`assistant_latency[]`). For a
-locally served model the charged time can be divided by a measured per-GPU ratio (`ASSIST_LATENCY_DIV`;
-`benchmark/gpu_latency_ratio.json` holds the measured ratios with the A100 as the base card) so that the charge
-describes the model rather than the card it ran on; `1` charges what was measured. `ASSIST_LATENCY=0` makes the
-assistant instantaneous (an ablation, not the benchmark setting).
+Use `--latency 2` for the main benchmark: every reply arrives after exactly two simulation ticks, regardless of inference duration. Use `--latency measured` for the latency comparison: a reply taking *x* seconds arrives after `ceil(x / 1.2)` ticks, capped at 15. The user continues acting during the delivery delay. `ASSIST_LATENCY_DIV=1` charges observed inference time without hardware normalization. `--latency 0` is a separate custom instantaneous setting.
+
+See the [complete timing commands](../../docs/evaluating_assistants.md#response-timing). The same flags apply to single episodes and benchmark runs.
 
 ### What counts as a detection and what counts as a false alarm
 
@@ -176,7 +171,7 @@ assistant:
 ```bash
 for r in 1 2 3; do
   vhhome-benchmark --assistant openai:my-model --base-url http://127.0.0.1:8000/v1 \
-      --out runs/mine --repeat $r --engines 8080
+      --latency 2 --out runs/mine --repeat $r --engines 8080
 done
 vhhome-score --run runs/mine/r1 runs/mine/r2 runs/mine/r3 --judges gemini,gpt
 ```
@@ -197,22 +192,9 @@ vhhome-score --run runs/mine/r1 runs/mine/r2 runs/mine/r3 --judges gemini,gpt
   `--run` roots, `final_results.{json,md}` beside the first root, here `runs/mine/final_results.md`). `--only` picks
   steps; `--judges all` adds the Claude judge (`pip install -e .[anthropic]`, `ANTHROPIC_API_KEY`).
 
-## Reading the result against the published table
+## Reading results
 
-`final_results.md` has the same columns as [results/README.md](../results/README.md): `AQ` with its bootstrap
-interval and per-run means, `won`, `S` (in-time success), `EFF`, `DET`, `DT`, `F1`, each as mean ± half the range
-over your runs. To compare with the published rows, keep the setting identical:
-
-* the same person model (`GEMINI_MODEL` unset, i.e. the code default `gemini-3.1-pro-preview`), the same 75 cells
-  (`benchmark/cells.json`), three runs;
-* measured latency charged to the clock (`ASSIST_LATENCY` unset);
-* the same judges (`--judges gemini,gpt`). The published AQ had a third judge on most rounds and is the mean over
-  the judges that answered each round, so expect your two-judge AQ to be comparable but not identical in its third
-  decimal.
-
-Report the person model, the number of runs and the engine revision (`engine_rev` in every record) with your
-numbers. A single run is a smoke test, not a result: the person is a language model and episodes are not
-deterministic, which is why the table carries three runs and a spread.
+The scorers write local diagnostic reports and preserve per-judge outputs. The [submission pipeline](../../docs/submissions.md) collects scores using the versioned benchmark aggregation. Published comparisons are maintained on the [project leaderboard](https://hellomuffin.github.io/ive-benchmark/redesign/#leaderboard-section). Keep the same cases, personas, user model, timing policy, and two judges when comparing your runs.
 
 ## Reading a record
 

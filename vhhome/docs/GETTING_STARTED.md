@@ -72,13 +72,13 @@ The launcher prints `PORTS_READY 501 501` when both answer; HTTP 501 is expected
 Start with the control assistant that never speaks; it needs only the person's key and shows you the whole machinery without an assistant model in the way:
 
 ```bash
-vhhome-episode --case cx_tidy_missing_rep --persona baseline --assistant silent --out runs/demo
+vhhome-episode --latency 2 --case cx_tidy_missing_rep --persona baseline --assistant silent --out runs/demo
 ```
 
 Then put a model in the seat:
 
 ```bash
-vhhome-episode --case cx_tidy_missing_rep --persona baseline \
+vhhome-episode --latency 2 --case cx_tidy_missing_rep --persona baseline \
     --assistant gemini:gemini-3.8-flash --out runs/demo
 ```
 

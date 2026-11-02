@@ -10,9 +10,9 @@ cooksim-roster --personas   # the cook personas
 The roster is defined once, in `cooksim_bench/roster.py`. A roster *tag* passed to `--assistant` expands to the exact flags that produced the published numbers; `<backend>:<model>` runs anything else.
 
 ```bash
-cooksim-episode --case b3_easy_nops_medium_map_2 --persona baseline --assistant gpt-6-astra --out runs/demo
-cooksim-episode --case b3_easy_nops_medium_map_2 --persona baseline --assistant gemini:gemini-3.8-flash --out runs/demo
-cooksim-benchmark --assistant qwen3.8-27b --out runs/qwen --workers 2
+cooksim-episode --latency 2 --case b3_easy_nops_medium_map_2 --persona baseline --assistant gpt-6-astra --out runs/demo
+cooksim-episode --latency 2 --case b3_easy_nops_medium_map_2 --persona baseline --assistant gemini:gemini-3.8-flash --out runs/demo
+cooksim-benchmark --latency 2 --assistant qwen3.8-27b --out runs/qwen --workers 2
 ```
 
 The renderer must be running in another terminal (`cooksim-server --port 17773`).
@@ -25,7 +25,7 @@ In the default **polled** setting the harness calls the assistant once every 2 t
 - a user turn with the assistant's previous reply, the recent conversation and the engine's feedback;
 - the last 8 frames, each a 1042x396 JPEG showing the top-down kitchen beside the cook's first-person view.
 
-It must answer with one JSON object (`cooksim_bench/backends/assistant_reply_schema.json`): `cook_progress` (completed / current / future subgoals), `goal_change`, `text` (what the cook hears; empty = stay silent) and `flag` (the name of the mistake it is calling, if any). The seconds a reply takes are charged to the game clock (`COOKSIM_ASSIST_LATENCY=measured`, the default), so a slow model's warning lands late in the kitchen. `--latency 2` replaces the measured time by a fixed 2 ticks for every reply (the latency ablation).
+It must answer with one JSON object (`cooksim_bench/backends/assistant_reply_schema.json`): `cook_progress` (completed / current / future subgoals), `goal_change`, `text` (what the cook hears; empty = stay silent) and `flag` (the name of the mistake it is calling, if any). The seconds a reply takes are charged to the game clock (`COOKSIM_ASSIST_LATENCY=measured`, the default), so a slow model's warning lands late in the kitchen. `--latency 2` selects the main benchmark setting: fixed two-tick delivery. `--latency measured` selects the measured-latency comparison; omitting the flag retains the measured default for compatibility.
 
 Every seat is parsed by the same JSON reader in plain JSON mode. No provider-side schema enforcement is used for the API seats, because the streaming seats cannot have it and parity matters more than a few parse failures; locally served models are given the reply schema as guided decoding (section 5), which fixes their output format without changing what they are asked.
 
@@ -127,7 +127,7 @@ What the native setting measures is the model's own turn-taking. In our runs bot
 To use your own OpenAI-compatible server:
 
 ```bash
-cooksim-episode --case b3_easy_nops_medium_map_2 --persona baseline \
+cooksim-episode --latency 2 --case b3_easy_nops_medium_map_2 --persona baseline \
     --assistant openai:my-model --base-url http://127.0.0.1:8000/v1 --profile default --out runs/mine
 ```
 
@@ -150,7 +150,7 @@ Add a profile to `PROFILES` if the model's card calls for specific sampling or t
 export ROOT=$HOME                                  # where envs/<name> and hf_cache/<name> live
 CUDA_VISIBLE_DEVICES=0 bash serving/serve_qwen.sh &
 curl -s http://127.0.0.1:18300/v1/models           # wait until it answers (minutes on a network disk)
-cooksim-episode --case b3_easy_nops_medium_map_2 --persona baseline --assistant qwen3.8-27b --out runs/qwen
+cooksim-episode --latency 2 --case b3_easy_nops_medium_map_2 --persona baseline --assistant qwen3.8-27b --out runs/qwen
 ```
 
 Each model's environment recipe, weights download and fixes are in `serving/notes/<name>.md`; the item-by-item check of each setting against the model's own guidance is in `serving/notes/<name>.audit.md`.

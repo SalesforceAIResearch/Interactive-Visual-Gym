@@ -15,7 +15,7 @@ vhhome-case new --name my_tidy_1 --task tidy_hard \
     --out my_cases.json                               # checks the composition rules, writes the case
 vhhome-case verify my_cases.json                      # re-check a case file
 vhhome-case --cases my_cases.json show my_tidy_1      # the plan the case composes to
-vhhome-episode --cases my_cases.json --case my_tidy_1 --persona classic_novice \
+vhhome-episode --latency 2 --cases my_cases.json --case my_tidy_1 --persona classic_novice \
     --assistant gemini:gemini-3.8-flash --out runs/mine
 ```
 
@@ -248,7 +248,7 @@ Several files can be joined in `VHHOME_CASES` with the path separator.
 One episode:
 
 ```bash
-vhhome-episode --cases my_cases.json --case my_tidy_1 --persona classic_novice \
+vhhome-episode --latency 2 --cases my_cases.json --case my_tidy_1 --persona classic_novice \
     --assistant gemini:gemini-3.8-flash --port 8080 --out runs/mine
 ```
 
@@ -260,7 +260,7 @@ only, no takeover; the mistake happens only if the person enacts it) and `hard` 
 A whole run over your own cells:
 
 ```bash
-vhhome-benchmark --assistant gemini:gemini-3.8-flash --cases my_cases.json --cells custom_cells.json \
+vhhome-benchmark --latency 2 --assistant gemini:gemini-3.8-flash --cases my_cases.json --cells custom_cells.json \
     --out runs/mine --engines 8080,8081 --repeat 1
 vhhome-score --run runs/mine/r1 --only objective
 ```
@@ -316,7 +316,7 @@ A clean run with the person model in the loop is `--case <task>__clean` (any tas
 nothing injected and a silent assistant by default:
 
 ```bash
-vhhome-episode --case tidybedroom_hard__clean --persona baseline --port 8080 --out runs/ref
+vhhome-episode --latency 2 --case tidybedroom_hard__clean --persona baseline --port 8080 --out runs/ref
 ```
 
 ## 8. Adding a brand-new task
@@ -362,7 +362,7 @@ the only proof that the scene contains reachable instances of everything the tas
 
 ```bash
 python -m vhhome_bench.video.film_reference 8080 mytask_hard runs/ref/mytask_hard.json   # must end "won"
-vhhome-episode --case mytask_hard__clean --persona baseline --port 8080 --out runs/ref       # with the person model
+vhhome-episode --latency 2 --case mytask_hard__clean --persona baseline --port 8080 --out runs/ref       # with the person model
 ```
 
 Watch the film: an object the person stands over on a low table, a lamp on a wall, or a surface with no free

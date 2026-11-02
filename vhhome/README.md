@@ -23,7 +23,7 @@ Detailed instructions: [Getting started](docs/GETTING_STARTED.md).
 
 ```bash
 export GEMINI_API_KEY=...
-vhhome-episode --case cx_tidy_missing_rep --persona baseline \
+vhhome-episode --latency 2 --case cx_tidy_missing_rep --persona baseline \
     --assistant gemini:gemini-3.8-flash --out runs/demo
 ```
 
@@ -32,7 +32,7 @@ The episode record is written under `runs/demo/gemini-3.8-flash/`, with the case
 ## Evaluate an assistant
 
 ```bash
-vhhome-benchmark --assistant gemini:gemini-3.8-flash --out runs/gemini --engines 8080 --repeat 1
+vhhome-benchmark --latency 2 --assistant gemini:gemini-3.8-flash --out runs/gemini --engines 8080 --repeat 1
 vhhome-score --run runs/gemini/r1 --only objective
 # Interaction-quality grading makes API calls to the configured judges:
 vhhome-score --run runs/gemini/r1 --only rubric --judges gemini,gpt
@@ -64,7 +64,7 @@ See [Generate cases](docs/GENERATE_CASES.md) for supported customization and val
 | [Interaction quality](docs/INTERACTION_QUALITY_GRADING.md) | Judge inputs, rubric, and aggregation |
 | [Engine](docs/ENGINE.md) | State, actions, rendering, and engine API |
 
-[Engine and episode overview](docs/OVERVIEW.md) · [VirtualHome installation](docs/SIMULATOR.md) · [Published results](results/README.md)
+[Engine and episode overview](docs/OVERVIEW.md) · [VirtualHome installation](docs/SIMULATOR.md) · [Project leaderboard](https://hellomuffin.github.io/ive-benchmark/redesign/#leaderboard-section)
 
 ## Development
 

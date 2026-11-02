@@ -74,7 +74,7 @@ The browser uses the GPU through Vulkan when a usable Vulkan driver is installed
 ## 4. Your first episode
 
 ```bash
-cooksim-episode --case b3_easy_nops_medium_map_2 --persona baseline \
+cooksim-episode --latency 2 --case b3_easy_nops_medium_map_2 --persona baseline \
     --assistant gemini:gemini-3.8-flash --out runs/demo
 ```
 

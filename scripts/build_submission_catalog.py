@@ -58,7 +58,7 @@ def build():
         )
     paths = sorted(paths)
     result = {
-        "version": "ivg-bench-submissions-v2",
+        "version": "ivg-bench-submissions-v3",
         "runs": [1, 2, 3],
         "engines": cells,
         "source_sha256": {
@@ -73,7 +73,7 @@ def build():
             "vhhome": {
                 "delay": "fixed-2-ticks",
                 "interface": "pulled",
-                "human_model": "gemini-3.7-flash",
+                "human_model": "gemini-3.1-pro-preview",
             },
             "screensim": {
                 "delay": "interaction-steps",

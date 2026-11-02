@@ -2,6 +2,8 @@
 
 The benchmark comprises 30 designed cases, each evaluated with three personas: 90 episodes per assistant per run. Preserve the task definitions, persona assignment, simulated-user model, and assistant configuration.
 
+ScreenSim uses its existing fixed zero-tick response delay. The fixed-two-tick versus measured-latency comparison applies to CookSim and VH-Home; ScreenSim is unchanged in both cross-environment views.
+
 ## Run the benchmark
 
 From `interactive_visual_gym/screensim/`, after completing [setup](GETTING_STARTED.md):

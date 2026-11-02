@@ -1,78 +1,60 @@
-# Reproducing the leaderboard
+# Running the benchmark
 
-The numbers in [results/](../results/README.md) are produced by the commands below, nothing else. Expect
-differences from run to run: the cook is an LLM, so episodes are not deterministic; that is why every seat is run
-three times and reported as mean ± SD.
+Published comparisons are maintained on the [project leaderboard](https://hellomuffin.github.io/ive-benchmark/redesign/#leaderboard-section). This repository contains the simulation and evaluation code, without a duplicate results snapshot.
 
-## 1. Setting
+## Setup
 
-* suite `benchmark/cases_composite_v5.json`, kitchens `benchmark/grid.json`
-* cook model `gemini-3.7-flash`, personas `baseline classic_novice classic_expert`
-* measured latency charged to the clock; scheduler, pace and grader as `cooksim-episode` sets them
-* judges: QA and proactive alerts `gemini-3.7-flash`; interaction-quality rubric `gemini-3.7-flash` and `gpt-5.4-mini`
+Run these commands from `cooksim/` after completing [Getting started](GETTING_STARTED.md). Start the renderer with `cooksim-server --port 17773` and configure the provider keys needed by the assistant, simulated user, and judges.
 
-Keys: `GEMINI_API_KEY`, `OPENAI_API_KEY` (and the keys of the assistants you run). The renderer must be up
-(`cooksim-server --port 17773`).
+Keep the suite (`benchmark/cases_composite_v5.json`), layouts (`benchmark/grid.json`), simulated-user model (`gemini-3.7-flash`), and personas (`baseline classic_novice classic_expert`) fixed across comparisons. Use polled interfaces for streaming assistants.
 
-## 2. One seat, three runs
+## Main setting: fixed two-tick delay
+
+The main comparison does **not** charge measured inference latency. Every assistant response is delivered after two simulation ticks; this is not zero delay.
 
 ```bash
 for r in 1 2 3; do
-  cooksim-benchmark --assistant gemini:gemini-3.8-flash --out runs/gemini --workers 4 --repeat $r
+  cooksim-benchmark --assistant gemini:gemini-3.8-flash --latency 2 \
+      --out runs/flash_fixed2 --workers 4 --repeat "$r" --dump-states
 done
-cooksim-score --run runs/gemini
+cooksim-score --run runs/flash_fixed2
 ```
 
-`cooksim-roster` prints every seat of the leaderboard with its backend; `--assistant <tag>` uses those exact flags.
-A run is resumable: rerunning the same command skips complete episodes. One seat-run is 150 episodes of 150–300
-ticks; with an API assistant and 4 workers it takes 6–10 hours, dominated by the models' latency.
+## Measured-latency comparison
 
-Local open-weight assistants need their server first ([ASSISTANTS.md](ASSISTANTS.md)):
+Use the same settings but replace fixed timing with measured inference time. Delivery delay is `ceil(inference_seconds / 1.2)`, capped at 30 ticks. Run separate rollouts because delayed guidance can change user behavior and task outcomes.
 
 ```bash
-bash serving/serve_qwen.sh &            # one GPU; waits until /v1/models answers
-cooksim-benchmark --assistant qwen3.8-27b --out runs/qwen --workers 3 --repeat 1
+for r in 1 2 3; do
+  cooksim-benchmark --assistant gemini:gemini-3.8-flash --latency measured \
+      --out runs/flash_measured --workers 4 --repeat "$r" --dump-states
+done
+cooksim-score --run runs/flash_measured
 ```
 
-## 3. Ablations
+Always pass `--latency` explicitly: without it, the CLI preserves `COOKSIM_ASSIST_LATENCY` if exported and otherwise defaults to measured latency for compatibility. `--latency 0` is a custom instantaneous setting, not the main benchmark. The same flags work with `cooksim-episode`.
 
-Fixed 2-tick latency (every seat, one run):
+## Models, output, and scoring
+
+`cooksim-roster` lists configured assistants; `--assistant <backend>:<model>` connects another model. For a local model, start its server first ([Assistants](ASSISTANTS.md)) and use `--workers 1` so concurrent episodes do not inflate measured inference time.
+
+Records are stored under `<out>/frames/<persona>/<tag>/<case>.json`; runs two and three use tags suffixed with `__r2` and `__r3`. Repeating a completed command resumes the run. Use different output roots for fixed and measured timing to avoid resuming the wrong condition.
+
+`cooksim-score` computes objective metrics, grades questions and proactive requests, and grades interaction quality with Gemini and GPT. It preserves per-judge outputs in `<out>/sq_v4/`. See [Interaction quality](INTERACTION_QUALITY_GRADING.md) for grading and [Submissions](../../docs/submissions.md) for the official two-judge aggregation and fixed-timing submission track.
+
+## Changing the simulated-user model
+
+A separate user-model experiment can run the fixed 90-case selection with a different cook model. For example, with the visual assistant held at Gemini 3.7 Flash:
 
 ```bash
-cooksim-benchmark --assistant gemini:gemini-3.8-flash --out runs/gemini_lat2 --latency 2
-```
-
-Cook-model ablation (90 cells, the assistant fixed to gemini-3.7-flash, four models in the cook seat):
-
-```bash
-python -m cooksim_bench.run_assist_bench --tag gpt-6-astra --sup-obs frames --paradigm hardsoft \
+COOKSIM_SCHED=v5 COOKSIM_PACE=tight COOKSIM_GRADER=cook COOKSIM_ASSIST_LATENCY=2 python -m cooksim_bench.run_assist_bench \
+    --tag gpt-6-astra --sup-obs frames --paradigm hardsoft \
     --persona-v2 baseline classic_novice classic_expert --workers 3 \
-    --cells-file benchmark/cook_ablation_cells.json --out-root runs/cookabl/frames --log-dir runs/cookabl/logs \
+    --cells-file benchmark/cook_ablation_cells.json \
+    --out-root runs/cookabl_fixed2/frames --log-dir runs/cookabl_fixed2/logs \
     --assist-backend gemini --assist-model gemini-3.7-flash \
-    --cook-backend openai --cook-model gpt-6-astra --cook-base-url https://api.openai.com/v1 --cook-profile gpt5-cook
-cooksim-score --run runs/cookabl
+    --cook-backend openai --cook-model gpt-6-astra \
+    --cook-base-url https://api.openai.com/v1 --cook-profile gpt5-cook
 ```
 
-(`cooksim_bench/roster.py` lists the four cook entries with their flags under `COOK_ABLATION`.)
-
-## 4. Scoring
-
-`cooksim-score --run <run>` runs, in order:
-
-| step | tool | writes |
-|---|---|---|
-| objective | `cooksim_bench.scoring.eval_v2_sweep` | `eval_v2.json`: outcome, in-time success, TT, CC, DT, detection |
-| qa | `cooksim_bench.scoring.regrade_qa` | `qa_regrade.json` |
-| proactive | `cooksim_bench.scoring.regrade_proactive_v2` | `proactive_v2.json` |
-| rubric | `cooksim_bench.scoring.sq_v4_score --judge gemini,gpt` | `sq_v4/frames/<persona>/<tag>/<case>.json` |
-| table | `cooksim_bench.scoring.sq_v4_three_runs` | `sq_v4/three_runs_five.json`, the seat table over runs 1–3 |
-
-Every step resumes: a killed pass grades only what is missing. The leaderboard columns are read from `eval_v2.json`
-(episode fields `v3.in_time_success`, `task_success`, `task_efficiency.TT/CC`, `assistance_quality.DT`, the
-detection fields), `qa_regrade.json`, `proactive_v2.json` and `sq_v4/three_runs_five.json`.
-
-## 5. Cost
-
-Per seat-run: 150 episodes × (50–150 assistant calls) plus the cook's calls (≈ 1 per 2 ticks); grading adds one judge
-call per question and request and two judge calls per assistant line for the rubric. Frame rendering is CPU-bound
-(headless Chromium with software GL); 4 workers per 8 cores is a comfortable rate.
+Report this separately from the standard benchmark because the simulated-user model has changed.

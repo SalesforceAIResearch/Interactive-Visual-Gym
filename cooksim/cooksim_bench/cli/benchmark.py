@@ -26,7 +26,7 @@ def main(argv=None):
     ap.add_argument("--suite", default=None, help="a case file instead of the shipped suite")
     ap.add_argument("--workers", type=int, default=4, help="episodes run at once (API rate limits: 3-4; a local model: 2-3)")
     ap.add_argument("--repeat", type=int, default=1, help="independent run number (1, 2, 3); tags the records")
-    ap.add_argument("--latency", default=None, help="measured (default) | fixed ticks per reply, e.g. 2")
+    ap.add_argument("--latency", default=None, help="2: fixed two-tick delay (main benchmark); measured: inference-time delay. Omitted: COOKSIM_ASSIST_LATENCY or measured.")
     ap.add_argument("--dump-states", action="store_true")
     args, extra = ap.parse_known_args(argv)
 

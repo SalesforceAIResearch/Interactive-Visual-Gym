@@ -7,7 +7,7 @@ from cooksim_bench.paths import ROOT, SUITE, GRID
 
 RENDER_URL = "http://127.0.0.1:17773/static/headless_render.html"
 
-# the benchmark setting every published number was produced with
+# Backward-compatible runner defaults; select --latency 2 for the main benchmark.
 BENCH_ENV = {
     "COOKSIM_SCHED": "v5",              # scheduler v5: live-state anchors, soft-hard takeovers
     "COOKSIM_PACE": "tight",            # the fire physics of the formal runs

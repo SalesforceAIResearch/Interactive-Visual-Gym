@@ -16,7 +16,7 @@ Each environment is a separate installable package:
   tests/                Offline regression tests
 ```
 
-CookSim and VH-Home also have `results/` and model-serving helpers. VH-Home has a `simulator/` directory for VirtualHome installation. These differences reflect actual dependencies, not separate public workflows.
+CookSim and VH-Home also have model-serving helpers. VH-Home has a `simulator/` directory for VirtualHome installation. These differences reflect actual dependencies, not separate public workflows.
 
 ## Documentation contract
 

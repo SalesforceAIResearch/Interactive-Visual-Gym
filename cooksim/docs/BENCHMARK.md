@@ -21,7 +21,7 @@ read these numbers in their kitchen rules.
 
 **Latency.** The assistant's measured thinking time is charged to the game clock: a reply that took 6 s arrives
 5 ticks after the frames it saw, and the kitchen kept moving meanwhile. The clock does not wait. `--latency 2`
-replaces the measurement with a fixed 2-tick delay (the latency ablation).
+sets a fixed two-tick delay, the main benchmark setting. Use `--latency measured` for the measured-latency comparison. Zero delay is a separate custom setting.
 
 ## 2. The suite
 
@@ -76,7 +76,7 @@ allowance) the cap.
 * **native** (streaming APIs): nobody polls; frames go into a live session at up to 1 fps, the cook's lines arrive
   as audio, and the model decides itself when to speak. Both settings are reported for the streaming models.
 * **observation**: rendered frames (default) or `agent+++`, a text state map, for models without vision.
-* **cook-model ablation**: the same cases with a different model behind the cook (`results/cook_model_ablation.md`).
+* **cook-model ablation**: the same cases with a different model behind the cook ([REPRODUCE.md](REPRODUCE.md)).
 
 ## 6. What the assistant receives and returns
 

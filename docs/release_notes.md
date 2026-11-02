@@ -1,4 +1,13 @@
-# Release notes and compatibility
+# Release notes
+
+## Results and timing configuration — 2 November 2026
+
+Benchmark score snapshots have been removed from the repository. Published comparisons are maintained in the paper and on the [project leaderboard](https://hellomuffin.github.io/ive-benchmark/redesign/#leaderboard-section).
+
+CookSim and VH-Home both expose `--latency 2` for the main fixed-two-tick setting and `--latency measured` for the measured-inference-time comparison. VH-Home now accepts these flags directly for single episodes and benchmark runs. Omitting the flag retains the prior environment/default behavior; engine transitions and delay calculations are unchanged. ScreenSim retains its fixed zero-tick setting.
+
+Submission protocol v3 refreshes the source fingerprints and uses Gemini 3.1 Pro as VH-Home's simulated user, matching the paper. The fixed-two-tick track, suite membership, user prompts, and scoring formulas are unchanged. Use separate output directories for fixed and measured runs; measured runs are not submissions to the fixed-timing track.
+ and compatibility
 
 ## Public interfaces
 
@@ -16,7 +25,7 @@ The submission aggregator gates each judge's round before averaging the two judg
 
 VH-Home now accepts `ASSIST_LATENCY=2` for a fixed two-tick delay, matching the current research runner. Its existing `0` (zero) and `1`/`measured` settings retain their behavior. CookSim's quality grader now accepts `OPENAI_API_KEY` before falling back to the legacy key file.
 
-CookSim's quality grader retries cached entries that contain a score but no valid item verdict, preserves documented not-applicable rounds, and supports targeted judge repairs. The Salesforce release uses submission protocol `ivg-bench-submissions-v2` to pin this corrected grader; its episode membership and evaluation settings match v1. A regression check ensures all frozen source hashes match the shipped files.
+CookSim's quality grader retries cached entries that contain a score but no valid item verdict, preserves documented not-applicable rounds, and supports targeted judge repairs. Submission protocol v2 pinned this corrected grader; v3 retains the same grader and refreshes the source fingerprints for the timing CLI changes described above. A regression check ensures all frozen source hashes match the shipped files.
 
 ### ScreenSim public workflows
 
@@ -52,7 +61,7 @@ All three implementations still contain an alerting preference in their persona 
 
 ### Judge provenance
 
-The grading entry points default to Gemini and GPT. Some VH-Home historical result documentation describes a mixed two-/three-judge panel. Preserve that distinction when reproducing old tables; a documentation edit cannot make those results a uniform two-judge evaluation.
+The grading entry points default to Gemini and GPT. Older VH-Home records may contain a mixed two-/three-judge panel. Preserve that distinction when reproducing old tables; a documentation edit cannot make those results a uniform two-judge evaluation.
 
 ### Citation and licensing
 

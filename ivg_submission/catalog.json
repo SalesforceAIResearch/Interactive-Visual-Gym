@@ -1,5 +1,5 @@
 {
-  "version": "ivg-bench-submissions-v2",
+  "version": "ivg-bench-submissions-v3",
   "runs": [
     1,
     2,
@@ -1338,10 +1338,10 @@
     "cooksim/cooksim_bench/backends/planact_v3_prompts.py": "31065262cfd74b0fd1d4cc93707077a78922a48ea17d8e49e0b1f26b6ca65e62",
     "cooksim/cooksim_bench/backends/warmup_server.py": "cc39a3b0887f5c2202b0db24370570c1ced11c22b83c60733eef3690a75d1d9e",
     "cooksim/cooksim_bench/cli/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "cooksim/cooksim_bench/cli/_common.py": "cc2052930c0845ef72133d35da41c38251138269bbc03eb82b84808ef43152a2",
-    "cooksim/cooksim_bench/cli/benchmark.py": "25ac357771952c1bdec4b825a463c57e9f7f374952a9c54286f93bff952e3698",
+    "cooksim/cooksim_bench/cli/_common.py": "0488204d11d95fc6fc52af8e8c4e5c2786c6ff62138d32e7affa42391f086334",
+    "cooksim/cooksim_bench/cli/benchmark.py": "4e45216c9e1b9f601249f191c5a33e8773765f6a552c6f16f2b84f53f24e19d4",
     "cooksim/cooksim_bench/cli/case.py": "c697c461ec43e62ce35e2459d5560234e94f0fe81dce2e9cf21a9a4326dd8e1d",
-    "cooksim/cooksim_bench/cli/episode.py": "41c15ea8762288edfdbc99abbc84a4747f8c9cee754f026a05c2f9d4550ea54c",
+    "cooksim/cooksim_bench/cli/episode.py": "3a5a3d0ef38d629835cbb399916a71deb790aeef64a1f24e9330ca2ce0758907",
     "cooksim/cooksim_bench/cli/score.py": "964267233eac3db1328e6d2cb1698bb97c58f315348c34d4d3f9e2a022c285bd",
     "cooksim/cooksim_bench/cluster/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "cooksim/cooksim_bench/cluster/beaker_submit.py": "beb043a03c5730153e5d6006de802f401565a5cf7f9691b8508ed6b260b2ec05",
@@ -1527,10 +1527,10 @@
     "vhhome/vhhome_bench/cases_spec.py": "c8eccfbe5b24d7a5955565cce2ad20c76a4476209cb20f0d61aa55836a1fdfe0",
     "vhhome/vhhome_bench/check.py": "277f93a89b5ad93715043341d9648597fe43729cceb6b7c0a1af50154dc0e041",
     "vhhome/vhhome_bench/cli/__init__.py": "631967d5f8394b55193ce66cab663e6b0251efc36b81268751cef3a9681259ab",
-    "vhhome/vhhome_bench/cli/_common.py": "b0923021094bcd881db977cd414f9c043e2a87a7f0596bcce414a87046a29ac7",
-    "vhhome/vhhome_bench/cli/benchmark.py": "bbda78385114fa7f6ab6450b861a9927b4a22b04cc4a962114423fe9d2d96eb4",
+    "vhhome/vhhome_bench/cli/_common.py": "5bf5b04e859ecaf697e1bc85d932b6c9c1c4de1e281193b0b3aca0969fe01cd3",
+    "vhhome/vhhome_bench/cli/benchmark.py": "4c10d81fb7b51afee5ce2d50dad132cf2cc85a126e3b62efefb19bc561792508",
     "vhhome/vhhome_bench/cli/case.py": "40371b75c5b1c74ac211a9901a6a502dd6dfe8c39e7970a312730f6028964b48",
-    "vhhome/vhhome_bench/cli/episode.py": "3693717f2eabdb9d5c1730cadfb2990b982d2ab8994751721011b2a1695c3906",
+    "vhhome/vhhome_bench/cli/episode.py": "7794695180d9cd6ec87bb8ef034635b0e29976e96ffdf17811f15ca679772822",
     "vhhome/vhhome_bench/cli/score.py": "07cbac0ef3dfe62c46902c4c4069c94b1af7a73a36ba9f1d14d030b7a98e3502",
     "vhhome/vhhome_bench/cluster/__init__.py": "689f78552c297ea2a944893536265163effa91553078fc2c1757eae3b07adc2b",
     "vhhome/vhhome_bench/cluster/beaker_dedupe.py": "a083c8a5c9136fb87b41923655b0bb0eb319c7162b36d8be6d9029382c01f238",
@@ -1570,7 +1570,7 @@
     "vhhome": {
       "delay": "fixed-2-ticks",
       "interface": "pulled",
-      "human_model": "gemini-3.7-flash"
+      "human_model": "gemini-3.1-pro-preview"
     },
     "screensim": {
       "delay": "interaction-steps",

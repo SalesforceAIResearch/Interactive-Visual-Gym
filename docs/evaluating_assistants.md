@@ -28,6 +28,60 @@ The public command families share a naming convention:
 
 The table lists command families, not complete invocations. Use the linked guides for required arguments. Existing engine commands and record formats are retained for compatibility.
 
+## Response timing
+
+**The main benchmark ignores measured inference latency by using a fixed two-tick response delay in CookSim and VH-Home. It does not use zero delay.** The measured-latency comparison instead converts inference time into simulation ticks. These are separate rollouts because response timing changes subsequent user actions.
+
+| Setting | CookSim | VH-Home | ScreenSim |
+|---|---|---|---|
+| Main: fixed response timing | `--latency 2` | `--latency 2` | Existing fixed zero-tick, action–response setting |
+| Measured-latency comparison | `--latency measured` | `--latency measured` | Reuse the same ScreenSim evaluation |
+| Tick duration / delay cap | 1.2 seconds / 30 ticks | 1.2 seconds / 15 ticks | Not applicable |
+
+For measured latency, the delay is `ceil(inference_seconds / 1.2)`, capped as above. In VH-Home, use `ASSIST_LATENCY_DIV=1` to charge the observed time without hardware normalization. Fixed timing always delivers after two simulation ticks regardless of inference duration; API calls still take wall-clock time to complete.
+
+Run the following from the corresponding engine directory after setup. Each loop evaluates three independent runs; keep separate output roots for the two settings.
+
+**CookSim — fixed two ticks:**
+
+```bash
+for r in 1 2 3; do
+  cooksim-benchmark --assistant gemini:gemini-3.8-flash --latency 2 \
+      --repeat "$r" --out runs/flash_fixed2 --workers 4
+done
+```
+
+**CookSim — measured latency:**
+
+```bash
+for r in 1 2 3; do
+  cooksim-benchmark --assistant gemini:gemini-3.8-flash --latency measured \
+      --repeat "$r" --out runs/flash_measured --workers 4
+done
+```
+
+**VH-Home — fixed two ticks:**
+
+```bash
+for r in 1 2 3; do
+  vhhome-benchmark --assistant gemini-3.8-flash --latency 2 \
+      --repeat "$r" --out runs/flash_fixed2 --engines 8080
+done
+```
+
+**VH-Home — measured latency:**
+
+```bash
+for r in 1 2 3; do
+  ASSIST_LATENCY_DIV=1 vhhome-benchmark --assistant gemini-3.8-flash --latency measured \
+      --repeat "$r" --out runs/flash_measured --engines 8080
+done
+```
+
+The same `--latency` flags work with `cooksim-episode` and `vhhome-episode`. For compatibility, omitting the flag retains the exported timing variable (`COOKSIM_ASSIST_LATENCY` / `ASSIST_LATENCY`), or measured latency when unset. Always pass the flag when reproducing a benchmark setting. `--latency 0` is a custom instantaneous setting, not the main benchmark. Use polled streaming backends for benchmark comparisons; native streaming is a separate configuration.
+
+[Leaderboard submissions](submissions.md) currently accept the fixed-two-tick track. Keep measured-latency rollouts separate; do not label them as fixed timing or mix their records in the same submission.
+
 ## Output locations
 
 | Environment | Records | Scoring input |

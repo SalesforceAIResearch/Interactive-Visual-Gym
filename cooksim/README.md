@@ -25,7 +25,7 @@ Detailed instructions: [Getting started](docs/GETTING_STARTED.md).
 
 ```bash
 export GEMINI_API_KEY=...
-cooksim-episode --case b3_easy_nops_medium_map_2 --persona baseline \
+cooksim-episode --latency 2 --case b3_easy_nops_medium_map_2 --persona baseline \
     --assistant gemini:gemini-3.8-flash --out runs/demo
 ```
 
@@ -34,7 +34,7 @@ The episode record is written under `runs/demo/frames/baseline/gemini-3.8-flash/
 ## Evaluate an assistant
 
 ```bash
-cooksim-benchmark --assistant gemini:gemini-3.8-flash --out runs/gemini --workers 4
+cooksim-benchmark --latency 2 --assistant gemini:gemini-3.8-flash --out runs/gemini --workers 4
 cooksim-score --run runs/gemini --only objective
 # Interaction-quality grading makes API calls to the configured judges:
 cooksim-score --run runs/gemini --only rubric --judges gemini,gpt
@@ -66,7 +66,7 @@ See [Generate cases](docs/GENERATE_CASES.md) for supported customization and val
 | [Interaction quality](docs/INTERACTION_QUALITY_GRADING.md) | Judge inputs, rubric, and aggregation |
 | [Engine](docs/ENGINE.md) | State, actions, rendering, and engine API |
 
-[Engine and episode overview](docs/OVERVIEW.md) · [Add a backend](docs/ADD_A_BACKEND.md) · [Published results](results/README.md)
+[Engine and episode overview](docs/OVERVIEW.md) · [Add a backend](docs/ADD_A_BACKEND.md) · [Project leaderboard](https://hellomuffin.github.io/ive-benchmark/redesign/#leaderboard-section)
 
 ## Development
 

@@ -232,14 +232,7 @@ Only `text` reaches the person (empty to stay silent). `flag.error` must be exac
 is how a mistake claim is graded; `flag` is `null` on every other turn. A wrong name, or a flag when nothing is
 live, counts against the assistant.
 
-**Latency.** The assistant's reply is not free. A reply that took x wall-seconds lands `ceil(x / 1.2)` ticks after
-the tick it was asked on (`ASSIST_TICK_S = 1.2`), capped at `ASSIST_MAX_TICKS = 15`; the person keeps moving
-meanwhile, and the next call starts only when the reply has landed. Only the successful attempt's own generation
-time is charged (API stalls and retries are not), and for locally served models the charged time can be divided
-by a measured hardware ratio (`benchmark/gpu_latency_ratio.json`, `ASSIST_LATENCY_DIV`) so every run is charged
-comparable seconds across cards. The published numbers served every open-weight model on the same card type and
-applied no factor (`ASSIST_LATENCY_DIV = 1`). `ASSIST_LATENCY=0` makes the
-assistant instantaneous, an ablation.
+**Response timing.** `--latency 2` is the main benchmark setting: fixed two-tick delivery, independent of inference duration. `--latency measured` converts inference time to ticks using `ceil(seconds / 1.2)`, capped at 15 ticks; keep `ASSIST_LATENCY_DIV=1` to use the observed time. Zero delay is a separate custom setting. See [Response timing](../../docs/evaluating_assistants.md#response-timing).
 
 **Takeover and release.** The person works down the clean plan at its own pace. Each mistake waits for its
 **live anchor**: for `wrong_object`, `skipped_step`, `missing_step` and `wrong_placement`, one of the person's
@@ -314,9 +307,9 @@ reason.
 The published protocol is three independent runs of the 75 cells per assistant (225 episodes):
 
 ```bash
-vhhome-benchmark --assistant <spec> --out runs/mine --repeat 1
-vhhome-benchmark --assistant <spec> --out runs/mine --repeat 2
-vhhome-benchmark --assistant <spec> --out runs/mine --repeat 3
+vhhome-benchmark --assistant <spec> --latency 2 --out runs/mine --repeat 1
+vhhome-benchmark --assistant <spec> --latency 2 --out runs/mine --repeat 2
+vhhome-benchmark --assistant <spec> --latency 2 --out runs/mine --repeat 3
 vhhome-score --run runs/mine/r1 runs/mine/r2 runs/mine/r3
 ```
 
@@ -324,12 +317,7 @@ vhhome-score --run runs/mine/r1 runs/mine/r2 runs/mine/r3
 setting; `all` adds the Claude judge), and writes the pooled `final_results.{json,md}` beside the first run root.
 The person model is part of the measurement: keep `GEMINI_MODEL` fixed when comparing assistants.
 
-The published table (`results/formal_run_2.md`, data in `results/data/formal_run_2.json`) covers 19 seats on
-this protocol: three polled API models, two streaming APIs in both their polled and native settings, six
-open-weight vision-language models, five duplex or proactive open models, and the silent control that never
-speaks. In that table the best AQ is 0.49 (`gpt-6-astra`), won ranges from 0.05 to 0.36 across the speaking
-seats, in-time success S is at most 0.11, and DET is at most 0.57 (`gemini-3.1-pro-preview`). Scores on custom
-cases are comparable across assistants on the same cases, not with the published table.
+Published scores are maintained on the [project leaderboard](https://hellomuffin.github.io/ive-benchmark/redesign/#leaderboard-section). Custom tasks and changed settings should be evaluated separately.
 
 Known limits, measured and kept honest: navigation and visibility still end some episodes before the first
 mistake fires; the mistake trigger assumes the clean plan's order, so a person working in its own order can

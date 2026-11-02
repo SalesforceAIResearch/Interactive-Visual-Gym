@@ -4,19 +4,21 @@ Run the benchmark with your assistant, submit the native trajectories, and provi
 
 ## 1. Match the submission protocol
 
-The current submission protocol is `ivg-bench-submissions-v2`:
+The current submission protocol is `ivg-bench-submissions-v3`:
 
 | Setting | CookSim | VH-Home | ScreenSim |
 |---|---|---|---|
 | Case–persona episodes per run | 150 | 75 | 90 |
 | Independent runs | 3 | 3 | 3 |
-| Assistant delay | Fixed 2 ticks | Fixed 2 ticks | Interaction steps |
+| Assistant delay | Fixed 2 ticks (`--latency 2`) | Fixed 2 ticks (`--latency 2`) | Fixed 0 ticks (interaction steps) |
 | Assistant interface | Pulled | Pulled | Pulled |
-| Simulated-user model | Gemini 3.7 Flash | Gemini 3.7 Flash | Gemini 3.7 Flash |
+| Simulated-user model | Gemini 3.7 Flash | Gemini 3.1 Pro | Gemini 3.7 Flash |
 
-Use the existing [assistant integration guides](evaluating_assistants.md). For this track, pass `--latency 2` to `cooksim-benchmark`, and export `ASSIST_LATENCY=2 GEMINI_MODEL=gemini-3.7-flash` before running `vhhome-benchmark`. The latter matches the latest `lat2_p37` research runs, not the older VH-Home default. Do not select a native streaming adapter. ScreenSim retains its step-based setting.
+Use `--latency 2` for both `cooksim-benchmark` and `vhhome-benchmark`. For VH-Home, keep `GEMINI_MODEL=gemini-3.1-pro-preview` (the engine default), matching the paper's fixed and measured comparisons. Do not select a native streaming adapter. ScreenSim retains its fixed zero-tick action–response setting.
 
-The exact membership and definition hashes are in [catalog.json](../ivg_submission/catalog.json). Version 2 incorporates the CookSim judge-resume fix; membership, user prompts, timing, and aggregation are unchanged from version 1. Repackage existing records with the current tools rather than editing an old manifest. This version freezes the current release definitions, including their existing persona prompts; it does not retrospectively change the paper's experiments. Custom tasks, different user models, zero/measured latency, and native streaming belong in separate experimental tracks.
+The exact membership and definition hashes are in [catalog.json](../ivg_submission/catalog.json). Version 3 adds explicit VH-Home timing flags and corrects its simulated-user model to match the paper. Membership, user prompts, scoring rules, and the fixed-two-tick delay are unchanged. Existing bundles must be regenerated with the current tools; VH-Home runs using a different user model belong to a separate experimental track.
+
+Use the [fixed-two-tick commands](evaluating_assistants.md#response-timing) for this track. Measured-latency runs are a separate experiment and are not accepted as fixed-timing submissions.
 
 ## 2. Package your records
 

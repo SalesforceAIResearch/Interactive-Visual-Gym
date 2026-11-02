@@ -28,7 +28,7 @@ The shipped suite has 50 cases: 5 recipe tiers x 2 kitchen maps (`medium_map`, `
 
 Every case also carries questions and a standing request; some carry a plan change. The formal protocol plays every case with 3 cook personas (`baseline`, `classic_novice`, `classic_expert`), 150 episodes per assistant per run, and averages 3 independent runs.
 
-**Leaderboard:** [results/README.md](../results/README.md).
+**Leaderboard:** [Project leaderboard](https://hellomuffin.github.io/ive-benchmark/redesign/#leaderboard-section).
 
 ## Quickstart
 
@@ -64,7 +64,7 @@ cooksim-server --port 17773
 ### Run one episode
 
 ```bash
-cooksim-episode --case b3_easy_nops_medium_map_2 --persona baseline \
+cooksim-episode --latency 2 --case b3_easy_nops_medium_map_2 --persona baseline \
     --assistant gemini:gemini-3.8-flash --out runs/demo
 ```
 
@@ -73,9 +73,9 @@ The record lands at `runs/demo/frames/baseline/gemini-3.8-flash/b3_easy_nops_med
 ### Run the benchmark and score it
 
 ```bash
-cooksim-benchmark --assistant gemini:gemini-3.8-flash --out runs/gemini --workers 4   # 150 episodes, resumable
-cooksim-benchmark --assistant gemini:gemini-3.8-flash --out runs/gemini --repeat 2
-cooksim-benchmark --assistant gemini:gemini-3.8-flash --out runs/gemini --repeat 3
+cooksim-benchmark --latency 2 --assistant gemini:gemini-3.8-flash --out runs/gemini --workers 4   # 150 episodes, resumable
+cooksim-benchmark --latency 2 --assistant gemini:gemini-3.8-flash --out runs/gemini --repeat 2
+cooksim-benchmark --latency 2 --assistant gemini:gemini-3.8-flash --out runs/gemini --repeat 3
 cooksim-score --run runs/gemini
 ```
 
@@ -89,7 +89,7 @@ cooksim-score --run runs/gemini
 cooksim-case derive --from b3_medium_nops_medium_map_3 --name my_burger_1 \
     --drop wrong_order --add-error leave_unattended:meat --add-question next_step --out my_cases.json
 cooksim-case verify my_cases.json
-cooksim-episode --cases my_cases.json --case my_burger_1 --persona classic_novice --assistant gemini:gemini-3.8-flash --out runs/mine
+cooksim-episode --latency 2 --cases my_cases.json --case my_burger_1 --persona classic_novice --assistant gemini:gemini-3.8-flash --out runs/mine
 ```
 
 Details in [docs/GENERATE_CASES.md](GENERATE_CASES.md).
@@ -130,7 +130,6 @@ benchmark/              the 50-case suite, kitchen maps, verified-mistake invent
 web/                    the WebGL renderer (headless_render.html) and the interactive game page
 serving/                scripts and shims that serve the open-weight assistants (vLLM or the authors' code)
 docs/                   documentation
-results/                leaderboard tables and the numbers behind the paper
 tests/, examples/
 ```
 

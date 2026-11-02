@@ -14,9 +14,9 @@ backend, model, request profile and (for local models) port that produced the pu
 `<backend>:<model>` runs anything else.
 
 ```bash
-vhhome-episode --case cx_tidy_missing_rep --persona baseline --assistant gpt-6-astra --out runs/demo
-vhhome-episode --case cx_tidy_missing_rep --persona baseline --assistant gemini:gemini-3.8-flash --out runs/demo
-vhhome-benchmark --assistant qwen3.8-27b --out runs/qwen --engines 8080
+vhhome-episode --latency 2 --case cx_tidy_missing_rep --persona baseline --assistant gpt-6-astra --out runs/demo
+vhhome-episode --latency 2 --case cx_tidy_missing_rep --persona baseline --assistant gemini:gemini-3.8-flash --out runs/demo
+vhhome-benchmark --latency 2 --assistant qwen3.8-27b --out runs/qwen --engines 8080
 ```
 
 A simulator instance must be running (`bash simulator/launch_simulators.sh 1`) and `GEMINI_API_KEY` must be set
@@ -203,7 +203,7 @@ run with; they are not the published setting.
 To use your own OpenAI-compatible server:
 
 ```bash
-vhhome-episode --case cx_tidy_missing_rep --persona baseline \
+vhhome-episode --latency 2 --case cx_tidy_missing_rep --persona baseline \
     --assistant openai:my-model --base-url http://127.0.0.1:8000/v1 --profile default --out runs/mine
 ```
 
@@ -239,7 +239,7 @@ export VHHOME_MODELS=$HOME                          # where envs/<name> and hf_c
 CUDA_VISIBLE_DEVICES=0 bash serving/serve.sh qwen3.8-27b &
 curl -s http://127.0.0.1:18300/v1/models            # wait until it answers (minutes on a network disk)
 python -m vhhome_bench.preflight qwen3.8-27b        # one real turn through the harness's own path; warms the server
-vhhome-episode --case cx_tidy_missing_rep --persona baseline --assistant qwen3.8-27b --out runs/qwen
+vhhome-episode --latency 2 --case cx_tidy_missing_rep --persona baseline --assistant qwen3.8-27b --out runs/qwen
 ```
 
 `serving/serve.sh <tag> [port]` looks the tag up in the roster and runs its `serve_<model>.sh` with that port, logs

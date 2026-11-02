@@ -33,7 +33,7 @@ Match the following before combining results:
 - Case definitions, persona assignments, and code revision.
 - Assistant backend, observations, response format, and polling/session policy.
 - Simulated-user model and prompts.
-- Measured, fixed, or zero assistant-delay setting where supported.
+- Fixed two-tick main setting or measured-latency comparison in CookSim/VH-Home; fixed zero-tick action–response setting in ScreenSim.
 - Completion budgets, reference rollouts, and event allowances.
 - Judge models, rubric subset, aggregation, and treatment of missing judgments.
 
@@ -49,4 +49,4 @@ This checkout contains legacy alerting-persona fields and environment-specific g
 
 Custom tasks and altered event schedules are useful experiments, but should be reported separately from the fixed benchmark.
 
-For new leaderboard submissions, use the versioned [submission protocol](submissions.md): three runs, fixed two-tick delay for CookSim/VH-Home, pulled assistant interfaces, and two-judge quality scoring. Historical reproduction commands retain their original defaults.
+For new leaderboard submissions, use the versioned [submission protocol](submissions.md): three runs, fixed two-tick delay for CookSim/VH-Home, pulled assistant interfaces, and two-judge quality scoring. Use explicit `--latency 2` or `--latency measured` as shown in [Response timing](evaluating_assistants.md#response-timing); omitted flags retain backward-compatible measured-delay defaults.

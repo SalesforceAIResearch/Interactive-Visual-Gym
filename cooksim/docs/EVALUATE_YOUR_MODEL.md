@@ -6,7 +6,7 @@ There are three ways to plug it in.
 ## 1. An OpenAI-compatible endpoint (vLLM, SGLang, your own server)
 
 ```bash
-cooksim-episode --case b3_easy_nops_medium_map_2 --persona baseline \
+cooksim-episode --latency 2 --case b3_easy_nops_medium_map_2 --persona baseline \
     --assistant openai:my-model --base-url http://127.0.0.1:8000/v1 --profile default --out runs/mine
 ```
 
@@ -44,7 +44,7 @@ since the last turn, with the cook's lines marked. With `--obs agent+++` the fra
   `misidentify_assemble`, `omit_subgoal`, `repeat_step`, `forget_next_step`, `leave_unattended`, `mis_prep`). It is how
   the engine knows the assistant *named* the mistake; the cook also hears `text`. A wrong name, or a flag when no
   mistake is live, is a false alarm.
-* The reply's latency is measured and charged to the clock. A model that thinks for 10 s answers 8 ticks late.
+* Response timing is selected with `--latency`: `2` delivers every response after two simulation ticks (main benchmark); `measured` charges inference time at 1.2 seconds per tick, rounded up and capped at 30 ticks. A 10-second response therefore arrives 9 ticks later in measured mode.
 
 Replies that are not valid JSON, or that nest `text`/`flag` inside another object, are tolerated once (the harness
 lifts nested keys) but a model that cannot keep the schema will be read as silent.
@@ -52,14 +52,16 @@ lifts nested keys) but a model that cannot keep the schema will be read as silen
 ## Running the benchmark
 
 ```bash
-cooksim-benchmark --assistant openai:my-model --base-url http://127.0.0.1:8000/v1 --out runs/mine --workers 3
-cooksim-benchmark ... --repeat 2 ; cooksim-benchmark ... --repeat 3     # the leaderboard uses three runs
-cooksim-score --run runs/mine
+for r in 1 2 3; do
+  cooksim-benchmark --assistant openai:my-model --base-url http://127.0.0.1:8000/v1 \
+      --latency 2 --out runs/mine_fixed2 --workers 1 --repeat "$r"
+done
+cooksim-score --run runs/mine_fixed2
 ```
 
-Then compare with [results/README.md](../results/README.md): in-time success, task success, detection F1, QA and
-proactive accuracy, interaction quality. Keep the setting identical (cook model, personas, measured latency) for a
-fair comparison; report the cook model and the number of runs with your numbers.
+This runs the main benchmark with **fixed two-tick response delay**, ignoring measured inference latency. For the measured-latency comparison, replace `--latency 2` with `--latency measured` and use a separate output root such as `runs/mine_measured`. Keep the cases, personas, model settings, and judges unchanged. See [Response timing](../../docs/evaluating_assistants.md#response-timing) and [Reproduce](REPRODUCE.md).
+
+Benchmark scores are maintained on the [project leaderboard](https://hellomuffin.github.io/ive-benchmark/redesign/#leaderboard-section), not duplicated in this repository.
 
 ## Reading a record
 

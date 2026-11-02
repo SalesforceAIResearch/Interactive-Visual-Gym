@@ -10,7 +10,7 @@ cooksim-case show b3_medium_nops_medium_map_3         # what a case schedules
 cooksim-case derive --from b3_medium_nops_medium_map_3 --name burger_q \
     --add-question next_step --out my_cases.json      # a new case
 cooksim-case verify my_cases.json                     # does every forced mistake fire, in every cooking order?
-cooksim-episode --cases my_cases.json --case burger_q --persona classic_novice \
+cooksim-episode --latency 2 --cases my_cases.json --case burger_q --persona classic_novice \
     --assistant gemini:gemini-3.8-flash --out runs/burger_q
 ```
 

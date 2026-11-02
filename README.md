@@ -45,6 +45,12 @@ cd Interactive-Visual-Gym
 
 The workflow is the same across environments: **inspect cases → run an episode → inspect the record → score → run the benchmark**. Installation, action vocabularies, and record formats remain engine-specific.
 
+## Evaluation timing and results
+
+The main benchmark uses **fixed two-tick delay** (`--latency 2`) in CookSim and VH-Home. To account for model inference latency, run a separate evaluation with **`--latency measured`**. ScreenSim keeps its fixed zero-tick action–response setting. See the [complete commands](docs/evaluating_assistants.md#response-timing).
+
+Published scores live on the [project leaderboard](https://hellomuffin.github.io/ive-benchmark/redesign/#leaderboard-section) and in the paper. This repository provides the engines, evaluation code, and submission tools without maintaining another copy of benchmark scores.
+
 ## Documentation
 
 - [Getting started](docs/getting_started.md): requirements, installation, and your first run.

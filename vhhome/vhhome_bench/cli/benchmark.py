@@ -25,6 +25,8 @@ def main():
     a = ap.parse_args()
 
     entry = assistant_entry(a.assistant, a.base_url, a.profile, a.image_scale, a.max_tok, a.tag)
+    if a.latency is not None:
+        entry["env"]["ASSIST_LATENCY"] = a.latency
     require_keys(entry)
     use_cases(a.cases)
     from vhhome_bench import lane as L

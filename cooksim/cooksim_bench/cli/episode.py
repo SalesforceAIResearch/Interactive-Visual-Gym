@@ -47,7 +47,7 @@ def main(argv=None):
     ap.add_argument("--out", default="runs/demo", help="run root; the record goes under <out>/frames/<persona>/<tag>/")
     ap.add_argument("--tag", default=None, help="record tag (default: the model name or roster tag)")
     ap.add_argument("--cases", default=None, help="a case file instead of the shipped suite (cooksim-case writes these)")
-    ap.add_argument("--latency", default=None, help="measured (default) | a fixed number of ticks per reply, e.g. 2")
+    ap.add_argument("--latency", default=None, help="2: fixed two-tick delay (main benchmark); measured: inference-time delay. Omitted: COOKSIM_ASSIST_LATENCY or measured.")
     ap.add_argument("--obs", default="frames", choices=["frames", "agent+++"], help="what the assistant sees: rendered frames or a text state map")
     ap.add_argument("--dump-states", action="store_true", help="also write the per-tick kitchen state (exact grading evidence, needed for films)")
     args, extra = ap.parse_known_args(argv)

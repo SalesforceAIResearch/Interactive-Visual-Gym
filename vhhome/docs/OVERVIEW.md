@@ -17,7 +17,7 @@ VH-Home puts a model in the seat of a household assistant. A simulated person, p
 
 The shipped benchmark has **17 tasks** (one chore in one of VirtualHome's five apartments, with a setup that leaves things out of place and programmatic checkpoints that define success), **25 cases** built on them, and **9 personas**. The six mistake classes an assistant may flag are `skipped_step`, `wrong_object`, `wrong_placement`, `repetition`, `stall` and `navigation_inefficiency`. The formal protocol plays 75 fixed cells (25 cases x 3 personas each, drawn once with a fixed seed) and averages 3 independent runs, 225 episodes per assistant. `vhhome-case list` prints the tasks, cases, personas and mistake classes; [docs/BENCHMARK.md](BENCHMARK.md) describes them and the metrics.
 
-**Leaderboard:** [results/README.md](../results/README.md).
+**Leaderboard:** [Project leaderboard](https://hellomuffin.github.io/ive-benchmark/redesign/#leaderboard-section).
 
 ## Quickstart
 
@@ -53,7 +53,7 @@ Leave them running. One episode per instance at a time.
 ### Run one episode
 
 ```bash
-vhhome-episode --case cx_tidy_missing_rep --persona baseline \
+vhhome-episode --latency 2 --case cx_tidy_missing_rep --persona baseline \
     --assistant gemini:gemini-3.8-flash --out runs/demo
 ```
 
@@ -62,9 +62,9 @@ The record lands at `runs/demo/gemini-3.8-flash/gemini-3.8-flash__cx_tidy_missin
 ### Run the benchmark and score it
 
 ```bash
-vhhome-benchmark --assistant gemini:gemini-3.8-flash --out runs/gemini --engines 8080,8081 --repeat 1   # 75 cells, resumable
-vhhome-benchmark --assistant gemini:gemini-3.8-flash --out runs/gemini --engines 8080,8081 --repeat 2
-vhhome-benchmark --assistant gemini:gemini-3.8-flash --out runs/gemini --engines 8080,8081 --repeat 3
+vhhome-benchmark --latency 2 --assistant gemini:gemini-3.8-flash --out runs/gemini --engines 8080,8081 --repeat 1   # 75 cells, resumable
+vhhome-benchmark --latency 2 --assistant gemini:gemini-3.8-flash --out runs/gemini --engines 8080,8081 --repeat 2
+vhhome-benchmark --latency 2 --assistant gemini:gemini-3.8-flash --out runs/gemini --engines 8080,8081 --repeat 3
 vhhome-score --run runs/gemini/r1 runs/gemini/r2 runs/gemini/r3
 ```
 
@@ -81,7 +81,7 @@ vhhome-case new --name my_tidy_1 --task tidy_hard \
     --mistake "repetition sid=shut(fridge) at=switch_off(tv) gap=delayed" \
     --story "She walks straight past the first bedroom lamp, and after the television she goes back and opens the fridge she had already shut." \
     --out my_cases.json
-vhhome-episode --cases my_cases.json --case my_tidy_1 --persona classic_novice --assistant gemini:gemini-3.8-flash --out runs/mine
+vhhome-episode --latency 2 --cases my_cases.json --case my_tidy_1 --persona classic_novice --assistant gemini:gemini-3.8-flash --out runs/mine
 ```
 
 Details in [docs/GENERATE_CASES.md](GENERATE_CASES.md).
@@ -111,7 +111,6 @@ vhhome_bench/      harness: protocol (prompts, assistant call), person, episode 
                    rubric_batch, final_table), video/ (film, film_reference), cluster/, cli/
 benchmark/         cells.json (the 75 cells), clean_cells.json, t_ref.json (reference times), gpu_latency_ratio.json,
                    composite_ledger.json, admissibility_ledger.json, composite_vlm_audit.json, task_video_audit.json
-results/           the published table and the numbers behind it
 serving/           scripts and shims that serve the open-weight assistants (vLLM or the authors' code)
 simulator/         install_virtualhome.sh, launch_simulators.sh, build_gl_stack.sh, Dockerfile
 tests/             test_engine.py (offline engine suite), verify_cases.py (the case composition rules)

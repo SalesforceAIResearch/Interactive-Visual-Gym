@@ -1,5 +1,13 @@
 # Submission workflow validation
 
+## 2 November 2026: response timing and protocol v3
+
+The current release passes 65 repository tests, 125 CookSim tests (2 skipped), 231 ScreenSim tests (3 skipped), 591 VH-Home engine checks, all 25 composite household cases, and 23 public CLI checks. Documentation links, Python syntax, frozen source fingerprints, and whitespace checks pass. These are offline checks; no paid inference or judge calls were made.
+
+Timing regressions exercise fixed two-tick, measured/capped, and zero-delay behavior. CLI tests verify that explicit fixed/measured settings reach the episode runner and override exported timing settings. The suite membership, engine transitions, user prompts, and scoring sources are unchanged; the refreshed catalog fingerprints reflect the CLI edits. Protocol v3 corrects the VH-Home simulated-user model to Gemini 3.1 Pro, matching the paper.
+
+## 1 November 2026: initial submission workflow
+
 Checks performed on 1 November 2026 in the Salesforce release checkout, without paid judge calls or inference audits:
 
 | Check | Result |

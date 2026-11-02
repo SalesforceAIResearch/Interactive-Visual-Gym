@@ -51,7 +51,7 @@ follows the same `NativeSession` shape (`open`, `push_frame`, `push_speech`, `dr
 ## Checking a backend
 
 ```bash
-cooksim-episode --case b3_easy_nops_medium_map_2 --persona baseline --assistant <tag> --out runs/check
+cooksim-episode --latency 2 --case b3_easy_nops_medium_map_2 --persona baseline --assistant <tag> --out runs/check
 ```
 
 Read the record's `conversation` for the raw replies: the JSON must parse and carry `text` and `flag`; the

@@ -94,4 +94,6 @@ def add_assistant_args(ap, default=None):
     ap.add_argument("--image-scale", type=float, default=None, help="downscale the frames sent to the assistant (0.5 for small contexts)")
     ap.add_argument("--max-tok", type=int, default=None, help="the assistant's max output tokens per turn (default 4000)")
     ap.add_argument("--tag", default=None, help="name of the record folder (default: the model or roster tag)")
+    ap.add_argument("--latency", choices=["2", "measured", "0"], default=None,
+                    help="2: fixed two-tick delay (main benchmark); measured: inference-time delay; 0: custom instantaneous setting. Omitted: ASSIST_LATENCY or measured.")
     ap.add_argument("--cases", default=None, help="a case file written by vhhome-case, in addition to the shipped cases")
