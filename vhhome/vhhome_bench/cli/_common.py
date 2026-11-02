@@ -7,6 +7,7 @@ ASSISTANT_HELP = """\
 --assistant takes one of:
   <roster tag>             an assistant of the published table, e.g. gemini-3.8-flash (vhhome-roster lists them)
   silent                   the control that never speaks; needs no key
+  anthropic:<model>        Claude through the Messages API                   (ANTHROPIC_API_KEY)
   gemini:<model>           a Gemini model through generateContent            (GEMINI_API_KEY)
   openai:<model>           any OpenAI-compatible chat endpoint: --base-url (default api.openai.com) and
                            IV_ASSIST_API_KEY or OPENAI_API_KEY. This is how a model you serve yourself is evaluated.
@@ -28,6 +29,9 @@ def assistant_entry(spec, base_url=None, profile=None, image_scale=None, max_tok
         kind, _, model = spec.partition(":")
         if spec == "silent":
             e = dict(tag="silent", kind="control", needs=[], env={"IV_ASSIST_MODEL": "silent"})
+        elif kind == "anthropic" and model:
+            e = dict(tag=model, kind="api", needs=["ANTHROPIC_API_KEY"],
+                     env={"IV_ASSIST_BACKEND": "anthropic", "IV_ASSIST_MODEL": model})
         elif kind == "gemini" and model:
             e = dict(tag=model, kind="api", needs=["GEMINI_API_KEY"], env={"IV_ASSIST_MODEL": model})
         elif kind == "openai" and model:
@@ -88,7 +92,7 @@ def use_cases(path):
 
 def add_assistant_args(ap, default=None):
     ap.add_argument("--assistant", required=default is None, default=default,
-                    help="who watches: roster tag | silent | gemini:<m> | openai:<m> | live:<m> | realtime:<m> | ...-native:<m>")
+                    help="who watches: roster tag | silent | anthropic:<m> | gemini:<m> | openai:<m> | live:<m> | realtime:<m> | ...-native:<m>")
     ap.add_argument("--base-url", default=None, help="OpenAI-compatible endpoint for openai:<model> (your own server)")
     ap.add_argument("--profile", default=None, help="request profile for openai:<model> (default | gpt5 | ...; see protocol._PROFILES)")
     ap.add_argument("--image-scale", type=float, default=None, help="downscale the frames sent to the assistant (0.5 for small contexts)")

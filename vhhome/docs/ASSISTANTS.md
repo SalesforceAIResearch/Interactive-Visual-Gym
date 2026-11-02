@@ -60,7 +60,7 @@ gives the environment the tag expands to (the harness takes the assistant from `
 | Slot | Tag | Reached by | Needs | Status |
 |---|---|---|---|---|
 | 1 | `gpt-6-astra` | `IV_ASSIST_MODEL=gpt-6-astra`, `IV_ASSIST_BASE_URL=https://api.openai.com/v1`, `IV_ASSIST_PROFILE=gpt5` | `OPENAI_API_KEY` | ready |
-| 2 | `claude-opus-5` | `IV_ASSIST_BACKEND=anthropic` (no such backend in `protocol.assist_frames`) | `ANTHROPIC_API_KEY` | not_ported |
+| 2 | `claude-opus-5` | `IV_ASSIST_BACKEND=anthropic` | `ANTHROPIC_API_KEY` | ready |
 | 3 | `gemini-3.1-pro-preview` | `IV_ASSIST_MODEL=gemini-3.1-pro-preview` (Gemini `generateContent`) | `GEMINI_API_KEY` | ready |
 | 4 | `gemini-3.8-flash` | `IV_ASSIST_MODEL=gemini-3.8-flash` | `GEMINI_API_KEY` | ready |
 | 5 | `qwen3.8-max` | `IV_ASSIST_MODEL=qwen3.8-max`, `IV_ASSIST_BASE_URL=https://dashscope-intl.aliyuncs.com/compatible-mode/v1`, `IV_ASSIST_PROFILE=default` | `DASHSCOPE_API_KEY` | needs_key |
@@ -129,8 +129,7 @@ cache. `OPENAI_API_KEY` (or `IV_ASSIST_API_KEY`) is sent to any non-loopback bas
 OpenAI-compatible chat model on that endpoint; set `IV_ASSIST_API_KEY` to your `DASHSCOPE_API_KEY`. We did not hold
 the key, so no number of that seat is published. Confirm the model id with your key.
 
-**Claude.** There is no Anthropic request backend in this harness; the roster entry is `not_ported`. The `anthropic`
-extra is used only by the optional third rubric judge.
+**Claude.** Install `pip install -e ".[anthropic]"` and use `--assistant anthropic:<model-id>`. The Messages API receives the same system prompt, user text, and frames as other API assistants. The existing prompt specifies the JSON reply schema; parsing does not repair model output or substitute another model. Effort is low, matching CookSim, and the token budget includes thinking. `ANTHROPIC_API_KEY` is required; user-scoped credentials may also need `ANTHROPIC_WORKSPACE_ID`.
 
 ## 4. The two streaming settings
 
@@ -280,7 +279,7 @@ Three consequences to keep in mind when reading the results:
 | `the simulator on port N is not answering` or the episode never starts | Start `bash simulator/launch_simulators.sh 1` in another terminal (HTTP 501 on the port means healthy) and pass its port with `--port` / `--engines`. See [SIMULATOR.md](SIMULATOR.md). |
 | `unknown assistant '...'` | The tag is not in `vhhome-roster`; use `<backend>:<model>` with `--base-url` / `--profile` for anything else. |
 | `<tag>: missing GEMINI_API_KEY` (or another key) | Export it or add a line to `~/.config/vhhome/keys.env`. The person always needs `GEMINI_API_KEY`. |
-| `<tag>: roster status 'not_ported'` / `'dropped'` | The seat cannot be run in this release (`claude-opus-5`, `molmo2-o-7b`). |
+| `<tag>: roster status 'not_ported'` / `'dropped'` | The seat cannot be run in this release (`molmo2-o-7b`). |
 | `a locally served model runs ONE episode at a time` | Give `vhhome-benchmark` a single `--engines` port for a local model. |
 | HTTP 400 "At most 8 image(s) may be provided in one prompt" | The server's image cap is below the 10 images a turn carries. Start it from the shipped script (`--limit-mm-per-prompt '{"image": 12}'`) or raise your own server's cap. |
 | Every assistant call fails and the cell lands in `<tag>/void/` | Transport failure: the server refused or never answered (retries, no prompt tokens ever returned). The cell is voided rather than recorded as silence, because silence would be data and this is the harness. Check the serve log under `$LOGDIR`, `curl .../v1/models`, then rerun; the voided cell is simply missing and is picked up by the same command. |

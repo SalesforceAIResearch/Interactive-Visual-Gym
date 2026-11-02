@@ -45,7 +45,7 @@ The engine suite imports the VirtualHome client, so run it after `install_virtua
 |---|---|
 | `GEMINI_API_KEY` | **always**: the simulated person is a Gemini model; also Gemini assistants and the gemini rubric judge |
 | `OPENAI_API_KEY` | GPT and GPT-Realtime assistants, the gpt rubric judge, the person's synthesized voice for the native streaming seats |
-| `ANTHROPIC_API_KEY` (+ `ANTHROPIC_WORKSPACE_ID` for a user-scoped key) | optional: the third rubric judge (`--judges all`) |
+| `ANTHROPIC_API_KEY` (+ `ANTHROPIC_WORKSPACE_ID` for a user-scoped key) | Claude assistants; optional third rubric judge (`--judges all`) |
 | `DASHSCOPE_API_KEY` | optional: the Alibaba Cloud assistants in the roster |
 
 Keys are read from the environment first; what is missing there is read once from `~/.config/vhhome/keys.env`, a file of `KEY=value` lines (`VHHOME_KEYS_FILE` overrides the path). Nothing ever writes a key anywhere and no key is printed.

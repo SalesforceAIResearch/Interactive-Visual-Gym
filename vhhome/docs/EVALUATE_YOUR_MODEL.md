@@ -35,6 +35,7 @@ The served model name you give after `openai:` is sent as the `model` field and 
 
 | `--assistant` | backend | key |
 |---|---|---|
+| `anthropic:<model>` | Claude Messages API; low effort, the same frames and JSON-response prompt | `ANTHROPIC_API_KEY` |
 | `gemini:<model>` | Gemini `generateContent` (JSON mode, temperature 0.2, thinking budget 512) | `GEMINI_API_KEY` |
 | `openai:<model>` | OpenAI Chat Completions; `--profile gpt5` is chosen automatically for `gpt-5*`, `gpt-6*` and `o*` model names (reasoning effort low, `max_completion_tokens`, no temperature) | `OPENAI_API_KEY` |
 | `live:<model>` | Gemini Live, **polled**: one session per turn, asked every 2 ticks like a chat model; the model speaks and the server's transcript of its speech is parsed as the JSON reply | `GEMINI_API_KEY` |
@@ -44,8 +45,8 @@ The served model name you give after `openai:` is sent as the `model` field and 
 | `silent` | the control that never speaks | none (besides the person's) |
 
 A roster tag (`gpt-6-astra`, `gemini-3.8-flash`, `qwen3.8-27b`, ...) expands to the exact backend, model, profile
-and port of the published table; `vhhome-roster` lists them. There is no Anthropic request backend in this harness
-(the `claude-opus-5` roster entry has status `not_ported`).
+and port of the published table; `vhhome-roster` lists them. Claude assistants require the
+`anthropic` extra (`pip install -e ".[anthropic]"`).
 
 In the two **native** settings nobody polls the model. The session is given its instructions once; then the harness
 feeds it one composite image per tick (first-person view beside the house plan) as video, paced to at most one frame

@@ -468,6 +468,21 @@ def parse(txt):
     return json.loads(m.group(0)) if m else {}
 
 
+def usable(v):
+    """Is a stored judge verdict real, or an empty shell resume must retry?
+
+    A `score` key alone is not evidence that a round was graded: a judge can return the rubric with
+    every `pass` null, which scores vacuously and is then kept forever by resume. A verdict counts as
+    done only when at least one item carries a Boolean verdict (individual nulls are legitimate
+    not-applicable items). Handoff of 2026-10-19, the 112 all-null ScreenSim slots."""
+    if not isinstance(v, dict) or "score" not in v:
+        return False
+    items = v.get("items")
+    if not isinstance(items, dict) or not items:
+        return False
+    return any(isinstance(it, dict) and isinstance(it.get("pass"), bool) for it in items.values())
+
+
 def grade_episode(rec, judges, pool, out_path, existing=None):
     """Grade every round with each judge in `judges` and merge them (see merge_judges).
 
@@ -482,7 +497,7 @@ def grade_episode(rec, judges, pool, out_path, existing=None):
     for k in range(len(rounds)):
         rnd = rounds[k]
         prev = {jn: v for jn, v in ((prev_rounds.get(rnd["round"], {}).get("judges") or {}).items())
-                if jn in judges and "score" in v}
+                if jn in judges and usable(v)}
         prompt = None
         _s, _m, pending = person_context(rec, rnd)
         per_judge, first = {}, None
@@ -519,6 +534,8 @@ def grade_episode(rec, judges, pool, out_path, existing=None):
            "contestant": rec["contestant"], "success": rec["success"],
            "judge": "+".join(judges), "judges": list(judges),
            "rubric": RUBRIC_VERSION, "rounds_detail": out, **aggregate(out)}
+    from .five_categories import rounds as paper_rounds, aggregate as paper_aggregate
+    res["paper_quality"] = paper_aggregate(paper_rounds(res))
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     json.dump(res, open(out_path, "w"), indent=1)
     return res
@@ -569,7 +586,7 @@ def main():
             # with a DIFFERENT judge set is re-merged (no API calls for judges already stored), so the
             # whole table always reflects one set of judges.
             if (existing and list(existing.get("judges") or []) == list(judges)
-                    and all(all(jn in (x.get("judges") or {}) and "score" in (x.get("judges") or {})[jn]
+                    and all(all(usable((x.get("judges") or {}).get(jn))
                                 for jn in judges)
                             for x in (existing.get("rounds_detail") or []))):
                 continue

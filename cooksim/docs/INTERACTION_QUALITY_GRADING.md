@@ -81,8 +81,8 @@ Let a round be judged by the set `J` of judges that answered. For judge `j` and 
 clean_j(c)  = 1  if no item in I_c failed for judge j, else 0        (absent if I_c is empty)
 gate_j      = 0  if judge j failed T1 or T2, else 1
 clean(c)    = mean over j in J of clean_j(c)                          judges averaged
-gate        = mean over j in J of gate_j
-round score = gate × mean over the categories c that applied of clean(c)
+judge score = gate_j × mean over categories applicable to judge j of clean_j(c)
+round score = mean over j in J of judge score
 ```
 
 So a line whose facts are wrong scores 0 for every judge that caught it, whatever else it did right; a line whose

@@ -1805,7 +1805,14 @@ def assist_frames(client, sys_prompt, user, frames, max_tok=None):
         for attempt in range(3):
             t_att = time.time()          # D3: only a SUCCESSFUL attempt's own time is charged
             try:
-                if ASSIST_BACKEND == "live":
+                if ASSIST_BACKEND == "anthropic":
+                    from vhhome_bench.anthropic_backend import AnthropicBackend
+                    out, meta = AnthropicBackend(ASSIST_MODEL, max_tokens=max_tok,
+                                                 image_scale=ASSIST_IMAGE_SCALE).call(sys_prompt, user, frames)
+                    if meta.get("stop_reason") == "refusal":
+                        ASSIST_STATS["empty"] += 1
+                        return {}
+                elif ASSIST_BACKEND == "live":
                     out = _extract_json(_gemini_live(sys_prompt, user, frames, max_tok))
                 elif ASSIST_BACKEND == "realtime":
                     out = _extract_json(_openai_realtime(sys_prompt, user, frames, max_tok))

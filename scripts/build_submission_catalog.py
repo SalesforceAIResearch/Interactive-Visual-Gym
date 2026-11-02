@@ -58,7 +58,7 @@ def build():
         )
     paths = sorted(paths)
     result = {
-        "version": "ivg-bench-submissions-v3",
+        "version": "ivg-bench-submissions-v4",
         "runs": [1, 2, 3],
         "engines": cells,
         "source_sha256": {

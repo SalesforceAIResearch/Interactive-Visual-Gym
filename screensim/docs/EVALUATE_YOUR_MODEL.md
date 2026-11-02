@@ -48,3 +48,11 @@ Objective scoring is offline. Interaction-quality grading calls the configured j
 Use the same cases, persona assignments, simulated-user model, manual context, and judge configuration. Keep independent runs in separate directories. The `--no-manual` option changes the assistant's information and is an ablation, not a default-equivalent setup.
 
 See [Reproduce results](REPRODUCE.md), [Benchmark](BENCHMARK.md), and [Getting started](GETTING_STARTED.md).
+
+## Claude
+
+Install `pip install -e ".[all]"`, export `ANTHROPIC_API_KEY` and `GEMINI_API_KEY`,
+and use `--assistant anthropic:<model-id>` with the episode or benchmark command.
+Claude receives the existing assistant prompt and screenshot stream through the Messages API.
+The simulated person remains Gemini 3.7 Flash. See the shared
+[Claude setup](../../docs/evaluating_assistants.md#claude-assistants) for credentials and scoring.

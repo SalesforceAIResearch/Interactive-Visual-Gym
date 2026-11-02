@@ -1,25 +1,6 @@
-#!/usr/bin/env python3
-"""The five reported categories of the AQ rubric, scored by CookSim's 2026-09-24 rules.
+"""Five-category interaction quality: gate each judge, then average Gemini and GPT.
 
-Experiment 2 reports five of the rubric's ten categories:
-
-    Factual grounding     truthful  T1 T2      Actionable guidance  helpful  H1 H2 H3
-    Situational relevance sensible  S1 S2      User intent uptake   listens  L1 L2
-    Guidance conciseness  economy   E1
-
-Scoring is round-level, not item-level (CookSim's rulings of 2026-09-24). For one round and one category
-the line is *clean* (1) when none of that category's applicable items failed and 0 when any failed; a
-category with no applicable item is absent for that round. Factual grounding is a **gate**: a line that
-fails T1 (a claim about the screen or about what the person just did is false) or T2 (it names a control,
-page or app that does not exist on this phone) scores 0 as a round, whatever else it got right — advice
-built on a false picture of the phone is not credited for being relevant, actionable or concise. Otherwise
-the round scores the mean of its applicable clean flags, with Factual grounding = 1 by construction.
-H1 and L2 are no longer gates; a failure there costs its own category only. AQ is the mean over rounds,
-every line weighted equally (the episode-mean variant is kept alongside). Category columns are the share
-of applicable rounds clean in that category, independent of the gate.
-
-Runs 2 and 3 were judged on these ten items directly (`aq_v4_score.py --subset five`, folder `aq_v4five`);
-run 1 was judged on all sixteen and is re-aggregated here from its stored per-item verdicts.
+legacy_rounds retains the historical merged-item calculation for reproduction only.
 """
 from __future__ import annotations
 
@@ -33,7 +14,7 @@ NAMES = {"truthful": "Factual grounding", "sensible": "Situational relevance",
 GATE = ("T1", "T2")                       # Factual grounding gates the round
 
 
-def rounds(path_or_obj):
+def legacy_rounds(path_or_obj):
     """One dict per graded line: its score, its per-category clean flags, and whether a must item failed."""
     d = path_or_obj if isinstance(path_or_obj, dict) else json.load(open(path_or_obj))
     out = []
@@ -56,6 +37,11 @@ def rounds(path_or_obj):
     return out
 
 
+def rounds(path_or_obj):
+    from .aq_contract import rounds as contract_rounds
+    return contract_rounds(path_or_obj)
+
+
 def episode(path_or_obj):
     """Episode-level view (kept as the variant CookSim mentions): mean round score within the episode."""
     rs = rounds(path_or_obj)
@@ -71,5 +57,5 @@ def aggregate(all_rounds):
     for cat in CATS:
         got = [r["flags"][cat] for r in all_rounds if cat in r["flags"]]
         cats[cat] = {"clean": (sum(got) / len(got)) if got else None, "applies": len(got) / n}
-    return {"AQ": sum(r["score"] for r in all_rounds) / n, "rounds": n,
-            "must_fail_share": sum(1 for r in all_rounds if r["must_fail"]) / n, "by_category": cats}
+    return {"aggregation": "per-judge-gated-two-judge-mean", "AQ": sum(r["score"] for r in all_rounds) / n, "rounds": n,
+            "must_fail_share": sum(r.get("gated_share", float(r.get("must_fail", False))) for r in all_rounds) / n, "by_category": cats}

@@ -70,10 +70,12 @@ def summarise(rows):
     DT, _ = m("DT")
     F1, _ = m("F1")
     Pr, _ = m("P")
-    R, _ = m("R")
+    fired = sum(r["fired"] for r in rows)
+    R = sum(r["tp"] for r in rows) / fired if fired else None
     det = statistics.fmean([x for x in (DT, F1) if x is not None]) if (DT is not None or F1 is not None) else None
     return {"n": len(rows), "S": S, "EFF": E, "n_eff": nE, "TT": TT, "CC": CC,
             "DET": det, "DT": DT, "F1": F1, "P": Pr, "R": R,
+            "prevention": sum(r["prevented_n"] for r in rows) / fired if fired else None,
             "fired": sum(r["fired"] for r in rows), "fp": sum(r["fp"] for r in rows),
             "utterances": sum(r["utterances"] for r in rows)}
 

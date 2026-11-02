@@ -19,7 +19,7 @@ gemini-3.7-flash   +   gpt-5.4-mini
 (ruling 2026-10-12). A third judge, `claude-haiku-5-5`, is wired up and can be added with
 `--judge all`, but it is **not** part of the reported numbers.
 
-Each judge scores the round independently. They are then merged, exactly as CookSim merges them:
+Each judge scores the round independently. Historical diagnostic fields retain the following merged view; these fields are not the reported five-category score:
 
 | quantity | rule |
 |---|---|
@@ -72,4 +72,13 @@ is normal and is not a credential problem.
 `screensim_bench/scoring/five_categories.py` reduces each round to the five reported categories (Factual grounding,
 Situational relevance, Actionable guidance, User intent uptake, Guidance conciseness) and applies the
 **Factual-grounding gate**: a line that fails T1 or T2 scores 0 for the round, whatever else it got
-right. It reads the *merged* items, so the gate fires when any judge found a false claim.
+right **for that judge**. We then average the Gemini and GPT scores, pool rounds within each run, and average runs equally. Category scores also average the two judges. The reducer reads the saved per-judge items, not merged flags. `legacy_rounds` retains the old calculation for reproducing historical analyses.
+
+After `screensim-grade`, produce the paper-comparable score with:
+
+```bash
+python -m screensim_bench.scoring.aq_contract runs/r1 runs/r2 runs/r3 \
+  --model YOUR_ASSISTANT_TAG --json runs/interaction_quality.json
+```
+
+The output reports per-run counts, categories, overall quality, and the number of rounds with only one usable judge. Repair missing judgments with `screensim-grade` before comparing to the benchmark. New episode files also include `paper_quality`; their top-level `AQ` remains a historical diagnostic.

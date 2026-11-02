@@ -71,6 +71,34 @@ def t_ref(epk):
         return 60.0
 
 
+# WINDOW CLOSE (2026-10-15, the version audit). The window used to run to the end of the episode for every class,
+# so flags about the person's own later wandering were credited as catching a mistake whose takeover had ended long
+# before (a navigation flag 80 ticks after a skipped step's release counted as its valid_alias; stall flags while the
+# person was walking counted for a stall released 40 ticks earlier). Now:
+#   * a TRANSIENT mistake (stall, navigation_inefficiency) leaves nothing in the world once its takeover ends, so its
+#     window closes RELEASE_GRACE ticks after the release, for the exact name as well as for its twins;
+#   * a PERSISTENT mistake (skipped/missing step, wrong object, wrong placement, repetition) stays true in the world, so
+#     the exact name is still credited until the end of the episode, but a TWIN name only up to RELEASE_GRACE ticks
+#     after the release (a later twin-named flag is about something else).
+# VH_WINDOW_CLOSE=0 restores the open windows.
+RELEASE_GRACE = int(os.environ.get("VH_RELEASE_GRACE", "30"))
+WINDOW_CLOSE = os.environ.get("VH_WINDOW_CLOSE", "1") != "0"
+TRANSIENT = {"stall", "navigation_inefficiency"}
+PERSON_CREDIT = os.environ.get("VH_PERSON_CREDIT", "1") != "0"
+
+
+def _phase_verdict(p, nm, t):
+    lo = (p.get("window") or [10**9])[0]
+    rel = p.get("released_at")
+    close = (rel + RELEASE_GRACE) if (WINDOW_CLOSE and rel is not None) else None
+    hi = close if (close is not None and p["err"] in TRANSIENT) else 10**9
+    hi = max(hi, lo)
+    v = P.verdict_of({"err": p["err"], "dev": p["dev_live"], "window": (lo, hi)}, nm, t)
+    if v == "valid_alias" and close is not None and t > close:
+        v = "wrong_name"
+    return v, lo
+
+
 def episode_metrics(d):
     """Metrics for one rollout report."""
     epk, pers = d.get("episode"), d.get("persona")
@@ -126,9 +154,7 @@ def episode_metrics(d):
         nm, t = f.get("error"), f.get("t")
         cands = []
         for i, p in enumerate(fired):
-            lo = (p.get("window") or [10**9])[0]
-            g = {"err": p["err"], "dev": p["dev_live"], "window": (lo, 10**9)}
-            v = P.verdict_of(g, nm, t)
+            v, lo = _phase_verdict(p, nm, t)
             # tie-break toward the phase whose window actually contains the flag
             cands.append((RANK.get(v, 99), 0 if lo <= t else 1, i, v))
         if not cands:
@@ -140,9 +166,28 @@ def episode_metrics(d):
             caught_ph.add(i)
         elif v not in P.NEUTRAL:
             fp += 1
+    # PREVENTION (2026-10-15). VH never records a `prevented` release, so DT could not exceed 0.5 even when the
+    # assistant named a mistake before it happened. Now a flagged mistake is PREVENTED (DT 1) if a detection-grade
+    # flag, or the convinced release it led to, came at or before the tick the mistake physically happened
+    # (dev_live). VH_PERSON_CREDIT=0 restores the old rule.
+    early_flag = {}
+    for f in flags:
+        i = f.get("_phase")
+        if i is None or f.get("t") is None:
+            continue
+        if (f.get("_regraded") in P.ARMS_DETECTION or f.get("_regraded") in P.ARMS_PREVENTION) and f["t"] <= fired[i]["dev_live"]:
+            early_flag[i] = True
     dt, tp = [], 0
     for i, p in enumerate(fired):
-        if p.get("released_reason") == "prevented":
+        # a convinced release counts only when the assistant also FLAGGED this mistake (caught_ph): the person's own
+        # call alone is unreliable (the version audit found it wrong in ~40% of episodes, often `correct` with no
+        # accusation at all), and crediting it let seats that never flag score DET 0.4-0.55.
+        conv = (PERSON_CREDIT and i in caught_ph and p.get("released_reason") == "convinced"
+                and p.get("released_at") is not None)
+        prevented = (p.get("released_reason") == "prevented"
+                     or (conv and p["released_at"] <= p["dev_live"])
+                     or (PERSON_CREDIT and early_flag.get(i)))
+        if prevented:
             dt.append(1.0); tp += 1
         elif i in caught_ph:
             dt.append(0.5); tp += 1
@@ -157,6 +202,7 @@ def episode_metrics(d):
                 schema=schema, flags_raw=shape_tot,
                 outcome=d.get("outcome"), S=S, TT=TT, CC=CC, E=E, DT=DT, P=Pr, R=R, F1=F1,
                 utterances=spoke, phases=len(phases), fired=len(fired), tp=tp, fp=fp,
+                prevented_n=sum(1 for x in dt if x == 1.0),
                 caught=d.get("phases_caught"), prevented=d.get("phases_prevented"),
                 detected=d.get("phases_detected", d.get("phases_caught")), total=d.get("phases_total"))
 

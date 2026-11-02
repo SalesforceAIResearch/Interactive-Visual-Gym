@@ -598,7 +598,7 @@ def main():
     ap.add_argument("--only", default=None, help="comma-separated arm tags")
     ap.add_argument("--limit", type=int, default=0, help="episodes per arm")
     ap.add_argument("--workers", type=int, default=8)
-    ap.add_argument("--judge", default="all", help="all | gpt-main | gemini | gpt | claude | a comma list such as gemini,gpt")
+    ap.add_argument("--judge", default="gemini,gpt", help="all | gpt-main | gemini | gpt | claude | a comma list such as gemini,gpt")
     ap.add_argument("--judge-model", default=JUDGE_DEFAULT, help="the gpt judge's model")
     ap.add_argument("--frames", action="store_true", help="also send the rendered frame at each round")
     ap.add_argument("--subset", action="store_true",

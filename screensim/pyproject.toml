@@ -17,9 +17,9 @@ dependencies = ["pillow>=10.0", "requests>=2.31",
 render = ["playwright>=1.44"]          # the phone screen is rendered in headless chromium
 openai = ["openai>=1.40"]
 gemini = ["google-genai>=0.3"]
-anthropic = ["anthropic>=0.40"]
+anthropic = ["anthropic>=0.80"]
 video = ["numpy>=1.24"]
-all = ["playwright>=1.44", "openai>=1.40", "google-genai>=0.3", "anthropic>=0.40", "numpy>=1.24"]
+all = ["playwright>=1.44", "openai>=1.40", "google-genai>=0.3", "anthropic>=0.80", "numpy>=1.24"]
 dev = ["pytest>=7.4", "ruff>=0.5"]
 
 [project.scripts]

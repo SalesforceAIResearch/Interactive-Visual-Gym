@@ -9,7 +9,7 @@ Steps (all resume-safe; re-running grades only what is missing):
   qa          question answers graded by the LLM judge                               (OPENAI_API_KEY)
   proactive   "tell me when X is ready" alerts graded                                (OPENAI_API_KEY)
   rubric      interaction quality: every assistant line graded by independent judges (GEMINI_API_KEY, OPENAI_API_KEY)
-  table       the seat table over runs 1-3 (results/<run>/leaderboard.md)
+  table       paper objective metrics and five-category quality over runs 1-3
 """
 import argparse
 import os
@@ -46,6 +46,8 @@ def main(argv=None):
             flags = ["--judge", args.judges, "--workers", str(args.workers)]
         print(f"== {step}: python -m {mod} {' '.join(flags)}", flush=True)
         rc = subprocess.call([sys.executable, "-m", mod, *flags, *extra], env=env)
+        if rc == 0 and step == "table":
+            rc = subprocess.call([sys.executable, "-m", "cooksim_bench.scoring.paper_table"], env=env)
         if rc != 0:
             sys.exit(f"step {step} failed (exit {rc}); fix the cause and re-run -- every step resumes")
     print(f"done. objective: {run}/eval_v2.json  qa: {run}/qa_regrade.json  proactive: {run}/proactive_v2.json  "

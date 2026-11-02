@@ -562,7 +562,7 @@ def main():
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--model", default=None)
-    ap.add_argument("--judge", default="auto", help="auto | gemini | gpt | gpt-main | all | a comma list such as gemini,gpt")
+    ap.add_argument("--judge", default="gemini,gpt", help="auto | gemini | gpt | gpt-main | all | a comma list such as gemini,gpt")
     ap.add_argument("--double-every", type=int, default=10, help="every Nth episode of an API assistant is graded by both judges")
     ap.add_argument("--first-run-only", action="store_true",
                     help="skip the independent repeats (<tag>__r2, <tag>__r3): grade one run per seat")

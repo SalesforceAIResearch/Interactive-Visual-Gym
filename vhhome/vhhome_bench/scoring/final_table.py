@@ -5,8 +5,8 @@
 
 Objective metrics come from vhhome_bench/scoring/metrics_table.py (the CookSim v6 contract: S in-time success, EFF efficiency over
 successful episodes, DET = mean of DT and F1) — the mean over the three runs, with the half-range as the spread.
-Interaction quality (AQ) is the SQ v4 rubric's per-episode score, pooled over the 225 episodes of a seat, with a
-2000-draw bootstrap 95% interval over episodes; the per-run means are shown beside it.
+Interaction quality (AQ) gates each judge separately, averages Gemini and GPT, pools rounds
+within each run, and averages the independent runs equally (with their population SD).
 """
 import glob, json, os, random, statistics, sys
 
@@ -28,22 +28,30 @@ def boot(vals, n=2000, seed=11):
 
 
 def aq_rows():
-    out = {}
+    from .five_categories import rounds, CATS
+    out, counts, cats = {}, {}, {}
     for root in ROOTS:
         for d in sorted(glob.glob(os.path.join(root, "sq_v4", "*/"))):
-            if d.rstrip("/").endswith("claude_batches"):
+            arm = os.path.basename(os.path.normpath(d))
+            if arm == "claude_batches":
                 continue
-            arm = d.rstrip("/").split("/")[-1]
             for f in glob.glob(d + "*.json"):
-                aq = (json.load(open(f)).get("aggregate") or {}).get("AQ")
-                if aq is not None:
-                    out.setdefault(arm, {}).setdefault(root, []).append(aq)
+                rs = rounds(f)
+                if rs:
+                    out.setdefault(arm, {}).setdefault(root, []).extend(x["score"] for x in rs)
+                    counts[arm] = counts.get(arm, 0) + 1
+                    for c in CATS:
+                        cats.setdefault(arm, {}).setdefault(c, {}).setdefault(root, []).extend(
+                            x["flags"][c] for x in rs if c in x["flags"])
     rows = {}
     for arm, per in out.items():
-        pooled = [v for vs in per.values() for v in vs]
-        lo, hi = boot(pooled)
-        rows[arm] = {"n": len(pooled), "AQ": statistics.fmean(pooled), "AQ_lo": lo, "AQ_hi": hi,
-                     "per_run": [statistics.fmean(per[r]) if per.get(r) else None for r in ROOTS]}
+        means = [statistics.fmean(per[r]) if per.get(r) else None for r in ROOTS]
+        available = [v for v in means if v is not None]
+        rows[arm] = {"n": counts[arm], "AQ": statistics.fmean(available),
+                     "AQ_sd": statistics.pstdev(available), "per_run": means,
+                     "by_category": {c: statistics.fmean(statistics.fmean(v) for v in percat.values() if v)
+                                     if any(percat.values()) else None
+                                     for c, percat in cats[arm].items()}}
     return rows
 
 
@@ -81,15 +89,14 @@ def main(roots=None, out_dir=None):
         row["won"] = statistics.fmean(wv) if wv else None
         row["won_spread"] = (max(wv) - min(wv)) / 2 if len(wv) > 1 else None
         a = aq.get(t)
-        row.update({"AQ": a["AQ"], "AQ_lo": a["AQ_lo"], "AQ_hi": a["AQ_hi"], "AQ_runs": a["per_run"], "AQ_n": a["n"]}
-                   if a else {"AQ": None, "AQ_lo": None, "AQ_hi": None, "AQ_runs": [None] * len(ROOTS), "AQ_n": 0})
+        row.update({"AQ": a["AQ"], "AQ_sd": a["AQ_sd"], "by_category": a["by_category"], "AQ_runs": a["per_run"], "AQ_n": a["n"]}
+                   if a else {"AQ": None, "AQ_sd": None, "by_category": {}, "AQ_runs": [None] * len(ROOTS), "AQ_n": 0})
         rows.append(row)
     rows.sort(key=lambda r: -(r["AQ"] if r["AQ"] is not None else -1))
     out = {"roots": ROOTS, "rows": rows,
            "notes": [f"S, EFF, DET: mean over {len(ROOTS)} supplied run(s), ± half the range when multiple runs are available (vhhome_bench/scoring/metrics_table.py).",
-                     "AQ: SQ v4 per-episode interaction quality pooled over the supplied runs; AQ_n records the number of scored episodes. "
-                     "Bootstrap 95% interval over episodes; per-run means follow the supplied root order.",
-                     "AQ is the mean over the judges that answered on each round (vhhome-score --judges).",
+                     "AQ: five categories, factual gate applied separately to Gemini and GPT, then averaged; "
+                     "rounds pooled per run, runs averaged equally. SD is across runs. AQ_n counts scored episodes.",
                      "won: share of episodes the person finished the chore correctly, mean ± half-range over runs; "
                      "S additionally requires finishing inside the time cap C = 2(T_ref + alpha).",
                      "silent and mmduet2 never speak, so they have no AQ; silent is the floor every other number is read against."]}
@@ -102,9 +109,9 @@ def main(roots=None, out_dir=None):
     def pm(r, k):
         return "—" if r[k] is None else f"{r[k]:.2f} ± {f(r[k + '_spread'])}"
     md = [f"# VH-Home — final table ({len(ROOTS)} independent run(s), one row per seat)", "",
-          "| seat | AQ [95% CI] | AQ by run | won | S (in-time success) | EFF | DET | DT | F1 |", "|---|---|---|---|---|---|---|---|---|"]
+          "| seat | AQ ± SD | AQ by run | won | S (in-time success) | EFF | DET | DT | F1 |", "|---|---|---|---|---|---|---|---|---|"]
     for r in rows:
-        aqs = "—" if r["AQ"] is None else f"{r['AQ']:.3f} [{f(r['AQ_lo'])}, {f(r['AQ_hi'])}]"
+        aqs = "—" if r["AQ"] is None else f"{r['AQ']:.3f} ± {f(r['AQ_sd'], 3)}"
         runs = " / ".join(f(x, 3) for x in r["AQ_runs"])
         md.append(f"| {r['seat']} | {aqs} | {runs} | {pm(r, 'won')} | {pm(r, 'S')} | {pm(r, 'EFF')} | {pm(r, 'DET')} | {pm(r, 'DT')} | {pm(r, 'F1')} |")
     md += [""] + [f"- {n}" for n in out["notes"]]

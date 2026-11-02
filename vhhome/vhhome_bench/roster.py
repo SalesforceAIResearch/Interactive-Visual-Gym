@@ -31,8 +31,7 @@ ROSTER = [
     dict(slot="1", tag="gpt-6-astra", group="A", kind="api", status="ready", needs=["OPENAI_API_KEY"],
          env={"IV_ASSIST_MODEL": "gpt-6-astra", "IV_ASSIST_BASE_URL": OPENAI_URL,
               "IV_ASSIST_PROFILE": "gpt5"}),
-    # no Anthropic request backend in protocol.assist_frames yet; the seat is not in the published table
-    dict(slot="2", tag="claude-opus-5", group="A", kind="api", status="not_ported", needs=["ANTHROPIC_API_KEY"],
+    dict(slot="2", tag="claude-opus-5", group="A", kind="api", status="ready", needs=["ANTHROPIC_API_KEY"],
          env={"IV_ASSIST_BACKEND": "anthropic", "IV_ASSIST_MODEL": "claude-opus-5"}),
     dict(slot="3", tag="gemini-3.1-pro-preview", group="A", kind="api", status="ready", needs=["GEMINI_API_KEY"],
          env={"IV_ASSIST_MODEL": "gemini-3.1-pro-preview"}),

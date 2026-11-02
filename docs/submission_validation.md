@@ -1,8 +1,33 @@
 # Submission workflow validation
 
-## 2 November 2026: response timing and protocol v3
+## 2 November 2026: external-assistant compatibility and protocol v4
 
-The current release passes 65 repository tests, 125 CookSim tests (2 skipped), 231 ScreenSim tests (3 skipped), 591 VH-Home engine checks, all 25 composite household cases, and 23 public CLI checks. Documentation links, Python syntax, frozen source fingerprints, and whitespace checks pass. These are offline checks; no paid inference or judge calls were made.
+The targeted release fixes pass 75 repository tests, 125 CookSim tests (2 skipped),
+231 ScreenSim tests (3 skipped), 591 VH-Home engine checks, all 25 household composite
+cases, and 23 public CLI checks. Syntax, documentation links, source pins, and whitespace
+checks also pass. Provider request construction and routing are tested offline.
+
+Saved-record comparisons against the paper snapshot cover:
+
+- VH-Home: all 15 models, three runs, both timing settings (6,750 episodes). Success,
+  event-weighted recall, prevention, overall quality, and the five quality categories match.
+- ScreenSim: all 15 models and three runs (4,050 episodes). Success, recall, overall
+  quality, and the five categories match.
+- CookSim: the actual quality-table CLI matches all three Gemini 4 runs in both timing
+  settings, including all five categories. Objective-denominator tests cover episodes
+  with no triggered error and unequal numbers of triggered errors.
+
+The comparisons recompute quality from the Gemini and GPT verdicts. Only Boolean item
+verdicts enter category scores, matching the paper exporter; historical string-valued
+N/A entries do not count as passes. The submission collector retains its stricter
+requirement for valid Boolean/null verdicts from both judges.
+
+No simulation mechanics, task membership, user models, termination policies, or timing
+caps were changed. No new benchmark rollouts or paid judging runs were needed.
+
+## Earlier 2 November 2026: response timing and protocol v3
+
+That revision passed 65 repository tests, 125 CookSim tests (2 skipped), 231 ScreenSim tests (3 skipped), 591 VH-Home engine checks, all 25 composite household cases, and 23 public CLI checks. Documentation links, Python syntax, frozen source fingerprints, and whitespace checks pass. These are offline checks; no paid inference or judge calls were made.
 
 Timing regressions exercise fixed two-tick, measured/capped, and zero-delay behavior. CLI tests verify that explicit fixed/measured settings reach the episode runner and override exported timing settings. The suite membership, engine transitions, user prompts, and scoring sources are unchanged; the refreshed catalog fingerprints reflect the CLI edits. Protocol v3 corrects the VH-Home simulated-user model to Gemini 3.1 Pro, matching the paper.
 

@@ -6,10 +6,9 @@ Both are re-aggregated here from the per-round, per-judge item verdicts: per rou
 item failed (judges averaged); round score = mean over applicable categories; seat score = mean over all its rounds
 (pooled); the episode-mean variant is kept in the JSON as AQ_episode_mean. Writes tmp/formal_v5/sq_v4/three_runs_five.json.
 
-    ASSIST_ROOT=tmp/formal_v5 $PY python -m cooksim_bench.scoring.sq_v4_three_runs"""
+    ASSIST_ROOT=tmp/formal_v5 $PY -m cooksim_bench.scoring.sq_v4_three_runs"""
 import glob, json, os, sys, collections, statistics as st
-import os
-from cooksim_bench.paths import ROOT  # the CookSim release root (benchmark/, web/, serving/ live here)
+from cooksim_bench.paths import ROOT
 BENCH = os.environ.get("ASSIST_ROOT", "tmp/formal_v5")
 FIVE = {"T1": ("truthful", "must"), "T2": ("truthful", "must"), "S1": ("sensible", 2), "S2": ("sensible", 2),
         "H1": ("helpful", "must"), "H2": ("helpful", 2), "H3": ("helpful", 2), "L1": ("listens", 2), "L2": ("listens", "must"),
@@ -17,7 +16,10 @@ FIVE = {"T1": ("truthful", "must"), "T2": ("truthful", "must"), "S1": ("sensible
 CATS = ["truthful", "sensible", "helpful", "listens", "economy"]
 MUST = ("T1", "T2")     # ruling 2026-09-24: only the Factual-grounding items zero a round
 JUDGES = set((os.environ.get("SQ_JUDGES") or "gemini,gpt").split(","))   # ruling 2026-10-12: the two judges averaged
+RULE = os.environ.get("SQ_RULE", "paper")   # paper (default, 2026-11-02): mean of per-judge gated scores | legacy: gate-mean x category-mean
 
+if RULE not in ("paper", "legacy"):
+    raise ValueError("SQ_RULE must be paper or legacy")
 
 CAT_ITEMS = {c: [i for i, (cc, w) in FIVE.items() if cc == c] for c in CATS}
 
@@ -29,7 +31,7 @@ def round_clean(items):
     out = {}
     for c, ids in CAT_ITEMS.items():
         ps = [(items.get(i) or {}).get("pass") for i in ids]
-        ps = [p for p in ps if p is not None]
+        ps = [p for p in ps if (isinstance(p, bool) if RULE == "paper" else p is not None)]
         if ps:
             out[c] = 0.0 if any(p is False for p in ps) else 1.0
     return out
@@ -47,6 +49,12 @@ def main():
     rounds_pool = collections.defaultdict(list)              # (seat, run) -> round scores (pooled)
     cat_pool = collections.defaultdict(lambda: collections.defaultdict(list))   # (seat, run) -> cat -> clean flags (pooled over rounds)
     files = sorted(glob.glob(os.path.join(ROOT, BENCH, "sq_v4", "frames", "*", "*", "b3_*.json")))
+    # SQ_TAGS=tag1,tag2 (2026-11-01): incremental -- only these seats are re-aggregated and merged into the existing JSON
+    # (a full pass reads ~5 GB of rubric files from weka; a new seat is 450 of them)
+    _tags = set(filter(None, os.environ.get("SQ_TAGS", "").split(",")))
+    if _tags:
+        files = [f for f in files if f.split(os.sep)[-2].split("__r")[0] in _tags]
+        print(f"[three_runs] incremental: {len(files)} rubric files of {sorted(_tags)}", flush=True)
     for f in files:
         try:
             d = json.load(open(f))
@@ -68,10 +76,23 @@ def main():
             if not cl:
                 continue
             cats = {c: sum(v) / len(v) for c, v in cl.items()}
-            # ruling 2026-09-24 (later the same day): must-item zeroing is BACK — a line that fails T1 or T2
-            # scores 0 as a round (per judge, then averaged); otherwise the mean of its applicable clean flags
             musts = [0.0 if any((v["items"].get(i) or {}).get("pass") is False for i in MUST) else 1.0 for v in js]
-            sc = (sum(musts) / len(musts)) * (sum(cats.values()) / len(cats))
+            if RULE == "paper":
+                # paper contract (arxiv tables/v7_results_snapshot.json provenance, 2026-10-20; applied 2026-11-02): for EACH judge
+                # the five category scores and the factual-grounding gate give that judge's round score; the round is the
+                # arithmetic mean of the two judge scores. (Not the same as gate-mean x category-mean, the legacy rule.)
+                per_judge = []
+                for v in js:
+                    rc = round_clean(v["items"])
+                    if not rc:
+                        continue
+                    per_judge.append(musts[js.index(v)] * (sum(rc.values()) / len(rc)))
+                if not per_judge:
+                    continue
+                sc = sum(per_judge) / len(per_judge)
+            else:
+                # legacy (ruling 2026-09-24): must-gate averaged over judges x mean of the judge-averaged category cleans
+                sc = (sum(musts) / len(musts)) * (sum(cats.values()) / len(cats))
             ep_scores.append(sc); rounds_pool[(seat, run)].append(sc)
             for c, x in cats.items():
                 cat_pool[(seat, run)][c].append(x)
@@ -79,6 +100,9 @@ def main():
             per[(seat, run)].append(sum(ep_scores) / len(ep_scores))
     seats = sorted({s for s, r in per}, key=lambda s: -st.mean(rounds_pool.get((s, 1), [0])))
     out = {}
+    _outp = os.path.join(ROOT, BENCH, "sq_v4", "three_runs_five.json")
+    if _tags and os.path.exists(_outp):          # keep every other seat's entry as it is
+        out = {k: v for k, v in json.load(open(_outp)).items() if not k.startswith("_") and k.split("__r")[0] not in _tags}
     for s in seats:
         runs = {}
         for r in (1, 2, 3):
@@ -88,6 +112,9 @@ def main():
                            applicable={c: (len(cat_pool[(s, r)][c]) / len(rp)) if rp else None for c in CATS})
         aqs = [runs[r]["AQ"] for r in (1, 2, 3) if runs[r]["AQ"] is not None]
         out[s] = dict(runs=runs, mean=(st.mean(aqs) if aqs else None), sd=(st.pstdev(aqs) if len(aqs) > 1 else 0.0))
+    if _tags:                                    # merged file keeps the leaderboard order (run-1 AQ, descending)
+        out = dict(sorted(((k, v) for k, v in out.items() if not k.startswith("_")), key=lambda kv: -((kv[1]["runs"].get("1") or kv[1]["runs"].get(1) or {}).get("AQ") or 0)))
+    out["_rule"] = dict(rule=RULE, judges=sorted(JUDGES), note="round = mean over judges of (factual gate x mean of the judge's applicable category cleans); pooled over rounds per run; mean +- SD over runs" if RULE == "paper" else "legacy: gate-mean x category-mean")
     json.dump(out, open(os.path.join(ROOT, BENCH, "sq_v4", "three_runs_five.json"), "w"), indent=1)
     f2 = lambda x: "–" if x is None else f"{x:.2f}"
     print(f"{'seat':26s} rounds r1/r2/r3      AQ r1/r2/r3     mean±sd   " + "  ".join(f"{c[:5]:>14s}" for c in CATS))

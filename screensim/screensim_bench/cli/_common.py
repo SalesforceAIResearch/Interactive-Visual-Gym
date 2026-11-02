@@ -33,8 +33,8 @@ def resolve_assistant(spec):
         sys.exit(f"--assistant must be <backend>:<model> or a roster tag; got {spec!r} "
                  f"(screensim-roster lists them)")
     backend, model = spec.split(":", 1)
-    if backend not in ("openai", "gemini", "live", "realtime") or not model.strip():
-        raise ValueError("Use openai:<model>, gemini:<model>, live:<model>, realtime:<model>, or a roster tag")
+    if backend not in ("openai", "gemini", "anthropic", "live", "realtime") or not model.strip():
+        raise ValueError("Use openai:<model>, anthropic:<model>, gemini:<model>, live:<model>, realtime:<model>, or a roster tag")
     for e in ROSTER:
         if e["backend"] == backend and e["model"] == model:
             return backend, model, e["tag"]

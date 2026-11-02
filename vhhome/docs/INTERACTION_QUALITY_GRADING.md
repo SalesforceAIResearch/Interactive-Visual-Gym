@@ -120,47 +120,30 @@ three times; a judge that still returns nothing is recorded as an error for that
 from the judges that answered. Claude calls are throttled (`CLAUDE_CONCURRENCY`, default 20 in flight) and a rate
 limit waits rather than giving the round up.
 
-The published table was graded by `gemini` and `gpt` on every round and by `claude` on most rounds (99%, 99% and
-44% of the rounds of runs 1, 2 and 3): each round's score is the mean over the judges that answered it, so most
-published rounds carry three verdicts and the rest two. `vhhome-score --judges gemini,gpt` is the reproducible
-two-judge setting.
+The reported setting uses Gemini and GPT on every round. Historical files may also
+contain Claude verdicts, which are retained for analysis but excluded from the paper score.
+The judges receive the transcript and engine-state context, without rendered frames.
 
 ## 5. Aggregation
 
-Per judge `j`, for one round, with `I` the items in force that apply to the round's types, `w(i)` an item's weight
-and the must items set aside:
+For each judge separately, an applicable category passes if every applicable item in that
+category passes. The five categories are factual grounding, situational relevance, actionable
+guidance, user intent uptake, and guidance conciseness. Failure of T1 or T2 gates that judge's
+round score to zero. Otherwise, the score is the mean of its applicable categories.
 
 ```
-must_fail_j  = any must item in I failed for judge j
-score_j      = 0                                     if must_fail_j
-             = sum of w(i) over passed weighted items / sum of w(i) over applicable weighted items   otherwise
-             (absent when no weighted item applies)
+judge score  = factual-grounding gate × mean of applicable category pass flags
+round score  = mean of Gemini and GPT judge scores
+AQ(run)      = mean of scored rounds pooled across episodes in that run
+AQ(model)    = mean of the three run scores
+SD           = population standard deviation of the three run scores
 ```
 
-So a line whose facts are wrong (T1 or T2), whose first advised action cannot be started (H1), or that overrides an
-announced plan or a stop request without a task-critical reason (L2) scores 0 for every judge that caught it,
-whatever else it did right; a line that passes the gates scores the weight share of its applicable items.
-
-Over judges (`_merge`):
-
-```
-round score  = mean over the judges that answered of score_j
-must_fail    = any judge failed a must item          (recorded; the score already reflects it per judge)
-```
-
-Over an episode and over seats:
-
-```
-AQ(episode)        = mean of round score over the episode's scored rounds          (silence contributes nothing)
-AQ(seat)           = mean of AQ(episode) over all episodes of the seat, pooled over the runs
-95% interval       = 2000-draw bootstrap over episodes of that pooled list (seed 11)
-per-run AQ         = mean of AQ(episode) over the episodes of that run
-```
-
-`rubric_table.py` (run per run root by `vhhome-score`) also prints the round-pooled mean (`AQ_round`, what a
-randomly drawn line scores), rounds per episode (the assistant's talkativeness, which AQ deliberately does not
-reward), the share of rounds zeroed by a must item, and with `--by-category` where a seat loses its points. The
-published table uses the episode mean, so a talkative episode does not outvote a terse one.
+The same two judges are used for category scores. `final_table.py` reads their saved items
+and recomputes this score; it does not trust historical `aggregate.AQ` fields. The diagnostic
+`rubric_table.py` additionally prints the episode-mean variant and its bootstrap interval,
+which are not the headline score. Missing judge calls should be retried before comparing
+results; the submission grader requires both judges for each round.
 
 ## 6. Running it, caching and resume
 
@@ -196,9 +179,8 @@ rounds[]: round, t, assistant (the lines), person_reply [(move, text)], live_err
           score, must_fail, types, items (the merged view: pass only if no judge failed it; reasons joined with " || ")
 ```
 
-The per-judge blocks are the primary data; the round-level `score` is the mean over them and `aggregate.AQ` is the
-episode mean. `final_table.py` reads `aggregate.AQ` of every episode file under the run roots and pools them as in
-section 5.
+The per-judge blocks are the primary data. Round-level `score` and `aggregate.AQ` retain historical
+diagnostics; `final_table.py` recomputes the paper score from the per-judge items as described in section 5.
 
 ## 7. Limitations
 

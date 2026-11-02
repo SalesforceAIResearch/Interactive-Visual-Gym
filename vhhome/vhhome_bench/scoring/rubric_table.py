@@ -85,17 +85,17 @@ def arm_rows(root):
             except Exception:
                 continue
             judged += 1
-            ag = x.get("aggregate") or {}
-            n_rounds += ag.get("rounds") or 0
-            if ag.get("AQ") is not None:
-                eps.append(ag["AQ"])
-            for r in x.get("rounds") or []:
-                if r.get("score") is not None:
-                    rounds_all.append(r["score"])
-                    must.append(1.0 if r.get("must_fail") else 0.0)
-                for it in (r.get("items") or {}).values():
-                    if it.get("pass") is not None and it.get("category") in cat_hits:
-                        cat_hits[it["category"]].append(1.0 if it["pass"] else 0.0)
+            from .five_categories import rounds as paper_rounds
+            rs = paper_rounds(x)
+            n_rounds += len(x.get("rounds") or [])
+            if rs:
+                eps.append(statistics.fmean(r["score"] for r in rs))
+            for rr in rs:
+                rounds_all.append(rr["score"])
+                must.append(rr["gated_share"])
+                for c, value in rr["flags"].items():
+                    if c in cat_hits:
+                        cat_hits[c].append(value)
         lo, hi = boot(eps)
         rows.append({"arm": arm, "episodes_judged": judged, "episodes_scored": len(eps),
                      "rounds": n_rounds, "rounds_scored": len(rounds_all),

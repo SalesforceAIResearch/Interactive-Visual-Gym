@@ -5,7 +5,6 @@ serve script -- minus the slots that cannot run here yet.
     python -m screensim.interact.roster          # print the roster with each entry's status
 
 Not in the ScreenSim run (and why):
-  2  claude-opus-5              no ANTHROPIC_API_KEY on this machine
   5  qwen3.8-max                no DASHSCOPE_API_KEY
   7  gemini-3.8-live__native    CookSim's native seat streams the cook's SPEECH (TTS) and paces the game at
   9  gpt-realtime-2.1__native   wall-clock speed; ScreenSim is turn-based with a text person. Open ruling
@@ -42,6 +41,12 @@ def _local(slot, tag, group, port, profile, serve, *, max_tokens=4000, shim=Fals
 
 ROSTER = [
     # ---- A · frontier API
+    dict(slot="2", tag="claude-opus-5", group="A", kind="api", backend="anthropic",
+         model="claude-opus-5", workers=6),
+    dict(slot="1b", tag="gemini-4-argon", group="A", kind="api", backend="gemini",
+         model="gemini-4-argon", workers=6),
+    dict(slot="1c", tag="gpt-6.1-sol", group="A", kind="api", backend="openai", model="gpt-6.1-sol",
+         base_url=OPENAI_URL, profile="gpt5", max_tokens=4000, image_scale=1.0, workers=6),
     dict(slot="1", tag="gpt-6-astra", group="A", kind="api", backend="openai", model="gpt-6-astra",
          base_url=OPENAI_URL, profile="gpt5", max_tokens=4000, image_scale=1.0, workers=6),
     dict(slot="3", tag="gemini-3.1-pro-preview", group="A", kind="api", backend="gemini",
@@ -85,6 +90,10 @@ def make_backend(tag, base_url=None, entry=None):
     e = entry if entry is not None else by_tag(tag)
     if e["backend"] == "gemini":
         b = B.GeminiBackend(e["model"])
+    elif e["backend"] == "anthropic":
+        from .anthropic_backend import AnthropicAssistantBackend
+        b = AnthropicAssistantBackend(e["model"], max_tokens=e.get("max_tokens", 4000),
+                                      image_scale=e.get("image_scale", 1.0))
     elif e["backend"] == "live":
         b = B.LiveBackend(e["model"])
     elif e["backend"] == "realtime":

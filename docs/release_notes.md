@@ -1,5 +1,15 @@
 # Release notes
 
+## External-assistant comparability — 2 November 2026
+
+- ScreenSim and VH-Home accept `anthropic:<model-id>` through their standard assistant interfaces, alongside the existing Gemini and OpenAI-compatible routes. The adapters preserve each engine's prompts, observations, and reply parsing.
+- CookSim's local table and ScreenSim's five-category view now apply the factual-grounding gate separately to each judge before averaging Gemini and GPT. VH-Home's final table recomputes the same score from saved verdicts, pooling rounds within runs and weighting runs equally.
+- CookSim's submission grader presents the full rubric, matching the benchmark runs; the reported score still uses five categories. VH-Home submission grading uses transcript and engine-state evidence without frames.
+- VH-Home uses the published detection-window and prevention-credit rules. Recall is aggregated over triggered events. CookSim now also exports paper objective scores, with success measured over all episodes.
+- Protocol v4 pins these corrections. Task suites, user models, simulation mechanics, termination policies, timing caps, and the main fixed-two-tick setting are unchanged.
+
+See [evaluation commands](evaluating_assistants.md) and [validation](submission_validation.md).
+
 ## Results and timing configuration — 2 November 2026
 
 Benchmark score snapshots have been removed from the repository. Published comparisons are maintained in the paper and on the [project leaderboard](https://hellomuffin.github.io/ive-benchmark/redesign/#leaderboard-section).
@@ -7,7 +17,7 @@ Benchmark score snapshots have been removed from the repository. Published compa
 CookSim and VH-Home both expose `--latency 2` for the main fixed-two-tick setting and `--latency measured` for the measured-inference-time comparison. VH-Home now accepts these flags directly for single episodes and benchmark runs. Omitting the flag retains the prior environment/default behavior; engine transitions and delay calculations are unchanged. ScreenSim retains its fixed zero-tick setting.
 
 Submission protocol v3 refreshes the source fingerprints and uses Gemini 3.1 Pro as VH-Home's simulated user, matching the paper. The fixed-two-tick track, suite membership, user prompts, and scoring formulas are unchanged. Use separate output directories for fixed and measured runs; measured runs are not submissions to the fixed-timing track.
- and compatibility
+
 
 ## Public interfaces
 

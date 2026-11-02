@@ -168,7 +168,7 @@ def commands(work, m):
             ("eval_v2_sweep", []),
             (
                 "sq_v4_score",
-                ["--judge", "gemini,gpt", "--categories", "five", "--workers", "4"],
+                ["--judge", "gemini,gpt", "--categories", "all", "--workers", "4"],
             ),
         ):
             result.append(
@@ -187,7 +187,6 @@ def commands(work, m):
                     "args": [
                         root,
                         "--subset",
-                        "--frames",
                         "--judge",
                         "gemini,gpt",
                         "--workers",

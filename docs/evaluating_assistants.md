@@ -14,6 +14,29 @@ Each engine supports configured hosted-model backends and a roster of named assi
 
 Keep the assistant model separate from the simulated-user model and the evaluation judges. Changing one does not imply changing the others.
 
+## Claude assistants
+
+All three engines accept `--assistant anthropic:<model-id>`. Install the engine's
+`anthropic` extra and set `ANTHROPIC_API_KEY` (and `ANTHROPIC_WORKSPACE_ID` if required
+by your account). `GEMINI_API_KEY` is still required for the simulated user;
+`OPENAI_API_KEY` is also needed for the GPT evaluation judge.
+
+```bash
+# From the repository root, install the optional provider adapters.
+python -m pip install -e './cooksim[anthropic]' -e './vhhome[anthropic]' -e './screensim[all]'
+
+# Start the renderers/simulator as described in each engine's setup guide first.
+cooksim-benchmark --assistant anthropic:YOUR_MODEL_ID --latency 2 --out runs/claude_cook --workers 4
+vhhome-benchmark --assistant anthropic:YOUR_MODEL_ID --latency 2 --out runs/claude_vh --engines 8080
+screensim-benchmark --assistant anthropic:YOUR_MODEL_ID --out runs/claude_screen --workers 4
+```
+
+Use a model ID available to your Anthropic account. The adapter uses the
+[Messages API image format](https://platform.claude.com/docs/en/build-with-claude/vision),
+low effort, and the engine's existing JSON-response prompt. It does not give Claude
+additional structured-decoding assistance or repair its answers. API billing or
+model-access errors must be resolved before running a benchmark.
+
 ## Run and score
 
 The public command families share a naming convention:
@@ -99,3 +122,29 @@ Keep independent runs in distinct output locations. Reusing a completed run's di
 Record the code revision, case selection, personas, assistant settings, simulated-user model, latency policy, and judge panel. Preserve native records and per-judge outputs; a summary score alone is not enough to reproduce an evaluation.
 
 See [Metrics](metrics.md) for the distinction between deterministic rescoring and model-based grading.
+
+## Paper-comparable scoring
+
+Interaction quality is computed from Gemini and GPT verdicts separately: each judge's
+factual-grounding gate multiplies the mean of its applicable category scores, then the
+two judges are averaged. Rounds are pooled within a run; the three runs receive equal
+weight. Merged-item diagnostics and historical cached `AQ` values are not this score.
+
+- CookSim: `cooksim-score --run RUN_ROOT` writes the five-category results to
+  `sq_v4/three_runs_five.json` and objective results to `paper_scores.json`.
+  The full sixteen-item rubric is presented to both judges; only the ten items
+  belonging to the five reported categories enter the paper score.
+- VH-Home: `vhhome-score --run RUN1 RUN2 RUN3` writes `final_results.json` and
+  `final_results.md`. Rubric judges receive the transcript and engine state, without
+  rendered frames, matching the paper. Recall uses the corrected detection windows.
+- ScreenSim: after `screensim-grade --results RUN` for each run, use
+  `python -m screensim_bench.scoring.aq_contract RUN1 RUN2 RUN3 --model TAG --json quality.json`.
+
+Success includes every recorded episode. Recall divides detected errors by triggered
+errors within each run, then averages runs. Incomplete or failed judge calls need to be
+regraded before reporting a two-judge score. The submission grader enforces both judges.
+
+The release reorganizes engine modules into installable packages. Research-tree and
+release-tree engine stamps therefore differ even when simulation behavior is identical;
+compare the pinned suite, prompts, renderer, and engine sources instead. Submission
+bundles must use the release's own source pins and protocol version.

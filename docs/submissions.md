@@ -4,7 +4,7 @@ Run the benchmark with your assistant, submit the native trajectories, and provi
 
 ## 1. Match the submission protocol
 
-The current submission protocol is `ivg-bench-submissions-v3`:
+The current submission protocol is `ivg-bench-submissions-v4`:
 
 | Setting | CookSim | VH-Home | ScreenSim |
 |---|---|---|---|
@@ -16,7 +16,7 @@ The current submission protocol is `ivg-bench-submissions-v3`:
 
 Use `--latency 2` for both `cooksim-benchmark` and `vhhome-benchmark`. For VH-Home, keep `GEMINI_MODEL=gemini-3.1-pro-preview` (the engine default), matching the paper's fixed and measured comparisons. Do not select a native streaming adapter. ScreenSim retains its fixed zero-tick action–response setting.
 
-The exact membership and definition hashes are in [catalog.json](../ivg_submission/catalog.json). Version 3 adds explicit VH-Home timing flags and corrects its simulated-user model to match the paper. Membership, user prompts, scoring rules, and the fixed-two-tick delay are unchanged. Existing bundles must be regenerated with the current tools; VH-Home runs using a different user model belong to a separate experimental track.
+The exact membership and definition hashes are in [catalog.json](../ivg_submission/catalog.json). Version 4 adds the scorer and Claude-adapter corrections described below. Suite membership, user prompts, user models, and fixed-two-tick timing are unchanged from v3. Existing bundles must be regenerated with the current tools; VH-Home runs using a different user model belong to a separate experimental track.
 
 Use the [fixed-two-tick commands](evaluating_assistants.md#response-timing) for this track. Measured-latency runs are a separate experiment and are not accepted as fixed-timing submissions.
 
@@ -72,3 +72,14 @@ Reruns are stochastic: the audit checks permitted observations, configuration, b
 The repository includes local packaging, validation, grading/review commands, automatic PR validation, and a static leaderboard export. There is **no public upload server or continuously running paid grading service**. Grading and approval are maintainer-run steps; automatic publication to the project page requires connecting the reviewed feed to its deployment. The repository's visibility and access settings are unchanged.
 
 See [maintainer operations](submission_operations.md) for deployment and review, and [validation results](submission_validation.md) for the checks performed so far.
+
+### Protocol v4
+
+Version 4 aligns local and submission scoring with the paper: CookSim presents the full
+rubric to judges, VH-Home judges use transcript and state without frames, and the VH-Home
+detection scorer includes prevention credit and the corrected window close. All reported
+interaction-quality scores apply factual gating separately per judge before averaging
+Gemini and GPT. Source pins also include the new Claude assistant adapters. Suite membership,
+personas, user models, and fixed two-tick timing are unchanged from v3. Do not relabel an old
+bundle as v4; use the matching release and regrade stored judgments only when the required
+judge evidence and rubric settings match.
