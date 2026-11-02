@@ -10,7 +10,15 @@ __pycache__/
 **/serving/logs/
 *.log
 .env
+# OS metadata and editor temporary files
 .DS_Store
+._*
+__MACOSX/
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
 /grading/
 /submission-config.json
 /submission.zip
