@@ -1,84 +1,131 @@
-# Interactive Visual Gym
+<p align="center">
+  <img src="docs/assets/salesforce-logo.svg" alt="Salesforce" width="78">
+</p>
+<h1 align="center">Interactive Visual Gym</h1>
+<p align="center"><strong>Evaluating Visual Interaction Models with Simulated Users in Interactive Worlds</strong></p>
+<p align="center">University of Washington &nbsp; · &nbsp; Salesforce AI Research</p>
 
-**Closed-loop evaluation and training of visual assistants with simulated users.**
+<p align="center">
+  <a href="https://interactive-visual-gym.salesforceairesearch.com/"><img src="https://img.shields.io/badge/Project_page-0176D3?style=for-the-badge" alt="Project page"></a>
+  <a href="https://interactive-visual-gym.salesforceairesearch.com/paper/interactive-visual-gym.pdf"><img src="https://img.shields.io/badge/Paper-032D60?style=for-the-badge" alt="Paper"></a>
+  <a href="https://interactive-visual-gym.salesforceairesearch.com/#evaluation"><img src="https://img.shields.io/badge/Demos-0B827C?style=for-the-badge" alt="Interaction demos"></a>
+  <a href="https://interactive-visual-gym.salesforceairesearch.com/#leaderboard-section"><img src="https://img.shields.io/badge/IVG--Bench_Leaderboard-0176D3?style=for-the-badge" alt="IVG-Bench leaderboard"></a>
+</p>
+<p align="center">
+  <a href="#get-started">Get started</a> &nbsp; / &nbsp;
+  <a href="docs/evaluating_assistants.md">Evaluate your model</a> &nbsp; / &nbsp;
+  <a href="#submit-via-pull-request">Submit via pull request</a> &nbsp; / &nbsp;
+  <a href="#citation">Citation</a>
+</p>
 
-Interactive Visual Gym pairs executable task environments with simulated users who plan, act, and converse with an assistant. The assistant observes the activity and provides guidance; only the user acts on the environment. Scheduled human events and user personas let researchers evaluate how assistance affects task execution and interaction quality.
+**Visual guidance changes what happens next.** Interactive Visual Gym evaluates and trains visual interaction models in a closed loop: a simulated user plans and acts, while the model observes the activity and provides guidance. Scheduled out-of-plan events and user personas let us measure how that guidance affects task execution and interaction quality.
 
-[Project page](https://hellomuffin.github.io/ive-benchmark/redesign/) · [Getting started](docs/getting_started.md) · [Evaluate an assistant](docs/evaluating_assistants.md) · **[Submit via pull request](#submit-via-pull-request)** · [Benchmark protocol](docs/benchmark_protocol.md)
+<table>
+  <tr>
+    <th width="33%">Cooking</th>
+    <th width="34%">Household activities</th>
+    <th width="33%">Mobile interfaces</th>
+  </tr>
+  <tr>
+    <td align="center"><a href="cooksim/"><img src="docs/assets/cooking.gif" width="360" alt="CookSim: preparing food in an egocentric kitchen view"></a></td>
+    <td align="center"><a href="vhhome/"><img src="docs/assets/household.gif" width="360" alt="VH-Home: navigating a furnished apartment and handling objects"></a></td>
+    <td align="center"><a href="screensim/"><img src="docs/assets/mobile.gif" width="360" alt="ScreenSim: navigating phone settings to restrict an app’s access"></a></td>
+  </tr>
+  <tr>
+    <td><strong><a href="cooksim/">CookSim</a></strong><br>Prepare and serve recipes in an Overcooked-style kitchen.</td>
+    <td><strong><a href="vhhome/">VH-Home</a></strong><br>Complete household routines in furnished apartments.</td>
+    <td><strong><a href="screensim/">ScreenSim</a></strong><br>Configure phone settings to satisfy user goals.</td>
+  </tr>
+</table>
 
-## Submit via pull request
+- **Executable environments.** Visual observations, semantic actions, and scene-graph states support task execution and progress tracking.
+- **Controllable users.** Schedule errors, questions, proactive requests, and plan changes at task-progress checkpoints; vary skill, trust in AI, execution speed, and interruption preference.
+- **Closed-loop evaluation.** Measure task success, error detection, interaction quality, and question answering from the resulting trajectories.
 
-**Submit your assistant to IVG-Bench by opening a pull request in this repository.**
-
-1. Run the benchmark and package your trajectories with `ivg-submit`.
-2. Upload the archive as a GitHub Release asset and generate a submission request containing its URL and checksum. Include a pinned inference-code repository and runnable instructions in your submission metadata.
-3. Open a PR adding **`submissions/requests/<submission-id>.json`**—not the trajectory archive or inference code itself.
-
-PR validation checks the submitted records automatically. Maintainers then grade and review the results before approving leaderboard publication.
-
-**[Submission guide: commands, required files, and review process →](docs/submissions.md)**
-
-## Environments
-
-| Environment | Tasks | Simulation |
-|---|---|---|
-| [CookSim](cooksim/) | Prepare and serve recipes in an Overcooked-style kitchen | Kitchen engine with top-down and egocentric rendering |
-| [VH-Home](vhhome/) | Complete household routines in furnished apartments | VirtualHome with egocentric observations and maps |
-| [ScreenSim](screensim/) | Configure phone settings to satisfy user goals | Executable phone interface with screenshot rendering |
-
-The IVG-Bench suite contains **105 cases**, evaluated with three personas per case: **150 cooking, 75 household, and 90 mobile-interface episodes per assistant per run**. A case specifies a task and scheduled events; a recorded episode is one execution with a particular user persona and assistant.
+> [!TIP]
+> **Have a model to evaluate? [Submit it to IVG-Bench via a pull request.](docs/submissions.md)** Run the benchmark, upload your trajectories, and add a submission request. Validation is automatic; official scoring and leaderboard publication follow maintainer review.
 
 ## Get started
 
-Clone the repository, then follow the installation guide for your environment. Install from the checkout: each engine uses assets and benchmark definitions alongside its Python packages.
+Clone the repository, then follow the quickstart for your environment. Install from the checkout: each engine uses assets and benchmark definitions alongside its Python packages.
 
 ```bash
 git clone https://github.com/SalesforceAIResearch/Interactive-Visual-Gym.git
 cd Interactive-Visual-Gym
 ```
 
-| | Install and run one episode | Evaluate your model | Create cases |
+| Environment | Install and run one episode | Evaluate your model | Create cases |
 |---|---|---|---|
-| CookSim | [Quickstart](cooksim/docs/GETTING_STARTED.md) | [Evaluation](cooksim/docs/EVALUATE_YOUR_MODEL.md) | [Case generation](cooksim/docs/GENERATE_CASES.md) |
-| VH-Home | [Quickstart](vhhome/docs/GETTING_STARTED.md) | [Evaluation](vhhome/docs/EVALUATE_YOUR_MODEL.md) | [Case generation](vhhome/docs/GENERATE_CASES.md) |
-| ScreenSim | [Quickstart](screensim/docs/GETTING_STARTED.md) | [Evaluation](screensim/docs/EVALUATE_YOUR_MODEL.md) | [Case generation](screensim/docs/GENERATE_CASES.md) |
+| **CookSim** | [Quickstart](cooksim/docs/GETTING_STARTED.md) | [Evaluation](cooksim/docs/EVALUATE_YOUR_MODEL.md) | [Case generation](cooksim/docs/GENERATE_CASES.md) |
+| **VH-Home** | [Quickstart](vhhome/docs/GETTING_STARTED.md) | [Evaluation](vhhome/docs/EVALUATE_YOUR_MODEL.md) | [Case generation](vhhome/docs/GENERATE_CASES.md) |
+| **ScreenSim** | [Quickstart](screensim/docs/GETTING_STARTED.md) | [Evaluation](screensim/docs/EVALUATE_YOUR_MODEL.md) | [Case generation](screensim/docs/GENERATE_CASES.md) |
 
-The workflow is the same across environments: **inspect cases → run an episode → inspect the record → score → run the benchmark**. Installation, action vocabularies, and record formats remain engine-specific.
+Each engine is independently installable. The shared workflow is **inspect cases → run an episode → inspect the record → score → run the benchmark**; simulator dependencies, action vocabularies, and record formats are documented in the guides above.
 
-## Evaluation timing and results
+## Evaluation protocol
 
-The main benchmark uses **fixed two-tick delay** (`--latency 2`) in CookSim and VH-Home. To account for model inference latency, run a separate evaluation with **`--latency measured`**. ScreenSim keeps its fixed zero-tick action–response setting. See the [complete commands](docs/evaluating_assistants.md#response-timing).
+**IVG-Bench** contains 105 cases, evaluated with three personas per case: **150 cooking, 75 household, and 90 mobile-interface episodes** per model per run. A case specifies a task and scheduled events; an episode is one execution with a particular user persona and model.
 
-Published scores live on the [project leaderboard](https://hellomuffin.github.io/ive-benchmark/redesign/#leaderboard-section) and in the paper. This repository provides the engines, evaluation code, and submission tools without maintaining another copy of benchmark scores.
+| Evaluation setting | CookSim and VH-Home | ScreenSim |
+|---|---|---|
+| **Fixed timing** · main comparison | Fixed two-tick delay: `--latency 2` | Fixed zero-tick action–response setting |
+| **Measured latency** · latency comparison | Measured inference delay: `--latency measured` | Same fixed setting |
+
+See the [complete run commands](docs/evaluating_assistants.md#response-timing), [benchmark protocol](docs/benchmark_protocol.md), and [metric definitions](docs/metrics.md). Published results are available in the [paper](https://interactive-visual-gym.salesforceairesearch.com/paper/interactive-visual-gym.pdf) and on the [project leaderboard](https://interactive-visual-gym.salesforceairesearch.com/#leaderboard-section).
+
+## Submit via pull request
+
+**Submit your model to IVG-Bench by opening a pull request in this repository.**
+
+1. **Run and package.** Run the benchmark and package your trajectories with `ivg-submit`.
+2. **Upload the archive.** Use a GitHub Release asset and generate a submission request containing its URL and checksum. Include a pinned inference-code repository and runnable instructions in your submission metadata.
+3. **Open a PR.** Add **`submissions/requests/<submission-id>.json`**—not the trajectory archive or inference code itself.
+
+PR validation checks the submitted records automatically. Maintainers then grade and review the results before approving leaderboard publication.
+
+**[Submission guide: commands, required files, and review process →](docs/submissions.md)**
 
 ## Documentation
 
-- [Getting started](docs/getting_started.md): requirements, installation, and your first run.
-- [Evaluating assistants](docs/evaluating_assistants.md): model interfaces, run commands, and outputs.
-- [Benchmark protocol](docs/benchmark_protocol.md): cases, personas, repeated runs, and configuration.
-- [Metrics](docs/metrics.md): engine-derived scores and model-judged interaction quality.
-- [Submitting results](docs/submissions.md): package trajectories, request official scoring, and provide inference code for audit.
-- [Development](docs/developing.md): repository structure, tests, and compatibility checks.
-- [Validation results](docs/validation.md): before/after tests and remaining release blockers.
-- [Release notes](docs/release_notes.md): known limitations and configuration differences.
+| Guide | Contents |
+|---|---|
+| [Getting started](docs/getting_started.md) | Requirements, installation, and your first run |
+| [Evaluating models](docs/evaluating_assistants.md) | Model interfaces, run commands, and outputs |
+| [Benchmark protocol](docs/benchmark_protocol.md) | Cases, personas, repeated runs, and configuration |
+| [Metrics](docs/metrics.md) | Engine-derived scores and model-judged interaction quality |
+| [Submitting results](docs/submissions.md) | Trajectory packaging, official scoring, and inference-code audit |
+| [Development](docs/developing.md) | Repository structure, tests, and compatibility checks |
+| [Validation](docs/validation.md) · [Release notes](docs/release_notes.md) | Validation checks, limitations, and configuration differences |
 
-## Repository structure
+<details>
+<summary><strong>Repository structure</strong></summary>
 
 ```text
+cooksim/                Cooking engine, assets, benchmark harness, and tests
+vhhome/                 Household engine, simulator setup, benchmark harness, and tests
+screensim/              Phone engine, assets, benchmark harness, and tests
 docs/                   Shared workflow and benchmark documentation
 scripts/                Repository-wide validation
-ivg_submission/         Data-only submissions, trusted grading handoff, and reviewed leaderboard export
-submissions/            Small submission requests and maintainer-reviewed results (not raw trajectories)
-cooksim/                Cooking engine, benchmark harness, assets, and tests
-vhhome/                 Household engine, benchmark harness, simulator setup, and tests
-screensim/              Phone engine, benchmark harness, assets, and tests
+ivg_submission/         Submission validation, grading handoff, and leaderboard export
+submissions/            Submission requests and maintainer-reviewed results
 ```
 
-Each engine is independently installable, with its own simulator dependencies and model-serving configuration.
+</details>
 
 ## Citation
 
-See [CITATION.cff](CITATION.cff) for the project title and authors.
+If you use Interactive Visual Gym in your research, please cite our paper:
+
+```bibtex
+@misc{zheng2026interactivevisualgym,
+  title = {Interactive Visual Gym: Evaluating Visual Interaction Models with Simulated Users in Interactive Worlds},
+  author = {Chenhao Zheng and Zixian Ma and Kai Li and Kanchana Ranasinghe and Jieyu Zhang and Artemis Panagopoulou and Weikai Huang and Jianxu Shangguan and Yuanyuan Tan and Silvio Savarese and Juan Carlos Niebles and Ranjay Krishna and Ran Xu and Honglu Zhou},
+  year = {2026},
+  url = {https://interactive-visual-gym.salesforceairesearch.com/paper/interactive-visual-gym.pdf}
+}
+```
+
+See also [CITATION.cff](CITATION.cff).
 
 ## Contributing and licenses
 

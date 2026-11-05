@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "Please cite Interactive Visual Gym when using this framework or its environments."
-title: "Interactive Visual Gym: Evaluating visual assistants with simulated human users in interactive worlds"
+title: "Interactive Visual Gym: Evaluating Visual Interaction Models with Simulated Users in Interactive Worlds"
 type: software
 authors:
   - family-names: "Zheng"
@@ -31,5 +31,5 @@ authors:
     given-names: "Ran"
   - family-names: "Zhou"
     given-names: "Honglu"
-repository-code: "https://github.com/hellomuffin/interactive_visual_gym"
-url: "https://hellomuffin.github.io/ive-benchmark/redesign/"
+repository-code: "https://github.com/SalesforceAIResearch/Interactive-Visual-Gym"
+url: "https://interactive-visual-gym.salesforceairesearch.com/"
