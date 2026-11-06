@@ -33,3 +33,40 @@ authors:
     given-names: "Honglu"
 repository-code: "https://github.com/SalesforceAIResearch/Interactive-Visual-Gym"
 url: "https://interactive-visual-gym.salesforceairesearch.com/"
+preferred-citation:
+  type: article
+  title: 'Interactive Visual Gym: Evaluating Visual Interaction Models with Simulated
+    Users in Interactive Worlds'
+  authors:
+  - family-names: Zheng
+    given-names: Chenhao
+  - family-names: Ma
+    given-names: Zixian
+  - family-names: Li
+    given-names: Kai
+  - family-names: Ranasinghe
+    given-names: Kanchana
+  - family-names: Zhang
+    given-names: Jieyu
+  - family-names: Panagopoulou
+    given-names: Artemis
+  - family-names: Huang
+    given-names: Weikai
+  - family-names: Shangguan
+    given-names: Jianxu
+  - family-names: Tan
+    given-names: Yuanyuan
+  - family-names: Savarese
+    given-names: Silvio
+  - family-names: Niebles
+    given-names: Juan Carlos
+  - family-names: Krishna
+    given-names: Ranjay
+  - family-names: Xu
+    given-names: Ran
+  - family-names: Zhou
+    given-names: Honglu
+  year: 2026
+  journal: arXiv
+  doi: 10.48550/arXiv.2611.08286
+  url: https://arxiv.org/abs/2611.08286

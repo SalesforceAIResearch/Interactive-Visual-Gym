@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="https://interactive-visual-gym.salesforceairesearch.com/"><img src="https://img.shields.io/badge/Project_page-0176D3?style=for-the-badge" alt="Project page"></a>
-  <a href="https://interactive-visual-gym.salesforceairesearch.com/paper/interactive-visual-gym.pdf"><img src="https://img.shields.io/badge/Paper-032D60?style=for-the-badge" alt="Paper"></a>
+  <a href="https://arxiv.org/abs/2611.08286"><img src="https://img.shields.io/badge/Paper-032D60?style=for-the-badge" alt="Paper"></a>
   <a href="https://interactive-visual-gym.salesforceairesearch.com/#evaluation"><img src="https://img.shields.io/badge/Demos-0B827C?style=for-the-badge" alt="Interaction demos"></a>
   <a href="https://interactive-visual-gym.salesforceairesearch.com/#leaderboard-section"><img src="https://img.shields.io/badge/IVG--Bench_Leaderboard-0176D3?style=for-the-badge" alt="IVG-Bench leaderboard"></a>
 </p>
@@ -71,7 +71,7 @@ Each engine is independently installable. The shared workflow is **inspect cases
 | **Fixed timing** · main comparison | Fixed two-tick delay: `--latency 2` | Fixed zero-tick action–response setting |
 | **Measured latency** · latency comparison | Measured inference delay: `--latency measured` | Same fixed setting |
 
-See the [complete run commands](docs/evaluating_assistants.md#response-timing), [benchmark protocol](docs/benchmark_protocol.md), and [metric definitions](docs/metrics.md). Published results are available in the [paper](https://interactive-visual-gym.salesforceairesearch.com/paper/interactive-visual-gym.pdf) and on the [project leaderboard](https://interactive-visual-gym.salesforceairesearch.com/#leaderboard-section).
+See the [complete run commands](docs/evaluating_assistants.md#response-timing), [benchmark protocol](docs/benchmark_protocol.md), and [metric definitions](docs/metrics.md). Published results are available in the [paper](https://arxiv.org/abs/2611.08286) and on the [project leaderboard](https://interactive-visual-gym.salesforceairesearch.com/#leaderboard-section).
 
 ## Submit via pull request
 
@@ -117,15 +117,18 @@ submissions/            Submission requests and maintainer-reviewed results
 If you use Interactive Visual Gym in your research, please cite our paper:
 
 ```bibtex
-@misc{zheng2026interactivevisualgym,
-  title = {Interactive Visual Gym: Evaluating Visual Interaction Models with Simulated Users in Interactive Worlds},
-  author = {Chenhao Zheng and Zixian Ma and Kai Li and Kanchana Ranasinghe and Jieyu Zhang and Artemis Panagopoulou and Weikai Huang and Jianxu Shangguan and Yuanyuan Tan and Silvio Savarese and Juan Carlos Niebles and Ranjay Krishna and Ran Xu and Honglu Zhou},
-  year = {2026},
-  url = {https://interactive-visual-gym.salesforceairesearch.com/paper/interactive-visual-gym.pdf}
+@misc{zheng2026interactivevisualgymevaluating,
+      title={Interactive Visual Gym: Evaluating Visual Interaction Models with Simulated Users in Interactive Worlds},
+      author={Chenhao Zheng and Zixian Ma and Kai Li and Kanchana Ranasinghe and Jieyu Zhang and Artemis Panagopoulou and Weikai Huang and Jianxu Shangguan and Yuanyuan Tan and Silvio Savarese and Juan Carlos Niebles and Ranjay Krishna and Ran Xu and Honglu Zhou},
+      year={2026},
+      eprint={2611.08286},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2611.08286},
 }
 ```
 
-See also [CITATION.cff](CITATION.cff).
+Download [citation.bib](citation.bib), or use [CITATION.cff](CITATION.cff).
 
 ## Contributing and licenses
 
